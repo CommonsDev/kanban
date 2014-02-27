@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:ng="http://angularjs.org">
+<html>
     <head>
         <title>Kanban</title>
 
@@ -8,8 +8,8 @@
         <meta name="description" content="Kanban">
 	<base href="/"></base>
 
-        <link href='http://fonts.googleapis.com/css?family=Raleway:400,500,600,700' rel='stylesheet' type='text/css'>
-        <link href='styles/css/screen.css' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Raleway:400,500,600,700' rel='stylesheet' type='text/css'/>
+        <link href='styles/css/screen.css' rel='stylesheet' type='text/css' />
 
         <!--[if lt IE 9]>
         <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -35,36 +35,35 @@
       </div>
 
       <!-- right placeholder -->
-      <ng-include src="'views/test.html'">
-    </body>
+      <ng-include src="'views/test.html'" />
 
-    <!-- vendor includes -->
+      <!-- vendor includes -->
+      
+      <!-- jquery and plugins -->
+      <script src="http://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript"></script>
+      
+      <!-- Angular -->
+      <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.js"></script>
+      <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-animate.min.js"></script>
+      <script type="text/javascript" src="//underscorejs.org/underscore-min.js"></script>
+      
+      <!-- bower includes -->
+      <script src="scripts/vendor/angular-cookies/angular-cookies.min.js"></script>
+      <script type="text/javascript" src="scripts/vendor/restangular/dist/restangular.min.js"></script>
+      <script src="scripts/vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
+      <script src="scripts/vendor/es5-shim/es5-shim.min.js"></script>
+      <script src="scripts/vendor/angular-file-upload/angular-file-upload.min.js"></script>
+      
+      <!-- no auth for now
+	   <script src="scripts/vendor/http-auth-interceptor.js"></script>
+	   <script src="scripts/vendor/angularOauth.js"></script>
+	   <script src="scripts/vendor/googleOauth.js"></script>
+	   -->
 
-    <!-- jquery and plugins -->
-    <script src="http://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript"></script>
-
-    <!-- Angular -->
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-animate.min.js"></script>
-    <script type="text/javascript" src="//underscorejs.org/underscore-min.js"></script>
-
-    <!-- bower includes -->
-    <script src="scripts/vendor/angular-cookies/angular-cookies.min.js"></script>
-    <script type="text/javascript" src="scripts/vendor/restangular/dist/restangular.min.js"></script>
-    <script src="scripts/vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <script src="scripts/vendor/ng-isotope/isotope.pkgd.js"></script>
-    <script src="scripts/vendor/es5-shim/es5-shim.min.js"></script>
-    <script src="scripts/vendor/angular-file-upload/angular-file-upload.min.js"></script>
-
-    <!-- no auth for now
-    <script src="scripts/vendor/http-auth-interceptor.js"></script>
-    <script src="scripts/vendor/angularOauth.js"></script>
-    <script src="scripts/vendor/googleOauth.js"></script>
-    -->
-
-    <script src="scripts/config.js"></script>
-
-    <!-- app files -->
-    <script src="scripts/lib/kanban/controllers.js"></script>
-    <script src="scripts/lib/app.js"></script>
+      <script src="scripts/config.js"></script>
+      
+      <!-- app files -->
+      <script src="scripts/lib/kanban/controllers.js"></script>
+      <script src="scripts/lib/app.js"></script>
+  </body>
 </html>
