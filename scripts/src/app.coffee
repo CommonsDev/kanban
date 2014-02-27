@@ -1,4 +1,4 @@
-angular.element(document).ready(->
+angular.element(document).on('ready page:load', ->
         angular.module('kanban', ['kanban.controllers'])
 
         angular.module('unisson_kanban', ['kanban', 'ui.router', 'ngAnimate', 'restangular'])
@@ -40,4 +40,6 @@ angular.element(document).ready(->
         ])
 
         angular.bootstrap(document, ['unisson_kanban'])
+
+        return true
 )
