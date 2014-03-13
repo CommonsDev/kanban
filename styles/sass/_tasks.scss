@@ -1,0 +1,133 @@
+$task-color: #4b4b4b;
+$task-hover-color: #fff;
+$task-em-color: #818181;
+$task-hover-em-color: #68686a;
+$task-background-color: #fff;
+$task-hover-background-color: #1c1d22;
+$task-done-color: #94c667;
+$task-border-color: #b4b4b4;
+$task-last-border-color: #e6e6e6;
+$task-meta-color: #dadada;
+$task-shadow-color: #444;
+$task-hover-percent-color: #7d7d7d;
+$task-fieldset-border-color: #e6e6e6;
+$task-fieldset-background-color: #eaeaea;
+$task-text-input-background-color: #e6e6e6;
+
+.task {
+	overflow: hidden;
+	padding: 0 0 12px 0;
+	font-size: 1.05em;
+	color: $task-color;
+	background-color: $task-background-color;
+	border-bottom: 4px solid $task-border-color;
+
+	&:hover {
+		color: $task-hover-color;
+		background-color: $task-hover-background-color;
+		
+		a {
+			color: $task-hover-color;
+		}
+	}
+
+	a {
+		color: $task-color;
+		text-decoration: none;
+	}
+	p {
+		clear: left;
+		margin: 0 20px 8px 20px;
+		font-style: italic;
+		font-weight: bold;
+	}
+	p:first-child, > ul + p {
+		margin-top: 21px;
+	}
+	p.done {
+		padding-left: 19px;
+		color: $task-done-color;
+		background: url('/img/background/green_v.png') center left no-repeat;
+	}
+	p.photos {
+		overflow: hidden;
+		margin-bottom: 15px;
+	}
+	em {
+		display: block;
+		color: $task-em-color;
+		font-size: 0.8em;
+		line-height: 1.6em;
+		font-weight: normal;
+	}
+	&:hover em {
+		color: $task-hover-em-color;
+	}
+
+	img {
+		float: left;
+		margin-bottom: 2px;
+	}
+	img:first-child {
+		margin-right: 2px;
+	}
+	ul.members {
+		margin: 0 20px;
+	}
+	ul.meta {
+		float: right;
+		margin: 0 20px;
+		color: $task-meta-color;
+
+		li {
+			display: inline-block;
+			line-height: 30px;
+			margin-left: 6px;
+			padding-left: 18px;
+		
+			&.attachments {
+				background: url('/img/attachment.png') center left no-repeat;
+			}
+			&.comments {
+				background: url('/img/comment.png') center left no-repeat;
+			}
+		}
+	}
+
+	&:hover &.percent {
+		color: $task-hover-percent-color;
+	}
+
+}
+.list div:last-child {
+	border-bottom: 1px solid $task-last-border-color;
+}
+
+.add_task {
+	display: block;
+	background-color: $task-background-color;
+	@include shadow-list-bottom;
+	
+	fieldset {
+		padding: 10px 20px 6px;
+	}
+	fieldset.buttons {
+		text-align: center;
+		border-top: 1px solid $task-fieldset-border-color;
+		background-color: $task-fieldset-background-color;
+	}
+	input[type=text] {
+		width: 234px;
+		margin: 0 0 13px;
+		padding: 12px 10px 2em;
+		border: none;
+		background-color: $task-text-input-background-color;
+		@include border-radius(5px);
+	}
+	button {
+		width: 30px;
+		background-color: transparent;
+		border: none;
+	}
+
+}

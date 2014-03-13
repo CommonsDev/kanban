@@ -1,0 +1,35 @@
+$member-small: 30px;
+$member-medium: 44px;
+$member-large: 50px;
+
+ul.members {
+
+	
+	li {
+		display: inline-block;
+		vertical-align: top;
+		
+		> img {
+			width: $member-small;
+			height: $member-small;
+			margin: 0 4px 0 0;
+		}
+
+	}
+	
+	&.large li > img {
+	}
+
+}
+.task ul.members {
+	float: left;
+}
+
+#right-panel.details ul.members img {
+		width: $member-medium;
+		height: $member-medium;
+}
+#right-panel.comments ul.members img {
+		width: $member-large;
+		height: $member-large;
+}

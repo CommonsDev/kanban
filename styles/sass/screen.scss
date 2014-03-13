@@ -25,6 +25,15 @@ body {
 
 button {
 	cursor:pointer;
+	font-family: Raleway,sans-serif;
+}
+hr {
+	clear: left;
+	border: none;
+	height: 2px;
+	margin: 15px 0;
+	line-height: 2px;
+	background: transparent url('/img/border.png') top left repeat-x;
 }
 
 /* ============= TOOLBAR ============= */
@@ -60,24 +69,20 @@ button {
 		background:image-url('toolbar/depli_ico.png') no-repeat center center;
 	}
 
-	li.add button { 
-		background:image-url('toolbar/up_ico.png') no-repeat center center;
+	li.filters button { 
+		background:image-url('toolbar/filters_ico.png') no-repeat center center;
+	}
+
+	li.boards button { 
+		background:image-url('toolbar/boards_ico.png') no-repeat center center;
 	}
 
 	li.search button { 
 		background:image-url('toolbar/search_ico.png') no-repeat center center;
 	}
 
-	li.files button { 
-		background:image-url('toolbar/files_ico.png') no-repeat center center;
-	}
-
-	li.recent button { 
-		background:image-url('toolbar/recent_ico.png') no-repeat center center;
-	}
-
-	li.fav button { 
-		background:image-url('toolbar/fav_ico.png') no-repeat center center;
+	li.settings button { 
+		background:image-url('toolbar/settings_ico.png') no-repeat center center;
 	}
 
 	li.connected {
@@ -264,7 +269,7 @@ button {
 // Left Panel //
 
 #left-panel {
-	width:220px;
+	width:250px;
 	height:100%;
 	position:fixed;
 	top:0;
@@ -273,3 +278,28 @@ button {
 	z-index:3000;
 	@include box-shadow(2px 0 3px #DDDDDD);
 }
+
+// Right Panel //
+
+#right-panel {
+	width:440px;
+	height:100%;
+	position:fixed;
+	top:0;
+	right:0;
+	background:white;
+	z-index:3000;
+	@include box-shadow(-2px 0 3px #DDDDDD);
+}
+
+@import "base";
+@import "forms";
+@import "labels";
+@import "topbar";
+@import "members";
+@import "panel-left";
+@import "panel-right";
+@import "percent";
+@import "lists";
+@import "tasks";
+@import "tooltip";

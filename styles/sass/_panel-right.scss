@@ -1,0 +1,262 @@
+@import "panel-right-menu";
+
+$h2-color: #5672ad;
+$h3-color: #c1c1c1;
+$text-color: #4b4b4b;
+$updated-color: #c1c1c1;
+$updated-author: #7bbae7;
+$button-background-color: #efefef;
+$button-border-color: #d5d5d5;
+$form-background-color: #eaeaea;
+$comment-color: #a7a7a7;
+$comment-strong-color: #4b4b4b;
+$comment-background-color: #efefef;
+$input-border-color: #d5d5d5;
+$files-border-color: #e6e6e6;
+$files-hover-color: #efefef;
+
+#right-panel {
+	overflow-y: scroll;
+	padding: 70px 28px 30px;
+	
+	h2 {
+		padding: 32px 0 20px 38px;
+		color: $h2-color;
+		font-size: 1.5em;
+		background-position: center left;
+		background-repeat: no-repeat;
+		
+	}
+	h3 {
+		color: $h3-color;
+		font-size: 1.1em;
+		font-style: italic;
+	}
+	h4 {
+		margin: 0 0 10px;
+	}
+	h5 {
+		margin-bottom: 10px;
+		font-size: 1.1em;
+		font-weight: bold;
+	}
+	fieldset {
+		padding: 10px 0 10px;
+	}
+	p {
+		margin-bottom: 10px;
+		color: $text-color;
+		font-size: 1.15em;
+		line-height: 1.15em;
+	}
+	a {
+		text-decoration: none;
+	}
+	
+	ul.files {
+	
+		li {
+			position: relative;
+			display: block;
+			border-top: 1px solid $files-border-color;
+			vertical-align: center;
+			button {
+				float: right;
+				display: none;
+			}
+			&:hover {
+				a {
+					background-color: $files-hover-color;
+				}
+				button {
+					display: inline-block;
+				}
+			}
+		}
+		a {
+			display: block;
+			padding: 5px 5px 5px 37px;
+			color: $text-color;
+			background-position: 3% 50%;
+			background-repeat: no-repeat;
+			line-height: 2em;
+		}
+		.filetype-pdf a { background-image: url('/img/filetypes/filetype-pdf.png'); }
+		.filetype-doc a { background-image: url('/img/filetypes/filetype-doc.png'); }
+	}
+
+	&.details {
+	
+		h2 {background-image: url('/img/background/sidebar-details.png') }
+		h4 {
+			font-size: 2em;
+			font-weight: normal;
+		}
+		.title h4, .title button {
+			display: inline-block;
+			vertical-align: top;
+		}
+		.title h4 {
+			max-width: 260px;
+			line-height: 1.2em;
+		}
+		form {
+			margin-top: 19px;
+		}
+		fieldset:first-child {
+			position: relative;
+			padding: 0 40px 0 0;
+			
+			button.edit {
+				display: none;
+				position: absolute;
+				top: 0;
+				right: 0;
+			}
+			
+			&:hover button.edit {
+				display: block;
+			}
+		}
+		p.updated {
+			color: $updated-color;
+			font-size: 1.05em;
+			font-style: italic;
+		
+			a {
+				color: $updated-author;
+			}
+		}
+		ul.members button {
+			width: 44px;
+			height: 44px;
+			padding: 6px;
+			background-color: $button-background-color;
+			border: 1px solid $button-border-color;
+			@include border-radius(3px)
+		}
+		ul.labels {
+			margin: 15px 0;
+		}
+		ul.labels a {
+			width: 220px;
+		}
+		ul.files li {
+			border: none;
+			a {
+				padding-right: 25px;
+				line-height: 1.5em;
+				background-position: 1% 50%;
+			}
+			&:hover a {
+				background-color: transparent;
+			}
+		}
+
+	}
+
+	&.subtasks {
+		h2 { background-image: url('/img/background/sidebar-subtasks.png') }
+		form {
+			position: relative;
+			margin-right: 40px;
+			padding-right: 70px;
+			padding: 5px 14px;
+			@include border-radius(3px);
+		}
+		form:nth-child(even) {
+			background-color: $form-background-color;
+		}
+		fieldset {
+			display: inline-block;
+			width: 70%;
+			vertical-align: top;
+
+			p {
+				font-style: italic;
+			}
+			p:first-child {
+				margin-bottom: 2px;
+				font-weight: bold;
+			}
+			p:first-child + p {
+				font-size: 0.85em;
+			}
+		}
+		fieldset + fieldset {
+			width: 25%;
+		}
+		select {
+			background-color: #fff;
+			border: none;
+			color: #444;
+			
+			option {
+				line-height: 2em;
+			}
+		}
+		button.edit {
+			display: none;
+			position: absolute;
+			top: 0;
+			right: -37px;
+		}
+		form:hover button.edit {
+			display: block;
+		}
+	}
+	
+	&.comments {
+	
+		ul.comments {
+	
+			li {
+				position: relative;
+				display: block;
+				min-height: 50px;
+				margin: 0 0 1px;
+				padding: 9px 9px 4px 59px;
+				color: $comment-color;
+				background-color: $comment-background-color;
+				line-height: 1.5em;
+			
+				img {
+					position: absolute;
+					top: 0;
+					left: 0;
+				}
+				strong {
+					color: $comment-strong-color;
+					font-weight: bold;
+				}
+				em {
+					display: block;
+					font-size: 0.9em;
+					font-style: italic;
+				}
+			}
+			
+		}
+		
+		input[type=text] {
+			border: 1px solid $input-border-color;
+			background-color: #fff;
+		}
+	
+	}
+	
+	&.attachments {
+	
+		form.upload {
+			padding: 10%;
+			text-align: center;
+			font-size: 0.95em;
+			line-height: 2em;
+		}
+		ul.photos li {
+			display: inline-block;
+		}
+	
+	}
+	
+}

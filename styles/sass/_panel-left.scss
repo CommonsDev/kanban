@@ -1,0 +1,233 @@
+$panel-color: #4b4b4b;
+$button-submit-color: #7bbae7;
+$button-submit-background-color: #eaeaea;
+$input-label-color: #4b4b4b;
+$search-input-border-color: #d5d5d5;
+$search-input-background-color: #f7f7f7;
+$boards-background-color: #efefef;
+$boards-active-color: #fff;
+$boards-active-background-color: #7bbae7;
+$boards-height: 40px;
+$boards-padding-left: 32px;
+$search-border-color: #e6e6e6;
+$scrollbar-color: #dbdbdb;
+
+/*
+	Left panel
+*/
+$fieldset-border-color: #e6e6e6;
+
+#left-panel {
+	overflow-y: auto;
+	color: $panel-color;
+	
+	a {
+		color: $panel-color;
+		text-decoration: none;
+	}
+	h2 {
+		margin: 35px 24px 0 23px;
+		font-size: 1.8em;
+		line-height: 25px;
+	}
+	h2 a {
+		float: right;
+	}
+	h3 {
+		padding: 0 24px;
+		font-size: 1.1em;
+		font-weight: bold;
+	}
+	&.boards h2 {
+		margin-bottom: 20px;
+	}
+	fieldset {
+		width: 100%;
+		padding: 16px 17px 15px 23px;
+		border-bottom: 1px solid $fieldset-border-color;
+	}
+	fieldset.naked {
+		border: none;
+	}
+	fieldset:last-child {
+		border: none;
+	}
+	legend {
+		padding-top: 18px;
+		font-weight: bold;
+	}
+	button.primary {
+		width: 100%;
+	}
+	button.submit {
+		padding: 8px 0 6px;
+		font-weight: bold;
+		color: $button-submit-color;
+		background-color: $button-submit-background-color;
+		@include border-radius(0);
+	}
+	button.submit, button.submit img  {
+		vertical-align: center;
+	}
+	input.search {
+		width: 100%;
+		padding: 9px 12px;
+		font-style: italic;
+		border: 1px solid $search-input-border-color;
+		background-color: $search-input-background-color;
+		@include border-radius(20px);
+	}
+	li {
+		line-height: 18px;
+	}
+	li.selected {
+		background: url('/img/selected-18x18.png') center right no-repeat;
+	}
+	li img {
+		margin: 0 10px 4px 0;
+		vertical-align: middle;
+	}
+
+	/* Filters */
+	ul.keywords {
+		margin: 13px 0 0;
+	}
+	ul.keywords li {
+		margin: 0 0 7px;
+		padding-left: 25px;
+		font-style: italic;
+		background: url('/img/close_18x18.png') center left no-repeat;
+	}
+	ul.keywords li:last-child {
+		margin-bottom: 0;
+	}
+	ul.date li {
+		margin-left: 20px;
+	}
+
+	/* Boards */
+	ul.boards {
+	
+		li {
+			position: relative;
+			height: $boards-height;
+			margin: 0 0 5px 20px;
+			padding-left: $boards-padding-left;
+			font-weight: bold;
+			background-color: $boards-background-color;
+			@include border-radius(5px);
+			
+			&.active {
+				background-color: $boards-active-background-color;
+				
+				a {
+					color: $boards-active-color;
+				}
+			}
+
+			a {
+				display: table-cell;
+				width: 100%;
+				height: $boards-height;
+				padding: 0 10px 0 0;
+				line-height: 1.25em;
+				vertical-align: middle;
+			}
+			img {
+				position: absolute;
+				top: 0;
+				left: -21px;
+			}
+		}
+	}
+
+	/* Search */
+	&.search h2 {
+		margin-bottom: 11px;
+	}
+	&.search h3 {
+		margin-top: 22px;
+	}
+	&.search input {
+		vertical-align: middle;
+	}
+	&.search input[type=text] {
+		width: 160px;
+		margin-left: 1px;
+		margin-right: 4px;
+	}
+	&.search ul {
+		margin-top: 10px;
+	}
+	&.search li {
+		border-top: 1px solid $search-border-color;
+		
+		a {
+			display: block;
+			padding: 5px 5px 6px 24px;
+			font-size: 1.025em;
+		}
+	}
+	&.search li:last-child {
+		border-bottom: 1px solid $search-border-color;
+	}
+	
+	/* Settings */
+	&.settings fieldset.labels {
+		
+		label {
+			float: left;
+			clear: left;
+			overflow: hidden;
+			display: inline-block;
+			width: 30px;
+			height: 30px;
+			@include border-radius(5px);
+		}
+
+		input {
+			float: left;
+			display: inline-block;
+			width: 160px;
+			height: 30px;
+			margin: 0 0 5px 5px;
+			padding: 0 12px;
+			color: $input-label-color;
+			font-size: 1.2em;
+			line-height: 30px;
+		}
+
+	}
+	&.settings ul {
+		overflow-x: hidden;
+		overflow-y: scroll;
+		height: 200px;
+		max-height: 200px;
+		margin: 0 -14px 20px 0;
+
+		li {
+			display: inline-block;
+
+			 a {
+				display: block;
+			}
+			img {
+				display: block;
+				margin: 0 4px 8px 5px;
+				@include border-radius(4px);
+			}
+		}
+	}
+	&.settings ul::-webkit-scrollbar {
+		width: 8px;
+	}
+	&.settings ul::-webkit-scrollbar-track {
+		background-color: #fff;
+		border: none;
+	}
+	&.settings ul::-webkit-scrollbar-thumb {
+		background-color: $scrollbar-color;
+		@include border-radius(4px);
+	}
+
+}

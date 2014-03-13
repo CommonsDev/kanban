@@ -1,0 +1,35 @@
+@mixin border-radius($radius) {
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	-ms-border-radius: $radius;
+	-o-border-radius: $radius;
+	border-radius: $radius;
+}
+
+@mixin border-bottom-radius($radius) {
+	-webkit-border-radius: 0 0 $radius $radius;
+	-moz-border-radius: 0 0 $radius $radius;
+	-ms-border-radius: 0 0 $radius $radius;
+	-o-border-radius: 0 0 $radius $radius;
+	border-radius: 0 0 $radius $radius;
+}
+
+@mixin shadow {
+	-webkit-box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.1);
+	-moz-box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.1);
+	box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.1);
+}
+
+/* Shadow at the top of the list */
+@mixin shadow-list-top {
+	-webkit-box-shadow: 0 -15px 25px -20px $list-shadow-color;
+	-moz-box-shadow: 0 -15px 25px -20px $list-shadow-color;
+	box-shadow: 0 -15px 25px -20px $list-shadow-color;
+}
+
+/* Shadow at the bottom of the list */
+@mixin shadow-list-bottom {
+	-webkit-box-shadow: 0 15px 25px -20px $task-shadow-color;
+	-moz-box-shadow: 0 15px 25px -20px $task-shadow-color;
+	box-shadow: 0 15px 25px -20px $task-shadow-color;
+}

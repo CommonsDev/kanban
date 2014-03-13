@@ -1,0 +1,44 @@
+$background-color: #f3f3f3;
+$close-border-color: #e6e6e6;
+$hover-color: #f9f9f9;
+$selected-border-color: #5672ad;
+
+#taskmenu {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background-color: $background-color;
+	
+	ul {
+		position: relative;
+		width: 100%;
+		text-align: center;
+	}
+	li {
+		display: inline-block;
+		
+		button {
+			padding: 17px 16px 10px;
+			background-color: transparent;
+			border: none;
+			border-bottom: 3px solid $background-color;
+		}
+		button:hover {
+			background-color: $hover-color;
+			border-color: $hover-color;
+		}
+		&.selected button {
+			border-color: $selected-border-color;
+			background: transparent url('/img/toolbar/taskmenu-selected.png') bottom center no-repeat;
+		}
+
+	}
+	li.close {
+		position: absolute;
+		top: 0;
+		right: 0;
+		border-left: 1px solid $close-border-color;
+	}
+
+}

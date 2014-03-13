@@ -1,0 +1,37 @@
+@import "forms-select";
+
+$input-color: #818181;
+$input-background-color: #e6e6e6;
+$button-color: #fff;
+$button-primary-background-color: #7bbae7;
+$button-secondary-background-color: #c5c5c5;
+$button-height: 35px;
+
+input[type=text] {
+	width: 100%;
+	padding: 11px 17px 10px;
+	font-style: italic;
+	color: $input-color;
+	background-color: $input-background-color;
+	border: none;
+	@include border-radius(5px);
+}
+button {
+	border: none;
+	background-color: transparent;
+}
+button.primary,
+button.secondary {
+	display: inline-block;
+	height: $button-height;
+	max-width: 100%;
+	padding: 0 35px;
+	text-align: center;
+	color: $button-color;
+	background-color: $button-primary-background-color;
+	line-height: $button-height;
+	@include border-radius(5px);
+}
+button.secondary {
+	background-color: $button-secondary-background-color;
+}
