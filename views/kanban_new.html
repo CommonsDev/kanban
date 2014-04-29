@@ -1,0 +1,30 @@
+<div id="create-topbar">
+	<div class="wrap">
+		<button ng-hide="isAuthenticated" ng-click="forceLogin()">Se connecter</button>
+		<button ng-show="isAuthenticated" ui-sref="index.my_maps">{{ username }}</button>
+	</div>
+</div>
+<section id="create">
+	<div class="intro">
+		<h1>Bienvenue dans l'application &laquo;&nbsp;Tableaux de suivi&nbsp;&raquo;</h1>
+		<p>
+		  Ce logiciel vous permettra de suivre et gérer l'avancée des projets et problématiques en équipe.
+		</p>
+	</div>
+	<h2>Entrez le nom de votre tableau</h2>
+	<form>
+		<p>
+		  <label for="url-field">{{ $location.absUrl() }}/</label>
+		  <input id="url-field" ng-model="form.name" type="text" />
+		</p>
+	  	<button ng-click="create()">Créez votre tableau</button>
+	</form>
+
+
+	<!-- overlay panel app -->
+	<div id="overlay-panel" ui-view>
+	</div>
+
+	Photo par <a href="https://www.flickr.com/photos/tranbc/7173277132/in/photolist-bVSVnW-6wavpC-4JJt7e-9ot5n-eDLHjJ-aKyMde-6wnNPq-5VLgEC-bmZaeU-e3gpPU-2eFmT-4D9bVF-6tVut5-a55vgD-nmEap-5VRKMj-qxr5p-qxr4N-qxr2n-qxr3m-qxr6J-qxr85-qxr6V-qxr66-qxr7Q-qxr2M-qxr2B-qxr47-rf9X7-jyn1e2-63uru2-5wmuF-K8xV-eWks27-4PChCQ-mJAfmF-6ruzW-8vjXFN-fmRTKE-9RQq6x-Pt1AJ-4qokxp-fiB6Xg-4dxmGd-9Hnpq1-bpNpmb-8nvu4h-5seKLn-e6FC9D-4qokiM">TranBC</a>
+
+</section>
