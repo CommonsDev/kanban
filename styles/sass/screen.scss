@@ -36,6 +36,12 @@ hr {
 	background: transparent url('/img/border.png') top left repeat-x;
 }
 
+/* ============= MAIN CONTENT ====== */
+#content {
+    height: 100%;
+    min-height: 100%;
+}
+
 /* ============= TOOLBAR ============= */
 
 #toolbar {
@@ -303,3 +309,4 @@ hr {
 @import "lists";
 @import "tasks";
 @import "tooltip";
+@import "create";

@@ -35,7 +35,7 @@ angular.element(document).on('ready page:load', ->
 
                 $stateProvider.state('home',
                         url: '/',
-                        template: 'fixme'
+                        templateUrl: 'views/kanban_new.html'
                 )
 
                 $stateProvider.state('kanban',

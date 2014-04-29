@@ -1,0 +1,118 @@
+/* ============= CREATE KANBAN ============= */
+
+#create-topbar {
+    height:55px;
+    background:rgba(24,24,26,0.8);
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:15;
+
+    .wrap {
+	width:100%;
+	margin:0 auto;
+
+	button {
+	    float:right;
+	    margin:13px 20px 0 0;
+	    height:30px;
+	    line-height:30px;
+	    padding:0 10px 0 37px;
+	    background:#6b808f image-url('ico_user.png') no-repeat 10px center;
+	    border:0;
+	    color:#1f2f3a;
+	    font-size:0.8rem;
+	    @include transition(all 0.5s ease);
+	    @include border-radius(4px);
+	}
+    }
+}
+
+#create {
+    position:relative;
+    height:100%;
+    min-height:100%;
+    width:100%;
+    background:image-url('background/create_bg.jpg');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding:10px 0 0 0;
+
+    .intro {
+	margin:40px auto 20px;
+	width:870px;
+	height:225px;
+	padding-left:300px;
+	background:image-url('logo.png') no-repeat;
+	background-position: 130px 100px;
+
+	h1 {
+	    color: white;
+	    font-size: 2.2rem;
+	    line-height: 2.5rem;
+	    padding: 75px 20px 10px 0;
+	}
+
+	p {
+	    color: white;
+	    font-size: 1.1rem;
+	    line-height: 1.3rem;
+	    padding: 0 125px 0 5px;
+	}
+    }
+
+    h2 {
+	color: white;
+	font-size: 2rem;
+	margin: 0 auto;
+	text-align: center;
+	width: 100%;
+    }
+
+    form {
+	width:100%;
+	margin:0 auto;
+	padding:30px 0 0 0;
+
+	p {
+	    width:100%;
+	    text-align:center;
+	}
+
+	label {
+	    color: white;
+	    font-size: 1.5rem;
+	    height: 36px;
+	    line-height: 36px;
+	    padding: 0 5px 0 0;
+	    text-align: right;
+	}
+
+	input[type="text"] {
+	    width:300px;
+	    border:0;
+	    background:white;
+	    height:36px;
+	    padding:0 5px;
+	    line-height:36px;
+	    color:#8bc2ea;
+	    font-style:italic;
+	    font-size:1.4rem;
+	}
+
+	button {
+	    width:225px;
+	    height:52px;
+	    background:#f36b56;
+	    color:white;
+	    font-size:1.1rem;
+	    text-align:center;
+	    border:0;
+	    margin:35px auto 0;
+	    display:block;
+	    @include border-radius(5px);
+	}
+    }
+}
