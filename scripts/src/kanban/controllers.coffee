@@ -1,7 +1,8 @@
-module = angular.module('kanban.controllers', ['restangular'])
+module = angular.module('kanban.controllers', ['restangular', 'ui.router', 'kanban.services'])
 
-class BoardCtrl
-        constructor: (@$scope, @Restangular) ->
-                null
+class KanbanBoardCtrl
+        constructor: (@$scope, @$stateParams, @kanbanService) ->
+                @$scope.board = @kanbanService.load(@$stateParams.kanbanId)
 
-module.controller("BoardCtrl", ['$scope', 'Restangular', BoardCtrl])
+
+module.controller("KanbanBoardCtrl", ['$scope', '$stateParams', 'kanbanService', KanbanBoardCtrl])
