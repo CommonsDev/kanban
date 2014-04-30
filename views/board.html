@@ -1,79 +1,65 @@
 <div id="lists">
 
-	<div class="list" ng-repeat="list in board.lists">
+  <div class="list" ng-repeat="list in board.lists">
 
-		<h3>{{ list.title }}</h3>
-		
-		<div class="task" ng-repeat="card in list.cards">
-			<ul class="labels"> <!-- FIXME -->
-				<li ng-repeat="tag in card.tags" class="label-1"></li>
-			</ul><!-- .labels -->
+    <h3>{{ list.title }}</h3>
+    
+    <div class="task" ng-repeat="card in list.cards">
+      <ul class="labels"> <!-- FIXME -->
+	<li ng-repeat="tag in card.tags" class="label-1"></li>
+      </ul><!-- .labels -->
 
-			<p class="photos">
-				<img src="/img/uploads/photos/xantia_01.jpg" alt="Photo of my Xantia" />
-				<img src="/img/uploads/photos/xantia_02.jpg" alt="Photo of my Xantia" />
-				<img src="/img/uploads/photos/xantia_03.jpg" alt="Photo of my Xantia" />
-			</p> <!-- .photos -->
+      <p class="photos">
+	<img src="/img/uploads/photos/xantia_01.jpg" alt="Photo of my Xantia" />
+	<img src="/img/uploads/photos/xantia_02.jpg" alt="Photo of my Xantia" />
+	<img src="/img/uploads/photos/xantia_03.jpg" alt="Photo of my Xantia" />
+      </p> <!-- .photos -->
 
 
-			<p><a ui-sref="kanban.card(card.id)">{{ card.title }}<em>Modifiée le {{ card.modified_date }}</em></a></p>
+      <p><a ui-sref="kanban.card_detail({cardId: card.id})">{{ card.title }}<em>Modifiée le {{ card.modified_date }}</em></a></p>
 
-			<p class="percent">{{ card.tasks.length }}%<span><span class="p-30"></span></span></p> <!-- FIXME -->
+      <p class="percent">{{ card.tasks.length }}%<span><span class="p-30"></span></span></p> <!-- FIXME -->
 
-			<p class="done">Terminé</p>
+      <p class="done">Terminé</p>
 
-			<ul class="members">
-				<li ng-repeat="member in card.assigned_to">
-				  <img src="/img/uploads/members/member-1-s.jpg" alt="Guillaume" /> <!-- FIXME -->
-				</li>
-			</ul><!-- .members -->
-			<ul class="meta">
-				<li class="attachments">2</li>
-				<li class="comments">5</li>
-			</ul><!-- .meta -->
-		</div><!-- .task -->
+      <ul class="members">
+	<li ng-repeat="member in card.assigned_to">
+	  <img src="/img/uploads/members/member-1-s.jpg" alt="Guillaume" /> <!-- FIXME -->
+	</li>
+      </ul><!-- .members -->
+      <ul class="meta">
+	<li class="attachments">2</li>
+	<li class="comments">5</li>
+      </ul><!-- .meta -->
+    </div><!-- .task -->
 
-		<form class="add_task">
-			<fieldset>
-				<input type="text" name="task_name" id="task_name" placeholder="Nom de votre tâche..." />
-				<ul class="members">
-					<li><img src="/img/uploads/members/member-1-s.jpg" alt="Guillaume" /></li>
-				</ul><!-- .members -->
-			</fieldset>
-			<fieldset class="buttons">
-				<button type="submit" name="new_task"><img src="/img/buttons/task_new.png" alt="New task" /></button>
-			</fieldset>
+    <form class="add_task">
+      <fieldset>
+	<input type="text" name="task_name" id="task_name" placeholder="Nom de votre tâche..." />
+	<ul class="members">
+	  <li><img src="/img/uploads/members/member-1-s.jpg" alt="Guillaume" /></li>
+	</ul><!-- .members -->
+      </fieldset>
+      <fieldset class="buttons">
+	<button type="submit" name="new_task"><img src="/img/buttons/task_new.png" alt="New task" /></button>
+      </fieldset>
 
-			<fieldset class="buttons">
-				<button type="reset" name="cancel"><img src="/img/buttons/task_cancel.png" alt="Cancel" /></button>
-				<button type="submit" name="add_task"><img src="/img/buttons/task_add.png" alt="Add task" /></button>
-			</fieldset>
-		</form>
-		
-	</div><!-- .list -->
+      <fieldset class="buttons">
+	<button type="reset" name="cancel"><img src="/img/buttons/task_cancel.png" alt="Cancel" /></button>
+	<button type="submit" name="add_task"><img src="/img/buttons/task_add.png" alt="Add task" /></button>
+      </fieldset>
+    </form>
+    
+  </div><!-- .list -->
 
-	<!-- new list --->
-	<form class="add_list">
-		<fieldset class="buttons">
-			<button type="submit" name="new_list"><img src="/img/buttons/list_new.png" alt="New list" /></button>
-		</fieldset>
-	</form>
+  <!-- new list --->
+  <form class="add_list">
+    <fieldset class="buttons">
+      <button type="submit" name="new_list"><img src="/img/buttons/list_new.png" alt="New list" /></button>
+    </fieldset>
+  </form>
 
 </div><!-- #lists -->
 
-<!-- right sidebar -->
-<ng-switch on="sidebar">
-	<div ng-switch-when="details">
-		<ng-include src="'views/right-panel-details.html'"/></ng-include>
-	</div>
-	<div ng-switch-when="subtasks">
-		<ng-include src="'views/right-panel-subtasks.html'"/></ng-include>
-	</div>
-	<div ng-switch-when="attachments">
-		<ng-include src="'views/right-panel-attachments.html'"/></ng-include>
-	</div>
-	<div ng-switch-when="comments">
-		<ng-include src="'views/right-panel-comments.html'"/></ng-include>
-	</div>
-</ng-switch>
+<div ui-view></div>
 

@@ -16,3 +16,7 @@ services.factory('kanbanService', ($rootScope, KanbanBoards) ->
 services.factory('KanbanBoards', (Restangular) ->
         return Restangular.service('flipflop/board')
 )
+
+services.factory('KanbanCards', (Restangular) ->
+        return Restangular.service('flipflop/card')
+)

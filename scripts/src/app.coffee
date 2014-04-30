@@ -44,6 +44,11 @@ angular.element(document).on('ready page:load', ->
                         controller: 'KanbanBoardCtrl'
                 )
 
+                $stateProvider.state('kanban.card_detail',
+                        url: '/:cardId',
+                        templateUrl: "views/card_detail.html",
+                        controller: 'KanbanCardCtrl'
+                )
         ])
 
         # Google auth config

@@ -85,7 +85,7 @@ $files-hover-color: #efefef;
 		.filetype-doc a { background-image: url('/img/filetypes/filetype-doc.png'); }
 	}
 
-	&.details {
+	div.details {
 	
 		h2 {background-image: url('/img/background/sidebar-details.png') }
 		h4 {
@@ -155,7 +155,7 @@ $files-hover-color: #efefef;
 
 	}
 
-	&.subtasks {
+	div.subtasks {
 		h2 { background-image: url('/img/background/sidebar-subtasks.png') }
 		form {
 			position: relative;
@@ -206,7 +206,7 @@ $files-hover-color: #efefef;
 		}
 	}
 	
-	&.comments {
+	div.comments {
 	
 		ul.comments {
 	
@@ -245,7 +245,7 @@ $files-hover-color: #efefef;
 	
 	}
 	
-	&.attachments {
+	div.attachments {
 	
 		form.upload {
 			padding: 10%;

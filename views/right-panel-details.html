@@ -1,54 +1,49 @@
-<div id="right-panel" class="details">
-	<ng-include src="'views/right-panel-menu.html'"></ng-include>
-	
-	<h2>Détails de la tâche</h2>
-	<h3>Liste "En cours"</h3>
-	
-	<form method="post" action="">
-	
-		<fieldset>
-			<button class="edit"><img src="/img/buttons/edit.png" alt="Edit" /></button>
-			<div class="title">
-				<button><img src="/img/fav_ico_black.png" alt="Favorite" /></button>
-				<h4>Réparer la portière de la Xantia</h4>
-			</div>
-		
-			<p class="percent">70%<span><span class="p-70"></span></span></p>
-			<p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat.</p>
-			<p class="updated">Mise à jour le 22 nov par <a href="">Dave Grohl</a></p>
-		</fieldset>
-	
-		<hr />
-		
-		<h5>Membres assignés</h5>
-		<ul class="members">
-			<li><img src="/img/uploads/members/member-1-m.jpg" alt="Guillaume" /></li>
-			<li><img src="/img/uploads/members/member-2-m.jpg" alt="Hervé" /></li>
-			<li><img src="/img/uploads/members/member-3-m.jpg" alt="Freddy" /></li>
-			<li><button><img src="/img/buttons/member_add.png" alt="Add member" /></button></li>
-		</ul>
+<div class="details">
+  <h2>Détails de la tâche</h2>
+  <h3>Liste "FIXME"</h3>
+  
+  <form method="post" action="">
+    <fieldset>
+      <button class="edit"><img src="/img/buttons/edit.png" alt="Edit" /></button>
+      <div class="title">
+	<button><img src="/img/fav_ico_black.png" alt="Favorite" /></button>
+	<h4>{{ card.title }}</h4>
+      </div>
+      
+      <p class="percent">FIXME%<span><span class="p-70"></span></span></p> <!-- FIXME -->
+      <p>{{ card.description }}</p>
+      <p class="updated">Mise à jour le {{ card.modified_date }} par <a href="">FIXME</a></p>
+    </fieldset>
+    
+    <hr />
+    
+    <h5>Membres assignés</h5>
+    <ul class="members"> <!-- FIXME -->
+      <li ng-repeat="user in card.assigned_to"><img src="/img/uploads/members/member-1-m.jpg" alt="FIXME" /></li>
+      <li><button><img src="/img/buttons/member_add.png" alt="Add member" /></button></li>
+    </ul>
 
-		<hr />
+    <hr />
 
-		<h5>Labels associés</h5>
-		<ul class="labels">
-			<li><a href="" class="label label-4">Label 4</a></li>
-		</ul>
-		<a href="">Ajouter un label</a>
+    <h5>Labels associés</h5>
+    <ul class="labels">
+      <li ng-repeat="label in card.tags"><a href="" class="label label-4">{{ label.name }}</a></li> <!-- FIXME -->
+    </ul>
+    <a href="">Ajouter un label</a>
 
-		<hr />
+    <hr />
 
-		<h5>Derniers fichiers</h5>
-		<ul class="files">
-			<li class="filetype-pdf"><a href="">Fichier1.pdf</a></li>
-			<li class="filetype-doc"><a href="">Document2.doc</a></li>
-		</ul>
+    <h5>Derniers fichiers</h5>
+    <ul class="files">
+      <li class="filetype-pdf"><a href="">Fichier1.pdf</a></li>
+      <li class="filetype-doc"><a href="">Document2.doc</a></li>
+    </ul>
 
-		<hr />
+    <hr />
 
-		<button class="secondary">Autres options</button>
-		<button class="secondary">Supprimer la tâche</button>
-	
-	</form>	
-	
-</div><!-- #right-panel -->
+    <button class="secondary">Autres options</button>
+    <button class="secondary">Supprimer la tâche</button>
+    
+  </form>	
+  
+</div><!-- #.details -->
