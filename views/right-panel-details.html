@@ -10,9 +10,9 @@
 	<h4>{{ card.title }}</h4>
       </div>
       
-      <p class="percent">FIXME%<span><span class="p-70"></span></span></p> <!-- FIXME -->
+      <p class="percent">{{ card.completion }}%<progress value="{{ card.completion }}" max="100"></progress></p>
       <p>{{ card.description }}</p>
-      <p class="updated">Mise à jour le {{ card.modified_date }} par <a href="">FIXME</a></p>
+      <p class="updated">Mise à jour le {{ card.modified_date|date:medium }} par <a href="">FIXME</a></p>
     </fieldset>
     
     <hr />

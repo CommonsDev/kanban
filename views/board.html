@@ -16,9 +16,9 @@
       </p> <!-- .photos -->
 
 
-      <p><a ui-sref="kanban.card_detail({cardId: card.id})">{{ card.title }}<em>Modifiée le {{ card.modified_date }}</em></a></p>
+      <p><a ui-sref="kanban.card_detail({cardId: card.id})">{{ card.title }}<em>Modifiée le {{ card.modified_date|date:medium }}</em></a></p>
 
-      <p class="percent">{{ card.tasks.length }}%<span><span class="p-30"></span></span></p> <!-- FIXME -->
+      <p class="percent">{{ card.completion }}%<progress value="{{ card.completion }}" max="100"></progress></p>
 
       <p class="done">Terminé</p>
 
