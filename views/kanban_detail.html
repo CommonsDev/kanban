@@ -1,26 +1,26 @@
 <!-- left toolbar -->
 <div id="toolbar">
   <ul>
-    <li class="open"><button>Déplier</button></li>
-    <li class="filters"><button ng-click="panel = 'filters'">Filtres</button></li>
-    <li class="boards"><button ng-click="panel = 'boards'">Tableaux</button></li>
-    <li class="search"><button ng-click="panel = 'search'">Rechercher</button></li>
-    <li class="settings"><button ng-click="panel = 'settings'">Settings</button></li>
+    <!-- <li class="open"><button>Déplier</button></li> -->
+    <li class="boards"><button ng-click="leftPanel.tab = 'boards'">Tableaux</button></li>
+    <li class="filters"><button ng-click="leftPanel.tab = 'filters'">Filtres</button></li>
+    <!-- <li class="search"><button ng-click="leftPanel.tab = 'search'">Rechercher</button></li>-->
+    <li class="settings"><button ng-click="leftPanel.tab = 'settings'">Settings</button></li>
   </ul>
-  <ng-switch on="panel">
+  <ng-switch on="leftPanel.tab">
+    <div ng-switch-when="boards">
+      <ng-include src="'views/left-panel-boards.html'"></ng-include>
+    </div>
     <div ng-switch-when="filters">
-      <ng-include src="'views/left-panel-filters.html'"/></ng-inlcude>
-</div>
-<div ng-switch-when="boards">
-  <ng-include src="'views/left-panel-boards.html'"/></ng-inlcude>
-</div>
-<div ng-switch-when="search">
-  <ng-include src="'views/left-panel-search.html'"/></ng-inlcude>
-</div>
-<div ng-switch-when="settings">
-  <ng-include src="'views/left-panel-settings.html'"/></ng-inlcude>
-</div>
-</ng-switch>
+      <ng-include src="'views/left-panel-filters.html'"></ng-include>
+    </div>
+    <div ng-switch-when="search">
+      <ng-include src="'views/left-panel-search.html'"></ng-include>
+    </div>
+    <div ng-switch-when="settings">
+      <ng-include src="'views/left-panel-settings.html'"></ng-include>
+    </div>
+  </ng-switch>
 </div><!-- #toolbar -->
 
 <!-- topbar -->

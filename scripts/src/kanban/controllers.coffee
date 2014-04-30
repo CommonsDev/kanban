@@ -1,7 +1,14 @@
 module = angular.module('kanban.controllers', ['restangular', 'ui.router', 'kanban.services'])
 
 class KanbanBoardCtrl
-        constructor: (@$scope, @$stateParams, @kanbanService) ->
+        constructor: (@$scope, @$stateParams, @KanbanBoards, @kanbanService) ->
+                @$scope.leftPanel =
+                        tab: ""
+
+                @$scope.searchForm =
+                        term: ""
+
+                @$scope.boards = @KanbanBoards.getList().$object
                 @$scope.board = @kanbanService.load(@$stateParams.kanbanId)
 
 class KanbanCardCtrl
@@ -11,5 +18,5 @@ class KanbanCardCtrl
                         tab: 'details'
 
 
-module.controller("KanbanBoardCtrl", ['$scope', '$stateParams', 'kanbanService', KanbanBoardCtrl])
+module.controller("KanbanBoardCtrl", ['$scope', '$stateParams', 'KanbanBoards', 'kanbanService', KanbanBoardCtrl])
 module.controller("KanbanCardCtrl", ['$scope', '$stateParams', 'KanbanCards', KanbanCardCtrl])

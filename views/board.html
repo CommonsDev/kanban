@@ -4,7 +4,7 @@
 
     <h3>{{ list.title }}</h3>
     
-    <div class="task" ng-repeat="card in list.cards">
+    <div class="task" ng-repeat="card in list.cards | filter:searchForm.term">
       <ul class="labels"> <!-- FIXME -->
 	<li ng-repeat="tag in card.tags" class="label-1"></li>
       </ul><!-- .labels -->
