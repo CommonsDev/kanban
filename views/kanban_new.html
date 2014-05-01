@@ -1,7 +1,7 @@
 <div id="create-topbar">
 	<div class="wrap">
-		<button ng-hide="isAuthenticated" ng-click="forceLogin()">Se connecter</button>
-		<button ng-show="isAuthenticated" ui-sref="index.my_maps">{{ username }}</button>
+		<button ng-hide="authVars.isAuthenticated" ng-click="forceLogin()">Se connecter</button>
+		<button ng-show="authVars.isAuthenticated" ui-sref="kanban.my_boards">{{ authVars.username }}</button>
 	</div>
 </div>
 <section id="create">

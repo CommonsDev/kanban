@@ -3,8 +3,9 @@
   <form method="post" action="">
     <fieldset>
       <legend>Renommer le tableau</legend>
-      <input type="text" name="board-name" value="Travaux Citroën" />
+      <input type="text" ng-model="board.title" name="board-name" />
     </fieldset>
+    <!--
     <fieldset>
       <legend>Changer le fond d'écran</legend>
       <ul>
@@ -19,6 +20,7 @@
       </ul>
       <button name="upload-background">Charger votre fond</button>
     </fieldset>
+    -->
     <fieldset class="labels">
       <legend>Renommer vos labels</legend>
       <label for="label-1" class="label-1">Label 1</label>

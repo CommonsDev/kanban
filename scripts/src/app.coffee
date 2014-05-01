@@ -1,7 +1,7 @@
 angular.element(document).on('ready page:load', ->
         angular.module('kanban', ['kanban.controllers', 'kanban.services'])
 
-        angular.module('unisson_kanban', ['kanban', 'ui.router', 'ngAnimate', 'restangular', 'angular-unisson-auth'])
+        angular.module('unisson_kanban', ['kanban', 'ui.router', 'ngAnimate', 'restangular', 'angular-unisson-auth', 'xeditable', 'ui.sortable'])
 
         # CORS
         .config(['$httpProvider', ($httpProvider) ->
@@ -39,7 +39,7 @@ angular.element(document).on('ready page:load', ->
                 )
 
                 $stateProvider.state('kanban',
-                        url: '/kanban/:kanbanId',
+                        url: '/:kanbanId',
                         templateUrl: "views/kanban_detail.html",
                         controller: 'KanbanBoardCtrl'
                 )
@@ -66,7 +66,7 @@ angular.element(document).on('ready page:load', ->
                 loginServiceProvider.setBaseUrl(config.loginBaseUrl)
         )
 
-        .run(['$rootScope', '$state', '$stateParams', 'kanbanService', 'loginService', ($rootScope, $state, $stateParams, kanbanService, loginService) ->
+        .run(['$rootScope', '$state', '$stateParams', 'kanbanService', 'loginService', 'editableOptions', ($rootScope, $state, $stateParams, kanbanService, loginService, editableOptions) ->
                 $rootScope.homeStateName = 'apps' # Should be moved to loginServiceProvider
 
                 $rootScope.config = config
@@ -74,6 +74,9 @@ angular.element(document).on('ready page:load', ->
                 $rootScope.$stateParams = $stateParams
                 $rootScope.loginService = loginService
                 $rootScope.kanbanService = kanbanService
+
+                editableOptions.theme = 'default' # bootstrap3 theme. Can be also 'bs2', 'default'
+
         ])
 
         # Ugly Fix for autofill on forms

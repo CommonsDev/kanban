@@ -17,6 +17,14 @@ services.factory('KanbanBoards', (Restangular) ->
         return Restangular.service('flipflop/board')
 )
 
+services.factory('KanbanLists', (Restangular) ->
+        return Restangular.service('flipflop/list')
+)
+
+services.factory('KanbanTasks', (Restangular) ->
+        return Restangular.service('flipflop/task')
+)
+
 services.factory('KanbanCards', (Restangular) ->
         return Restangular.service('flipflop/card')
 )

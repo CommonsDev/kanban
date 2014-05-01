@@ -30,6 +30,8 @@
     "angular-file-upload": "~0.3.1",
     "angular-ui-router": "0.2.8-bowratic-tedium",
     "restangular": "~1.4.0",
-    "angular-unisson-auth": "~0.1.1"
+    "angular-unisson-auth": "~0.1.4",
+    "angular-xeditable": "~0.1.8",
+    "angular-ui-sortable": "~0.12.5"
   }
 }

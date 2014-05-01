@@ -9,8 +9,12 @@
 	<button><img src="/img/fav_ico_black.png" alt="Favorite" /></button>
 	<h4>{{ card.title }}</h4>
       </div>
+
+      <div ng-show="card.completion >= 0" ng-switch="card.completion">
+	<p ng-switch-when="100" class="done">Terminé</p>
+	<p ng-switch-default class="percent">{{ card.completion }}%<progress value="{{ card.completion }}" max="100"></progress></p>
+      </div>
       
-      <p class="percent">{{ card.completion }}%<progress value="{{ card.completion }}" max="100"></progress></p>
       <p>{{ card.description }}</p>
       <p class="updated">Mise à jour le {{ card.modified_date|date:medium }} par <a href="">FIXME</a></p>
     </fieldset>
@@ -18,8 +22,11 @@
     <hr />
     
     <h5>Membres assignés</h5>
-    <ul class="members"> <!-- FIXME -->
-      <li ng-repeat="user in card.assigned_to"><img src="/img/uploads/members/member-1-m.jpg" alt="FIXME" /></li>
+    <ul class="members">
+      <li ng-repeat="user in card.assigned_to">
+	<img ng-show="!user.mugshot" ng-src="http://sigil.cupcake.io/{{ user.username }}.png" alt="{{ user.username }}" />
+	<img ng-show="user.mugshot" ng-src="{{ user.mugshot }}" alt="{{ user.username }}" />
+      </li>
       <li><button><img src="/img/buttons/member_add.png" alt="Add member" /></button></li>
     </ul>
 
@@ -27,7 +34,7 @@
 
     <h5>Labels associés</h5>
     <ul class="labels">
-      <li ng-repeat="label in card.tags"><a href="" class="label label-4">{{ label.name }}</a></li> <!-- FIXME -->
+      <li ng-repeat="label in card.tags"><a href="#" class="label label-4">{{ label.name }}</a></li> <!-- FIXME -->
     </ul>
     <a href="">Ajouter un label</a>
 

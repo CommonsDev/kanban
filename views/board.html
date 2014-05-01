@@ -1,56 +1,59 @@
-<div id="lists">
+<div id="lists" >
 
-  <div class="list" ng-repeat="list in board.lists">
-
-    <h3>{{ list.title }}</h3>
+  <ul class="list" ng-repeat="list in board.lists" ng-controller="KanbanListCtrl" ui-sortable="columnSortableOptions" ng-model="list.cards">
+    <h3 editable-text="list.title">{{ list.title || "Sans nom" }}</h3>
     
-    <div class="task" ng-repeat="card in list.cards | filter:searchForm.term">
+    <li class="task" ng-repeat="card in list.cards | filter:searchForm.term">
       <ul class="labels"> <!-- FIXME -->
 	<li ng-repeat="tag in card.tags" class="label-1"></li>
       </ul><!-- .labels -->
 
       <p class="photos">
-	<img src="/img/uploads/photos/xantia_01.jpg" alt="Photo of my Xantia" />
-	<img src="/img/uploads/photos/xantia_02.jpg" alt="Photo of my Xantia" />
-	<img src="/img/uploads/photos/xantia_03.jpg" alt="Photo of my Xantia" />
+	<img ng-repeat="photo in card.photos" src="/img/uploads/photos/xantia_01.jpg" alt="Photo of my Xantia" /> <!-- FIXME -->
       </p> <!-- .photos -->
-
 
       <p><a ui-sref="kanban.card_detail({cardId: card.id})">{{ card.title }}<em>Modifiée le {{ card.modified_date|date:medium }}</em></a></p>
 
-      <p class="percent">{{ card.completion }}%<progress value="{{ card.completion }}" max="100"></progress></p>
-
-      <p class="done">Terminé</p>
+      <div ng-show="card.completion >= 0" ng-switch="card.completion">
+	<p ng-switch-when="100" class="done">Terminé</p>
+	<p ng-switch-default class="percent">{{ card.completion }}%<progress value="{{ card.completion }}" max="100"></progress></p>
+      </div>
 
       <ul class="members">
-	<li ng-repeat="member in card.assigned_to">
-	  <img src="/img/uploads/members/member-1-s.jpg" alt="Guillaume" /> <!-- FIXME -->
+	<li ng-repeat="user in card.assigned_to">
+	  <img ng-show="!user.mugshot" ng-src="http://sigil.cupcake.io/{{ user.username }}.png" alt="{{ user.username }}" />
+	  <img ng-show="user.mugshot" ng-src="{{ user.mugshot }}" alt="{{ user.username }}" />
 	</li>
       </ul><!-- .members -->
+
       <ul class="meta">
-	<li class="attachments">2</li>
-	<li class="comments">5</li>
+	<li ng-show="card.attachment_count" class="attachments">{{ card.attachment_count }}</li>
+	<li ng-show="card.comment_count" class="comments">{{ card.comment_count }}</li>
       </ul><!-- .meta -->
-    </div><!-- .task -->
+    </li><!-- .task -->
 
     <form class="add_task">
-      <fieldset>
-	<input type="text" name="task_name" id="task_name" placeholder="Nom de votre tâche..." />
+      <fieldset ng-show="showAddTask">
+	<input type="text" ng-model="newCardForm.title" id="task_name" placeholder="Nom de votre tâche..." required/>
 	<ul class="members">
-	  <li><img src="/img/uploads/members/member-1-s.jpg" alt="Guillaume" /></li>
+	  <li>
+	    <img ng-show="!user.mugshot" ng-src="http://sigil.cupcake.io/{{ authVars.user.username }}.png" alt="{{ user.username }}" />
+	    <img ng-show="user.mugshot" ng-src="{{ user.mugshot }}" alt="{{ authVars.user.username }}" />
+	  </li>
 	</ul><!-- .members -->
       </fieldset>
-      <fieldset class="buttons">
-	<button type="submit" name="new_task"><img src="/img/buttons/task_new.png" alt="New task" /></button>
+
+      <fieldset ng-show="showAddTask" class="buttons">
+	<button type="button" ng-click="showAddTask = false" name="cancel"><img src="/img/buttons/task_cancel.png" alt="Cancel" /></button>
+	<button ng-click="newCardSubmit()" type="submit" name="add_task"><img src="/img/buttons/task_add.png" alt="Add task" /></button>
+      </fieldset> 
+
+      <fieldset ng-show="!showAddTask" class="buttons">
+	<button ng-click="showAddTask = true" type="button" name="new_task"><img src="/img/buttons/task_new.png" alt="New task" /></button>
       </fieldset>
 
-      <fieldset class="buttons">
-	<button type="reset" name="cancel"><img src="/img/buttons/task_cancel.png" alt="Cancel" /></button>
-	<button type="submit" name="add_task"><img src="/img/buttons/task_add.png" alt="Add task" /></button>
-      </fieldset>
-    </form>
-    
-  </div><!-- .list -->
+    </form> <!-- .add_task -->
+  </ul><!-- .list -->
 
   <!-- new list --->
   <form class="add_list">
@@ -58,7 +61,6 @@
       <button type="submit" name="new_list"><img src="/img/buttons/list_new.png" alt="New list" /></button>
     </fieldset>
   </form>
-
 </div><!-- #lists -->
 
 <div ui-view></div>
