@@ -1,7 +1,7 @@
 <div id="lists" >
 
   <ul class="list" ng-repeat="list in board.lists" ng-controller="KanbanListCtrl" ui-sortable="columnSortableOptions" ng-model="list.cards">
-    <h3 editable-text="list.title">{{ list.title || "Sans nom" }}</h3>
+    <h3 editable-text="list.title" onaftersave="updateList()">{{ list.title || "Sans nom" }}</h3>
     
     <li class="task" ng-repeat="card in list.cards | filter:searchForm.term">
       <ul class="labels"> <!-- FIXME -->
@@ -58,7 +58,7 @@
   <!-- new list --->
   <form class="add_list">
     <fieldset class="buttons">
-      <button type="submit" name="new_list"><img src="/img/buttons/list_new.png" alt="New list" /></button>
+      <button ng-click="createList()" name="new_list"><img src="/img/buttons/list_new.png" alt="New list" /></button>
     </fieldset>
   </form>
 </div><!-- #lists -->

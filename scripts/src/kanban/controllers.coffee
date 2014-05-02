@@ -2,6 +2,8 @@ module = angular.module('kanban.controllers', ['restangular', 'ui.router', 'kanb
 
 class KanbanCardCommentCtrl
         constructor: (@$scope, @KanbanCardComments) ->
+                @$scope.comments = @$scope.card.comments
+
                 @$scope.newcommentForm =
                         text: ""
                         card: @$scope.card.resource_uri
@@ -10,12 +12,12 @@ class KanbanCardCommentCtrl
 
         submitNewComment: () =>
                 @KanbanCardComments.post(@$scope.newcommentForm).then((comment) =>
-                        console.debug("posted comment")
+                        @$scope.comments.push(comment)
                 )
 
 
 class KanbanBoardCtrl
-        constructor: (@$scope, @$stateParams, @KanbanBoards, @KanbanLists, @KanbanTasks, @kanbanService) ->
+        constructor: (@$scope, @$state, @$stateParams, @KanbanBoards, @KanbanLists, @KanbanTasks, @kanbanService) ->
                 @$scope.leftPanel =
                         tab: ""
 
@@ -33,13 +35,31 @@ class KanbanBoardCtrl
                 if @$stateParams.kanbanId > 0
                         @$scope.board = @kanbanService.load(@$stateParams.kanbanId)
 
+                @$scope.createBoard = this.createBoard
+                @$scope.createList = this.createList
+                @$scope.updateBoard = this.updateBoard
+
+        createBoard: =>
+                @KanbanBoards.post({}).then((board) =>
+                        @$state.go('kanban', {kanbanId: board.id})
+                )
+
+        createList: =>
+                @KanbanLists.post({board: @$scope.board.resource_uri}).then((list) =>
+                        @$scope.board.lists.push(list)
+                )
+
+        updateBoard: =>
+                @$scope.board.patch({title: @$scope.board.title})
+
 
 class KanbanListCtrl
-        constructor: (@$scope, @KanbanCards) ->
+        constructor: (@$scope, @KanbanLists, @KanbanCards) ->
                 @$scope.newCardForm =
                         list: @$scope.list.resource_uri
 
                 @$scope.newCardSubmit = this.newCardSubmit
+                @$scope.updateList = this.updateList
 
         newCardSubmit: () =>
                 @KanbanCards.post(@$scope.newCardForm).then((card) =>
@@ -47,21 +67,45 @@ class KanbanListCtrl
                         @$scope.showAddTask = false
                 )
 
-
-
+        updateList: () =>
+                @KanbanLists.one(@$scope.list.id).patch({title: @$scope.list.title})
 
 class KanbanCardCtrl
-        constructor: (@$scope, @$stateParams, @KanbanCards) ->
+        constructor: (@$scope, @$state, @$stateParams, @KanbanCards, @KanbanTasks, @kanbanService) ->
                 @$scope.card = @KanbanCards.one(@$stateParams.cardId).get().$object
 
-                console.debug(@$scope.card)
                 @$scope.sidebar =
                         tab: 'details'
 
+                @$scope.newTaskForm =
+                        title: ''
+
+                @$scope.deleteCard = this.deleteCard
+                @$scope.submitNewTask = this.submitNewTask
+
+        deleteCard: () =>
+                @$scope.card.remove().then(=>
+                        list = _.find(@kanbanService.board.lists, (list) =>
+                                return list.resource_uri == @$scope.card.list
+                        )
+
+                        card = _.find(list.cards, (card) =>
+                                return card.resource_uri == @$scope.card.resource_uri
+                        )
+
+                        idx = list.cards.indexOf(card)
+                        list.cards.splice(idx, 1)
+                        @$state.go('kanban')
+                )
+
+        submitNewTask: =>
+                @$scope.newTaskForm.card = @$scope.card.resource_uri
+                @KanbanTasks.post(@$scope.newTaskForm).then((task) =>
+                        @$scope.card.tasks.push(task)
+                )
 
 
-
-module.controller("KanbanBoardCtrl", ['$scope', '$stateParams', 'KanbanBoards', 'KanbanLists', 'KanbanTasks', 'kanbanService', KanbanBoardCtrl])
-module.controller("KanbanListCtrl", ['$scope', 'KanbanCards', KanbanListCtrl])
+module.controller("KanbanBoardCtrl", ['$scope', '$state', '$stateParams', 'KanbanBoards', 'KanbanLists', 'KanbanTasks', 'kanbanService', KanbanBoardCtrl])
+module.controller("KanbanListCtrl", ['$scope', 'KanbanLists', 'KanbanCards', KanbanListCtrl])
 module.controller("KanbanCardCommentCtrl", ['$scope', 'KanbanCardComments', KanbanCardCommentCtrl])
-module.controller("KanbanCardCtrl", ['$scope', '$stateParams', 'KanbanCards', KanbanCardCtrl])
+module.controller("KanbanCardCtrl", ['$scope', '$state', '$stateParams', 'KanbanCards', 'KanbanTasks', 'kanbanService', KanbanCardCtrl])

@@ -4,9 +4,9 @@
   <button class="primary">Ajouter une sous-tâche</button>
   
   <hr />
-  <form method="post" action="">
+  <form>
     <fieldset>
-      <input type="text" name="subtask-title" placeholder="Titre de la sous-tâche" />
+      <input type="text" ng-model="newTaskForm.title" name="subtask-title" placeholder="Titre de la sous-tâche" />
       <button><img src="/img/buttons/member_add.png" alt="Add member" /></button>
       <br />
       <p class="percent"><select name="subtask-percent">
@@ -34,7 +34,7 @@
     </fieldset>
     <fieldset>
       <button type="reset" name="cancel"><img src="/img/buttons/task_cancel.png" alt="Cancel" /></button>
-      <button type="submit" name="add_task"><img src="/img/buttons/task_add.png" alt="Add task" /></button>
+      <button ng-click="submitNewTask()" name="add_task"><img src="/img/buttons/task_add.png" alt="Add task" /></button>
     </fieldset>
   </form>
   <hr />

@@ -2,55 +2,52 @@
   <h2>Détails de la tâche</h2>
   <h3>Liste "FIXME"</h3>
   
-  <form method="post" action="">
-    <fieldset>
-      <button class="edit"><img src="/img/buttons/edit.png" alt="Edit" /></button>
-      <div class="title">
-	<button><img src="/img/fav_ico_black.png" alt="Favorite" /></button>
-	<h4>{{ card.title }}</h4>
-      </div>
-
-      <div ng-show="card.completion >= 0" ng-switch="card.completion">
-	<p ng-switch-when="100" class="done">Terminé</p>
-	<p ng-switch-default class="percent">{{ card.completion }}%<progress value="{{ card.completion }}" max="100"></progress></p>
-      </div>
-      
-      <p>{{ card.description }}</p>
-      <p class="updated">Mise à jour le {{ card.modified_date|date:medium }} par <a href="">FIXME</a></p>
-    </fieldset>
+  <fieldset>
+    <button class="edit"><img src="/img/buttons/edit.png" alt="Edit" /></button>
+    <div class="title">
+      <button><img src="/img/fav_ico_black.png" alt="Favorite" /></button>
+      <h4 editable-text="card.title" onaftersave="card.save()">{{ card.title }}</h4>
+    </div>
     
-    <hr />
+    <div ng-show="card.completion >= 0" ng-switch="card.completion">
+      <p ng-switch-when="100" class="done">Terminé</p>
+      <p ng-switch-default class="percent">{{ card.completion }}%<progress value="{{ card.completion }}" max="100"></progress></p>
+    </div>
     
-    <h5>Membres assignés</h5>
-    <ul class="members">
-      <li ng-repeat="user in card.assigned_to">
-	<img ng-show="!user.mugshot" ng-src="http://sigil.cupcake.io/{{ user.username }}.png" alt="{{ user.username }}" />
-	<img ng-show="user.mugshot" ng-src="{{ user.mugshot }}" alt="{{ user.username }}" />
-      </li>
-      <li><button><img src="/img/buttons/member_add.png" alt="Add member" /></button></li>
-    </ul>
-
-    <hr />
-
-    <h5>Labels associés</h5>
-    <ul class="labels">
-      <li ng-repeat="label in card.tags"><a href="#" class="label label-4">{{ label.name }}</a></li> <!-- FIXME -->
-    </ul>
-    <a href="">Ajouter un label</a>
-
-    <hr />
-
-    <h5>Derniers fichiers</h5>
-    <ul class="files">
-      <li class="filetype-pdf"><a href="">Fichier1.pdf</a></li>
-      <li class="filetype-doc"><a href="">Document2.doc</a></li>
-    </ul>
-
-    <hr />
-
-    <button class="secondary">Autres options</button>
-    <button class="secondary">Supprimer la tâche</button>
-    
-  </form>	
+    <p>{{ card.description }}</p>
+    <p class="updated">Mise à jour le {{ card.modified_date|date:medium }} par <a href="">FIXME</a></p>
+  </fieldset>
   
+  <hr />
+  
+  <h5>Membres assignés</h5>
+  <ul class="members">
+    <li ng-repeat="user in card.assigned_to">
+      <img ng-show="!user.mugshot" ng-src="http://sigil.cupcake.io/{{ user.username }}.png" alt="{{ user.username }}" />
+      <img ng-show="user.mugshot" ng-src="{{ user.mugshot }}" alt="{{ user.username }}" />
+    </li>
+    <li><button><img src="/img/buttons/member_add.png" alt="Add member" /></button></li>
+  </ul>
+  
+  <hr />
+  
+  <h5>Labels associés</h5>
+  <ul class="labels">
+    <li ng-repeat="label in card.tags"><a href="#" class="label label-4">{{ label.name }}</a></li> <!-- FIXME -->
+  </ul>
+  <a href="">Ajouter un label</a>
+  
+  <hr />
+  
+  <h5>Derniers fichiers</h5>
+  <ul class="files">
+    <li class="filetype-pdf"><a href="">Fichier1.pdf</a></li>
+    <li class="filetype-doc"><a href="">Document2.doc</a></li>
+  </ul>
+  
+  <hr />
+  
+  <!-- <button class="secondary">Autres options</button> -->
+  <button ng-click="deleteCard()" class="secondary">Supprimer la tâche</button>
+
 </div><!-- #.details -->
