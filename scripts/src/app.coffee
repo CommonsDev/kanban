@@ -38,11 +38,19 @@ angular.element(document).on('ready page:load', ->
                         templateUrl: 'views/kanban_new.html'
                 )
 
+                $stateProvider.state('home.my_boards',
+                        url: '/myboards',
+                        templateUrl: "views/kanban_new_sidebar.html",
+                        controller: 'KanbanBoardCtrl'
+                )
+
                 $stateProvider.state('kanban',
                         url: '/:kanbanId',
                         templateUrl: "views/kanban_detail.html",
                         controller: 'KanbanBoardCtrl'
                 )
+
+
 
                 $stateProvider.state('kanban.card_detail',
                         url: '/:cardId',

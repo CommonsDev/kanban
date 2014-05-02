@@ -1,18 +1,17 @@
-<div id="right-panel" class="comments">
-	<ng-include src="'views/right-panel-menu.html'"></ng-include>
-	<h2>Commentaires</h2>
-	
-	<ul class="comments">
-		<li><img src="/img/uploads/members/member-1-l.jpg" alt="Photo of Ellen Page" /><strong>Ellen Page - </strong> This a a comment<em>Le 3 novembre 2013</em></li>
-		<li><img src="/img/uploads/members/member-3-l.jpg" alt="Photo of Ellen Page" /><strong>Ellen Page - </strong> This a a comment<em>Le 3 novembre 2013</em></li>
-		<li><img src="/img/uploads/members/member-2-l.jpg" alt="Photo of Ellen Page" /><strong>Ellen Page - </strong> And this a long comment to see what happens when there are more than one line of text<em>Le 3 novembre 2013</em></li>
-		<li><img src="/img/uploads/members/member-1-l.jpg" alt="Photo of Ellen Page" /><strong>Ellen Page - </strong> This a a comment<em>Le 3 novembre 2013</em></li>
-		<li><img src="/img/uploads/members/member-2-l.jpg" alt="Photo of Ellen Page" /><strong>Ellen Page - </strong> This a a comment<em>Le 3 novembre 2013</em></li>
-	</ul>
-	
-	<form method="post" action="">
-		<input type="text" name="comment" placeholder="Ajouter un commentaire" />
-		<input type="submit" name="send" value="OK" />
-	</form>
+<div class="comments" ng-controller="KanbanCardCommentCtrl">
+  <h2>Commentaires</h2>
+  
+  <ul class="comments">
+    <li ng-repeat="comment in card.comments">
+      <img ng-show="comment.user.mugshot" ng-src="{{ comment.user.mugshot }}" alt="{{ comment.user.username }}" />
+      <img ng-show="!comment.user.mugshot" ng-src="http://sigil.cupcake.io/{{ comment.user.username }}.png?w=48" alt="{{ comment.user.username }}"/>
+      <strong>{{ comment.user.username }} - </strong> {{ comment.text }}<em>{{ comment.date | date }}</em>
+    </li>
+  </ul>
+  
+  <form>
+    <input type="text" ng-model="newcommentForm.text" name="comment" placeholder="Ajouter un commentaire" required/>
+    <button ng-click="submitNewComment()" name="send">Envoyer</button>
+  </form>
 
 </div><!-- #right-panel -->

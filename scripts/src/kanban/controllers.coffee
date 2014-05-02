@@ -1,5 +1,19 @@
 module = angular.module('kanban.controllers', ['restangular', 'ui.router', 'kanban.services'])
 
+class KanbanCardCommentCtrl
+        constructor: (@$scope, @KanbanCardComments) ->
+                @$scope.newcommentForm =
+                        text: ""
+                        card: @$scope.card.resource_uri
+
+                @$scope.submitNewComment = this.submitNewComment
+
+        submitNewComment: () =>
+                @KanbanCardComments.post(@$scope.newcommentForm).then((comment) =>
+                        console.debug("posted comment")
+                )
+
+
 class KanbanBoardCtrl
         constructor: (@$scope, @$stateParams, @KanbanBoards, @KanbanLists, @KanbanTasks, @kanbanService) ->
                 @$scope.leftPanel =
@@ -14,10 +28,10 @@ class KanbanBoardCtrl
                         items: "> li"
 
                 @$scope.boards = @KanbanBoards.getList().$object
-                @$scope.board = @kanbanService.load(@$stateParams.kanbanId)
 
-                console.debug(@$scope.board)
-
+                # Load board if we specify one
+                if @$stateParams.kanbanId > 0
+                        @$scope.board = @kanbanService.load(@$stateParams.kanbanId)
 
 
 class KanbanListCtrl
@@ -49,4 +63,5 @@ class KanbanCardCtrl
 
 module.controller("KanbanBoardCtrl", ['$scope', '$stateParams', 'KanbanBoards', 'KanbanLists', 'KanbanTasks', 'kanbanService', KanbanBoardCtrl])
 module.controller("KanbanListCtrl", ['$scope', 'KanbanCards', KanbanListCtrl])
+module.controller("KanbanCardCommentCtrl", ['$scope', 'KanbanCardComments', KanbanCardCommentCtrl])
 module.controller("KanbanCardCtrl", ['$scope', '$stateParams', 'KanbanCards', KanbanCardCtrl])

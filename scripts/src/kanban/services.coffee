@@ -28,3 +28,7 @@ services.factory('KanbanTasks', (Restangular) ->
 services.factory('KanbanCards', (Restangular) ->
         return Restangular.service('flipflop/card')
 )
+
+services.factory('KanbanCardComments', (Restangular) ->
+        return Restangular.service('flipflop/cardcomment')
+)

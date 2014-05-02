@@ -22,9 +22,11 @@
     <fieldset>
       <legend>Par Membre</legend>
       <ul>
-	<li class="selected"><img src="/img/uploads/members/member-1-s.jpg" alt="Dave Grohl" /> Dave Grohl</li>
-	<li><img src="/img/uploads/members/member-2-s.jpg" alt="Ellen Page" /> Ellen Page</li>
-	<li><img src="/img/uploads/members/member-3-s.jpg" alt="Hannah McKey" /> Hannah McKey</li>
+	<li ng-repeat="user in board.members" class="selected">
+	  <img ng-show="user.mugshot" ng-src="{{ user.mugshot }}" alt="{{ user.username }}" />
+	  <img ng-show="!user.mugshot" ng-src="http://sigil.cupcake.io/{{ user.username }}.png?w=24" alt="{{ user.username }}" />{{ user.first_name || user.username }}
+	</li>
+
       </ul>
     </fieldset>
     <fieldset>

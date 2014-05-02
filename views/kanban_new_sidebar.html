@@ -1,0 +1,26 @@
+<div  ng-controller="KanbanBoardCtrl">
+  <div id="intercalar">
+    <span class="caption">Sélectionnez un tableau</span>
+  </div>
+  <div id="intercalar-panel" class="kanban-myboards-panel">
+     <a class="close-link" ui-sref="home">Fermer</a>
+     <h1>    
+      <img src="img/mymaps_ico_big.png" alt="" />
+      <strong>Sélectionnez<br /> votre tableau</strong>
+      <span>Cette liste contient les différents tableaux<br /> auxquels vous avez accès.</span>
+    </h1>
+    <form ng-show="!isLoading">
+      <ul>
+      	<li ng-repeat="board in boards">
+                <a ui-sref="kanban({kanbanId: board.id})">{{ board.title }}</a>
+      	</li>
+      </ul>
+    </form>
+    <div class="loading-panel" ng-show="isLoading">
+      <p>
+        <img src="img/loading/eolilala.png" class="spin" />
+        <span>un instant, nous chargeons vos tableaux...</span>
+      </p>
+    </div>
+  </div>
+</div>
