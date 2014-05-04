@@ -36,6 +36,7 @@ angular.element(document).on('ready page:load', ->
                 $stateProvider.state('home',
                         url: '/',
                         templateUrl: 'views/kanban_new.html'
+                        controller: 'KanbanBoardCtrl'
                 )
 
                 $stateProvider.state('home.my_boards',

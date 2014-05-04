@@ -27,6 +27,14 @@
       <img ng-show="user.mugshot" ng-src="{{ user.mugshot }}" alt="{{ user.username }}" />
     </li>
     <li><button><img src="/img/buttons/member_add.png" alt="Add member" /></button></li>
+
+  <ul class="members">
+    <li ng-repeat="user in board.members">
+      <img ng-show="!user.mugshot" ng-src="http://sigil.cupcake.io/{{ user.username }}.png" alt="{{ user.username }}" />
+      <img ng-show="user.mugshot" ng-src="{{ user.mugshot }}" alt="{{ user.username }}" />
+    </li>
+  </ul>
+
   </ul>
   
   <hr />

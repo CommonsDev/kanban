@@ -23,18 +23,10 @@
     -->
     <fieldset class="labels">
       <legend>Renommer vos labels</legend>
-      <label for="label-1" class="label-1">Label 1</label>
-      <input type="text" name="label-1" id="label-1" value="Label 1" />
-      <label for="label-2" class="label-2">Label 2</label>
-      <input type="text" name="label-2" id="label-2" value="Label 2" />
-      <label for="label-3" class="label-3">Label 3</label>
-      <input type="text" name="label-3" id="label-3" value="Label 3" />
-      <label for="label-4" class="label-4">Label 4</label>
-      <input type="text" name="label-4" id="label-4" value="Label 4" />
-      <label for="label-5" class="label-5">Label 5</label>
-      <input type="text" name="label-5" id="label-5" value="Label 5" />
-      <label for="label-6" class="label-6">Label 6</label>
-      <input type="text" name="label-6" id="label-6" value="Label 6" />
+      <div ng-repeat="label in board.labels">
+	<label for="label-{{ $index }}" class="label-{{ $index }}">{{ label.label }}</label>
+	<input type="text" ng-model="label.label" name="label-{{ $index }}" id="label-{{ $index }}" value="{{ label.label }}" />
+      </div>
     </fieldset>
     <button ng-click="updateBoard()" name="save" class="submit">Sauvegarder <img src="/img/submit.png" alt="Sauvegarder" /></button>
   </form>

@@ -5,14 +5,14 @@
   <div id="intercalar-panel" class="kanban-myboards-panel">
      <a class="close-link" ui-sref="home">Fermer</a>
      <h1>    
-      <img src="img/mymaps_ico_big.png" alt="" />
+      <img src="img/myboards_ico_big.png" alt="" />
       <strong>Sélectionnez<br /> votre tableau</strong>
       <span>Cette liste contient les différents tableaux<br /> auxquels vous avez accès.</span>
     </h1>
     <form ng-show="!isLoading">
       <ul>
       	<li ng-repeat="board in boards">
-                <a ui-sref="kanban({kanbanId: board.id})">{{ board.title }}</a>
+                <a ui-sref="kanban({kanbanId: board.id})">{{ board.title || "Sans nom" }}</a>
       	</li>
       </ul>
     </form>

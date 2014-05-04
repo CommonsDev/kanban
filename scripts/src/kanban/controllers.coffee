@@ -15,7 +15,6 @@ class KanbanCardCommentCtrl
                         @$scope.comments.push(comment)
                 )
 
-
 class KanbanBoardCtrl
         constructor: (@$scope, @$state, @$stateParams, @KanbanBoards, @KanbanLists, @KanbanTasks, @kanbanService) ->
                 @$scope.leftPanel =
@@ -23,6 +22,8 @@ class KanbanBoardCtrl
 
                 @$scope.searchForm =
                         term: ""
+                        labels: []
+                        users: []
 
                 @$scope.columnSortableOptions =
                         placeholder: "task",
@@ -38,6 +39,11 @@ class KanbanBoardCtrl
                 @$scope.createBoard = this.createBoard
                 @$scope.createList = this.createList
                 @$scope.updateBoard = this.updateBoard
+                @$scope.filterWithLabels = this.filterWithLabels
+                @$scope.filterWithUsers = this.filterWithUsers
+                @$scope.updateLabelFilter = this.updateLabelFilter
+                @$scope.updateUserFilter = this.updateUserFilter
+
 
         createBoard: =>
                 @KanbanBoards.post({}).then((board) =>
@@ -50,7 +56,40 @@ class KanbanBoardCtrl
                 )
 
         updateBoard: =>
-                @$scope.board.patch({title: @$scope.board.title})
+                @$scope.board.patch({title: @$scope.board.title, labels: @$scope.board.labels})
+
+        updateUserFilter: ($event, user) =>
+                checkbox = $event.target
+
+                if checkbox.checked
+                        @$scope.searchForm.users.push(user)
+                else
+                        idx = @$scope.searchForm.users.indexOf(user)
+                        @$scope.searchForm.users.splice(idx, 1)
+
+        updateLabelFilter: ($event, label) =>
+                checkbox = $event.target
+
+                if checkbox.checked
+                        @$scope.searchForm.labels.push(label)
+                else
+                        idx = @$scope.searchForm.labels.indexOf(label)
+                        @$scope.searchForm.labels.splice(idx, 1)
+
+
+        filterWithUsers: (actual, expected) =>
+                return _.every(@$scope.searchForm.users, (member_uri) =>
+                        return _.find(actual.assigned_to, (assignee) =>
+                                return assignee.resource_uri == member_uri
+                        )
+                )
+
+        filterWithLabels: (actual, expected) =>
+                return _.every(@$scope.searchForm.labels, (label_uri) =>
+                        return _.find(actual.labels, (label) =>
+                                return label.resource_uri == label_uri
+                        )
+                )
 
 
 class KanbanListCtrl

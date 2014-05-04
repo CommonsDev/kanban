@@ -11,13 +11,8 @@
 		  Ce logiciel vous permettra de suivre et gérer l'avancée des projets et problématiques en équipe.
 		</p>
 	</div>
-	<h2>Entrez le nom de votre tableau</h2>
 	<form>
-		<p>
-		  <label for="url-field">{{ $location.absUrl() }}/</label>
-		  <input id="url-field" ng-model="form.name" type="text" />
-		</p>
-	  	<button ng-click="create()">Créez votre tableau</button>
+	  <button ng-click="createBoard()">Créez un tableau</button>
 	</form>
 
 

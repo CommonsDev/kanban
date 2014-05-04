@@ -107,11 +107,11 @@
 		width:72%;
 		display:block;
 		line-height:30px;
-		background:image-url('mymaps-pointer-off.png') no-repeat 15px center !important;
+		background:image-url('myboards_pointer-off.png') no-repeat 15px center !important;
 		@include border-radius(5px);
 
 		&:hover {
-			background:#85c9fa image-url('mymaps-pointer.png') no-repeat 15px center !important;
+			background:#85c9fa image-url('myboards_pointer.png') no-repeat 15px center !important;
 
 			a {
 				color:#fff;

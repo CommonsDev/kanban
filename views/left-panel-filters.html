@@ -8,23 +8,22 @@
     <fieldset>
       <legend>Par Labels</legend>
       <ul class="labels">
-	<li ng-repeat="tag in board.tags"><a href="" class="label label-1 selected">Label 1</a></li> <!-- FIXME -->
+	<li ng-repeat="label in board.labels">
+	  <label for="filter-label-{{ $index }}">{{ label.label }}</label>
+	  <input type="checkbox" ng-click="updateLabelFilter($event, label.resource_uri)" id="filter-label-{{ $index }}" class="label label-{{ $index }}">
+	</li>
       </ul>
-      <!--
-	  <button name="label-1" class="label label-1 selected">Label 1</button>
-	  <button name="label-2" class="label label-2">Label 2</button>
-	  <button name="label-3" class="label label-3 selected">Label 3</button>
-	  <button name="label-4" class="label label-4">Label 4</button>
-	  <button name="label-5" class="label label-5">Label 5</button>
-	  <button name="label-6" class="label label-6">Label 6</button>
-	  -->
     </fieldset>
     <fieldset>
       <legend>Par Membre</legend>
       <ul>
 	<li ng-repeat="user in board.members" class="selected">
-	  <img ng-show="user.mugshot" ng-src="{{ user.mugshot }}" alt="{{ user.username }}" />
-	  <img ng-show="!user.mugshot" ng-src="http://sigil.cupcake.io/{{ user.username }}.png?w=24" alt="{{ user.username }}" />{{ user.first_name || user.username }}
+	  <label for="filter-user-{{ $index }}">
+	    <img ng-show="user.mugshot" ng-src="{{ user.mugshot }}" alt="{{ user.username }}" />
+	    <img ng-show="!user.mugshot" ng-src="http://sigil.cupcake.io/{{ user.username }}.png?w=24" alt="{{ user.username }}" />
+	    {{ user.first_name || user.username }}
+	  </label>
+	  <input type="checkbox" ng-click="updateUserFilter($event, user.resource_uri)" id="filter-user-{{ $index }}">
 	</li>
 
       </ul>
