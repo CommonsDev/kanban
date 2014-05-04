@@ -5,7 +5,7 @@
     
     <li class="task" ng-repeat="card in list.cards | filter:searchForm.term | filter:filterWithLabels | filter:filterWithUsers">
       <ul class="labels"> <!-- FIXME -->
-	<li ng-repeat="label in card.labels" class="label-1"></li>
+	<li ng-repeat="label in card.labels" class="label-{{ $index }}"></li>
       </ul><!-- .labels -->
 
       <p class="photos">
