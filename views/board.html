@@ -9,7 +9,7 @@
       </ul><!-- .labels -->
 
       <p class="photos">
-	<img ng-repeat="photo in card.photos" src="/img/uploads/photos/xantia_01.jpg" alt="Photo of my Xantia" /> <!-- FIXME -->
+	<img ng-repeat="photo in card.photos" src="./img/uploads/photos/xantia_01.jpg" alt="Photo of my Xantia" /> <!-- FIXME -->
       </p> <!-- .photos -->
 
       <p><a ui-sref="kanban.card_detail({cardId: card.id})">{{ card.title }}<em>Modifiée le {{ card.modified_date|date:medium }}</em></a></p>
@@ -44,12 +44,12 @@
       </fieldset>
 
       <fieldset ng-show="showAddTask" class="buttons">
-	<button type="button" ng-click="showAddTask = false" name="cancel"><img src="/img/buttons/task_cancel.png" alt="Cancel" /></button>
-	<button ng-click="newCardSubmit()" type="submit" name="add_task"><img src="/img/buttons/task_add.png" alt="Add task" /></button>
+	<button type="button" ng-click="showAddTask = false" name="cancel"><img src="./img/buttons/task_cancel.png" alt="Cancel" /></button>
+	<button ng-click="newCardSubmit()" type="submit" name="add_task"><img src="./img/buttons/task_add.png" alt="Add task" /></button>
       </fieldset> 
 
       <fieldset ng-show="!showAddTask" class="buttons">
-	<button ng-click="showAddTask = true" type="button" name="new_task"><img src="/img/buttons/task_new.png" alt="New task" /></button>
+	<button ng-click="showAddTask = true" type="button" name="new_task"><img src="./img/buttons/task_new.png" alt="New task" /></button>
       </fieldset>
 
     </form> <!-- .add_task -->
@@ -58,7 +58,7 @@
   <!-- new list --->
   <form class="add_list">
     <fieldset class="buttons">
-      <button ng-click="createList()" name="new_list"><img src="/img/buttons/list_new.png" alt="New list" /></button>
+      <button ng-click="createList()" name="new_list"><img src="./img/buttons/list_new.png" alt="New list" /></button>
     </fieldset>
   </form>
 </div><!-- #lists -->
