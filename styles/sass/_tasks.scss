@@ -99,7 +99,7 @@ $task-text-input-background-color: #e6e6e6;
 	}
 
 }
-.list div:last-child {
+li.task:last-of-type {
 	border-bottom: 1px solid $task-last-border-color;
 }
 
