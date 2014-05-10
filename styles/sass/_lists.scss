@@ -3,6 +3,11 @@ $list-title-background: #efefef;
 $list-title-border-color: #e6e6e6;
 $list-shadow-color: #999;
 $list-add-background: #fff;
+$list-edit-link: #4b4b4b;
+$list-edit-border: #d5d5d5;
+$list-edit-background: #fff;
+$list-edit-hover-text: #fff;
+$list-edit-hover-background: #7bbae7;
 
 #lists {
 	margin: 43px 0 0 167px;
@@ -53,4 +58,42 @@ form.add_list {
 		background-color: $list-add-background;
 	}
 
+}
+
+.list-menu {
+	width: 200px;
+	padding: 10px;
+	font-size: 1.1em;
+	background-color: $list-edit-background;
+	border: 1px solid $list-edit-border;
+	@include border-radius(5px);
+	
+	ul {
+	
+		li {
+		
+			a {
+			
+				display: block;
+				padding: 7px;
+				color: $list-edit-link;
+				text-decoration: none;
+				@include border-radius(4px);
+			
+			}
+			
+			&.menu a {
+				background:  url('/img/list_arrow.png') 95% 50% no-repeat;
+			}
+			
+			a:hover {
+				color: $list-edit-hover-text;
+				background-color: $list-edit-hover-background;
+			}
+			
+
+		
+		}
+	
+	}
 }
