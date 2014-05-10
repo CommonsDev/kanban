@@ -48,7 +48,7 @@
 
       <fieldset ng-show="showAddTask" class="buttons">
 	<button type="button" ng-click="showAddTask = false" name="cancel"><img src="./img/buttons/task_cancel.png" alt="Cancel" /></button>
-	<button ng-click="newCardSubmit()" type="submit" name="add_task"><img src="./img/buttons/task_add.png" alt="Add task" /></button>
+	<button ng-click="newCardSubmit()" type="submit" name="add_task"><img src="./img/buttons/save.png" alt="Add task" /></button>
       </fieldset> 
 
       <fieldset ng-show="!showAddTask" class="buttons">
@@ -57,16 +57,6 @@
 
     </form> <!-- .add_task -->
   </ul><!-- .list -->
-  
-  <!-- FIXME Template for the list menu -->
-  <div class="list-menu">
-  	<ul>
-  		<li><a href="">Supprimer la liste</a></li>
-  		<li class="menu"><a href="">Déplacer vers</a></li>
-  		<li><a href="">Copier la liste</a></li>
-  		<li><a href="">Archiver la liste</a></li>
-  	</ul>
-  </div>
 
   <!-- new list --->
   <form class="add_list">
@@ -74,6 +64,74 @@
       <button ng-click="createList()" name="new_list"><img src="./img/buttons/list_new.png" alt="New list" /></button>
     </fieldset>
   </form>
+  
+  <!-- FIXME Template for the list menu -->
+  <div class="menu">
+  	<ul>
+  		<li><a href="">Supprimer la liste</a></li>
+  		<li class="submenu"><a href="">Déplacer vers</a></li>
+  		<li><a href="">Copier la liste</a></li>
+  		<li><a href="">Archiver la liste</a></li>
+  	</ul>
+  </div>
+  <br />
+  
+  <!-- FIXME Template for the task menu -->
+  <div class="menu">
+  	<ul>
+  		<li class="submenu"><a href="">Assigner un membre</a></li>
+  		<li class="submenu"><a href="">Labels</a></li>
+  		<li class="submenu"><a href="">Déplacer vers</a></li>
+  	</ul>
+  </div>
+  <br />
+  
+  <!-- FIXME Template for the "Déplacer vers..." submenu -->
+  <div class="menu m-with-title m-move-to">
+  	<header>
+	  	<button class="back"><img src="/img/menu_back.png" alt="Back" /></button>
+	  	<button class="close"><img src="/img/menu_close.png" alt="Close" /></button>
+	  	<h5>Déplacer vers</h5>
+	  </header>
+  	<button class="select list">Liste...</button>
+  	<button class="select position">Position...</button>
+  	<p class="save"><button><img src="/img/buttons/save.png" alt="Save" /></button></p>
+  </div>
+  <br />
+
+  <!-- FIXME Template for the "Déplacer vers..." list submenu -->
+  <div class="menu m-move-to-list">
+  	<ul>
+  		<li><a href="">En cours</a></li>
+  		<li><a href="">Terminé</a></li>
+  	</ul>
+  </div>
+  <br />
+  
+  <!-- FIXME Template for the "Déplacer vers..." position submenu -->
+  <div class="menu m-move-to-position">
+  	<ul>
+  		<li><a href="">1 <sup>ère</sup></a></li>
+  		<li><a href="">2 <sup>ème</sup></a></li>
+  		<li><a href="">3 <sup>ème</sup></a></li>
+  		<li><a href="">4 <sup>ème</sup></a></li>
+  	</ul>
+  </div>
+  <br />
+
+  <!-- FIXME Template for the "Déplacer vers..." submenu -->
+  <div class="menu m-with-title m-labels">
+  	<header>
+	  	<button class="back"><img src="/img/menu_back.png" alt="Back" /></button>
+	  	<button class="close"><img src="/img/menu_close.png" alt="Close" /></button>
+	  	<h5>Labels</h5>
+	  </header>
+	  <ul>
+	  </ul>
+  	<p class="save"><button><img src="/img/buttons/save.png" alt="Save" /></button></p>
+  </div>
+  <br />
+
 </div><!-- #lists -->
 
 <div ui-view></div>

@@ -1,0 +1,133 @@
+$menu-border: #d5d5d5;
+$menu-edit-link: #4b4b4b;
+$menu-edit-background: #fff;
+$menu-edit-hover-text: #fff;
+$menu-edit-hover-background: #7bbae7;
+$title-color: #818181;
+$title-background: #eaeaea;
+
+.menu {
+	width: 200px;
+	padding: 10px;
+	font-size: 1.1em;
+	background-color: $menu-edit-background;
+	border: 1px solid $menu-border;
+	@include border-radius(5px);
+	@include shadow;
+	
+	ul {
+	
+		li {
+		
+			a {
+			
+				display: block;
+				padding: 7px;
+				color: $menu-edit-link;
+				text-decoration: none;
+				@include border-radius(4px);
+			
+			}
+			
+			&.submenu a {
+				background:  url('/img/menu_arrow.png') 95% 50% no-repeat;
+			}
+			
+			a:hover {
+				color: $menu-edit-hover-text;
+				background-color: $menu-edit-hover-background;
+			}
+			&.submenu a:hover {
+				background-image: url('/img/menu_arrow_hover.png');
+			}
+		
+		}
+	
+	}
+}
+
+.m-with-title {
+	padding: 0;
+	font-size: 1.1em;
+	background-color: $menu-edit-background;
+	border: 1px solid $menu-border;
+	@include border-radius(5px);
+	@include shadow;
+	
+	h5 {
+		color: $title-color;
+		text-align: center;
+		background-color: $title-background;
+		border-bottom: 1px solid $menu-border;
+		@include border-top-radius(5px);
+	}
+	
+	header {
+		h5, button {
+			height: 3em;
+			font-size: 1em;
+			line-height: 3em;
+			padding-bottom: 0.5em;
+		}
+	}
+}
+
+.m-move-to {
+	width: 285px;
+}
+.m-labels {
+	width: 240px;
+}
+
+button.back, button.close {
+	width: 40px;
+	img {
+		vertical-align: middle;
+	}
+}
+button.back {
+	float: left;
+	border-right: 1px solid $menu-border;
+}
+button.close {
+	float: right;
+	border-left: 1px solid $menu-border;
+}
+button.select {
+	margin: 10px;
+	padding: 7px 10px;
+	font-size: 1.05em;
+	text-align: left;
+	border: 1px solid $menu-border;
+	@include border-radius(4px);
+	@include shadow-subtle;
+}
+button.list {
+	float: left;
+	width: 150px;
+}
+button.position {
+	float: right;
+	width: 90px;
+}
+
+p.save {
+	clear: both;
+	margin-bottom: 5px;
+	text-align: right;
+	
+	button {
+		margin-top: 5px;
+	}
+}
+
+.m-move-to-list, .m-move-to-position {
+	@include shadow-subtle;
+}
+.m-move-to-list {
+	width: 150px;
+}
+.m-move-to-position {
+	width: 90px;
+}
+
