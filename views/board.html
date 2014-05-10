@@ -16,7 +16,7 @@
 
       <div ng-show="card.completion >= 0" ng-switch="card.completion">
 	<p ng-switch-when="100" class="done">Terminé</p>
-	<p ng-switch-default class="percent">{{ card.completion }}%<progress value="{{ card.completion }}" max="100"></progress></p>
+	<p ng-switch-default class="percent"><progress value="{{ card.completion }}" max="100"></progress>{{ card.completion }}%</p>
       </div>
 
       <ul class="members">
