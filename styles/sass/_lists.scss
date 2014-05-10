@@ -11,6 +11,7 @@ $list-add-background: #fff;
 }
 
 .list {
+	position: relative;
 	display: inline-block;
 	width: 294px;
 	margin: 0 25px 20px 0;
@@ -26,6 +27,12 @@ $list-add-background: #fff;
 		color: $list-title-color;
 		background-color: $list-title-background;
 		border-bottom: 1px solid $list-title-border-color;
+	}
+	
+	button.list-edit {
+		position: absolute;
+		top: 13px;
+		right: 6px;
 	}
 	
 }
