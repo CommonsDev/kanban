@@ -28,6 +28,7 @@ $files-hover-color: #efefef;
 		
 	}
 	h3 {
+		margin-bottom: 10px;
 		color: $h3-color;
 		font-size: 1.1em;
 		font-style: italic;
@@ -79,7 +80,7 @@ $files-hover-color: #efefef;
 			color: $text-color;
 			background-position: 3% 50%;
 			background-repeat: no-repeat;
-			line-height: 2em;
+			line-height: 1.1em;
 		}
 		.filetype-pdf a { background-image: url('/img/filetypes/filetype-pdf.png'); }
 		.filetype-doc a { background-image: url('/img/filetypes/filetype-doc.png'); }
@@ -91,6 +92,9 @@ $files-hover-color: #efefef;
 		h4 {
 			font-size: 2em;
 			font-weight: normal;
+		}
+		.edit {
+			float: right;
 		}
 		.title h4, .title button {
 			display: inline-block;
@@ -151,6 +155,11 @@ $files-hover-color: #efefef;
 			&:hover a {
 				background-color: transparent;
 			}
+		}
+		.task-delete {
+			padding-right: 20px;
+			padding-left: 50px;
+			background: $button-secondary-background-color url('/img/buttons/task_delete.png') 8% 50% no-repeat;
 		}
 
 	}

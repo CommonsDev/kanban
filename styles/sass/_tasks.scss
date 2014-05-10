@@ -41,7 +41,10 @@ $task-text-input-background-color: #e6e6e6;
 		font-style: italic;
 		font-weight: bold;
 	}
-	p:first-child, > ul + p {
+	/*
+	p:first-of-type, > ul + p {
+	*/
+	p {
 		margin-top: 21px;
 	}
 	p.done {
@@ -51,6 +54,7 @@ $task-text-input-background-color: #e6e6e6;
 	}
 	p.photos {
 		overflow: hidden;
+		margin-top: 0;
 		margin-bottom: 15px;
 	}
 	em {
@@ -75,6 +79,7 @@ $task-text-input-background-color: #e6e6e6;
 		margin: 0 20px;
 	}
 	ul.meta {
+		clear: right;
 		float: right;
 		margin: 0 20px;
 		color: $task-meta-color;
@@ -110,6 +115,7 @@ li.task:last-of-type {
 	
 	fieldset {
 		padding: 10px 20px 6px;
+		border-top: 4px solid $task-border-color;
 	}
 	fieldset.buttons {
 		text-align: center;

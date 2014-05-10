@@ -27,6 +27,7 @@
       <img ng-show="user.mugshot" ng-src="{{ user.mugshot }}" alt="{{ user.username }}" />
     </li>
     <li><button><img src="/img/buttons/member_add.png" alt="Add member" /></button></li>
+  </ul>
 
   <ul class="members">
     <li ng-repeat="user in board.members">
@@ -56,6 +57,6 @@
   <hr />
   
   <!-- <button class="secondary">Autres options</button> -->
-  <button ng-click="deleteCard()" class="secondary">Supprimer la tâche</button>
+  <button ng-click="deleteCard()" class="secondary task-delete">Supprimer la tâche</button>
 
 </div><!-- #.details -->
