@@ -3,8 +3,8 @@ $menu-edit-link: #4b4b4b;
 $menu-edit-background: #fff;
 $menu-edit-hover-text: #fff;
 $menu-edit-hover-background: #7bbae7;
-$title-color: #818181;
-$title-background: #eaeaea;
+$menu-text-color: #818181;
+$menu-title-background: #eaeaea;
 
 .menu {
 	width: 200px;
@@ -44,6 +44,11 @@ $title-background: #eaeaea;
 		}
 	
 	}
+	
+	ul.labels {
+		padding: 10px;
+		font-size: 0.85em;
+	}
 }
 
 .m-with-title {
@@ -51,15 +56,15 @@ $title-background: #eaeaea;
 	font-size: 1.1em;
 	background-color: $menu-edit-background;
 	border: 1px solid $menu-border;
-	@include border-radius(5px);
+	@include border-radius(6px);
 	@include shadow;
 	
 	h5 {
-		color: $title-color;
+		color: $menu-text-color;
 		text-align: center;
-		background-color: $title-background;
+		background-color: $menu-title-background;
 		border-bottom: 1px solid $menu-border;
-		@include border-top-radius(5px);
+		@include border-top-radius(6px);
 	}
 	
 	header {
@@ -113,11 +118,18 @@ button.position {
 
 p.save {
 	clear: both;
+	margin-top: -10px;
 	margin-bottom: 5px;
 	text-align: right;
 	
 	button {
 		margin-top: 5px;
+	}
+	button.edit-labels {
+		float: left;
+		margin-left: 15px;
+		color: $menu-text-color;
+		font-size: 1.05em;
 	}
 }
 
@@ -130,4 +142,3 @@ p.save {
 .m-move-to-position {
 	width: 90px;
 }
-

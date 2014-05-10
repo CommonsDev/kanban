@@ -50,7 +50,7 @@ $fieldset-border-color: #e6e6e6;
 	fieldset.naked {
 		border: none;
 	}
-	fieldset:last-child {
+	fieldset:last-of-type {
 		border: none;
 	}
 	legend {
@@ -110,6 +110,7 @@ $fieldset-border-color: #e6e6e6;
 	}
 	ul.date li {
 		margin-left: 20px;
+		line-height: 2.3em;
 	}
 
 	/* Boards */

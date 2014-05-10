@@ -1,11 +1,10 @@
 $label-color: #fff;
-$label-0-color: #5f4d48;
 $label-1-color: #cc3366;
 $label-2-color: #99ccff;
 $label-3-color: #66cc99;
 $label-4-color: #ffcc66;
 $label-5-color: #cc66cc;
-
+$label-6-color: #5f4d48;
 
 .task .labels {
 	margin-left: 20px;
@@ -21,6 +20,7 @@ $label-5-color: #cc66cc;
 	@include border-bottom-radius(3px);
 }
 
+button.labels,
 ul.labels a.label {
 	display: block;
 	width: 100%;
@@ -34,23 +34,21 @@ ul.labels a.label {
 	background-repeat: no-repeat;
 	background-position: 96% 50%;
 }
-ul.labels a.label.selected {
+ul.labels .selected {
 	background-image: url('/img/label-selected.png');
 }
 
-.label-0 { background-color: $label-0-color }
 .label-1 { background-color: $label-1-color }
 .label-2 { background-color: $label-2-color }
 .label-3 { background-color: $label-3-color }
 .label-4 { background-color: $label-4-color }
 .label-5 { background-color: $label-5-color }
+.label-6 { background-color: $label-6-color }
 
 
-#left-panel.settings fieldset.labels .label-0 { color: $label-0-color }
 #left-panel.settings fieldset.labels .label-1 { color: $label-1-color }
 #left-panel.settings fieldset.labels .label-2 { color: $label-2-color }
 #left-panel.settings fieldset.labels .label-3 { color: $label-3-color }
 #left-panel.settings fieldset.labels .label-4 { color: $label-4-color }
 #left-panel.settings fieldset.labels .label-5 { color: $label-5-color }
-
-
+#left-panel.settings fieldset.labels .label-6 { color: $label-6-color }
