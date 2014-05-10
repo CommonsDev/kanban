@@ -33,3 +33,10 @@
 	-moz-box-shadow: 0 15px 25px -20px $task-shadow-color;
 	box-shadow: 0 15px 25px -20px $task-shadow-color;
 }
+
+/* Progress bar */
+@mixin progress-bar($color) {
+	-moz-progress-bar: $color;
+	-webkit-progress-value: $color;
+	progress-bar: $color;
+}
