@@ -2,7 +2,7 @@
 
   <ul class="list" ng-repeat="list in board.lists" ng-controller="KanbanListCtrl" ui-sortable="columnSortableOptions" ng-model="list.cards">
   
-    <button class="list-edit"><img src="/img/buttons/list_edit.png" alt="Edit" /></button>
+    <button class="list-edit"><img src="./img/buttons/list_edit.png" alt="Edit" /></button>
     
     <h3 editable-text="list.title" onaftersave="updateList()">{{ list.title || "Sans nom" }}</h3>
     
@@ -89,13 +89,13 @@
   <!-- FIXME Template for the "Déplacer vers..." submenu -->
   <div class="menu m-with-title m-move-to">
   	<header>
-	  	<button class="back"><img src="/img/menu_back.png" alt="Back" /></button>
-	  	<button class="close"><img src="/img/menu_close.png" alt="Close" /></button>
+	  	<button class="back"><img src="./img/menu_back.png" alt="Back" /></button>
+	  	<button class="close"><img src="./img/menu_close.png" alt="Close" /></button>
 	  	<h5>Déplacer vers</h5>
 	  </header>
   	<button class="select list">Liste...</button>
   	<button class="select position">Position...</button>
-  	<p class="save"><button><img src="/img/buttons/save.png" alt="Save" /></button></p>
+  	<p class="save"><button><img src="./img/buttons/save.png" alt="Save" /></button></p>
   </div>
   <br />
 
@@ -119,11 +119,11 @@
   </div>
   <br />
 
-  <!-- FIXME Template for the "Déplacer vers..." submenu -->
+  <!-- FIXME Template for the Labels submenu -->
   <div class="menu m-with-title m-labels">
   	<header>
-	  	<button class="back"><img src="/img/menu_back.png" alt="Back" /></button>
-	  	<button class="close"><img src="/img/menu_close.png" alt="Close" /></button>
+	  	<button class="back"><img src="./img/menu_back.png" alt="Back" /></button>
+	  	<button class="close"><img src="./img/menu_close.png" alt="Close" /></button>
 	  	<h5>Labels</h5>
 	  </header>
 	  <ul class="labels">
@@ -134,7 +134,53 @@
 	  	<li><button class="labels label-5">Label 5</button></li>
 	  	<li><button class="labels label-6">Label 6</button></li>
 	  </ul>
-  	<p class="save"><button class="edit-labels">Editer les labels</button><button class="save"><img src="/img/buttons/save.png" alt="Save" /></button></p>
+  	<p class="save"><button class="edit-labels">Editer les labels</button><button class="save"><img src="./img/buttons/save.png" alt="Save" /></button></p>
+  </div>
+  <br />
+  
+  <!-- FIXME Template for the Members submenu -->
+  <div class="menu m-with-title m-members">
+  	<header>
+	  	<button class="back"><img src="./img/menu_back.png" alt="Back" /></button>
+	  	<button class="close"><img src="./img/menu_close.png" alt="Close" /></button>
+	  	<h5>Membres</h5>
+	  </header>
+	<form method="post" action="">
+		<input type="search" name="search-member" placeholder="Entrez un nom..." /><button><img src="./img/buttons/search.png" alt="Search" /></button>
+	</form>
+	<ul>
+		<li><button><img src="./img/uploads/members/member-1-s.jpg" alt="Member 1" /> Dave Grohl</button></li>
+		<li><button class="selected"><img src="./img/uploads/members/member-2-s.jpg" alt="Member 2" /> Flop Boar</button></li>
+		<li><button><img src="./img/uploads/members/member-3-s.jpg" alt="Member 3" /> Topo Nizio</button></li>
+	</ul>
+  	<p class="save"><button class="save"><img src="./img/buttons/save.png" alt="Save" /></button></p>
+  </div>
+  <br />
+
+  <!-- FIXME Template for the Members submenu -->
+  <div class="members-submenu">
+  	<img src="./img/members_submenu.png" class="submenu" alt="" />
+	  <div class="menu m-members-list">
+		<ul>
+			<li><button><img src="./img/uploads/members/member-1-s.jpg" alt="Member 1" /> Dave Grohl</button></li>
+			<li><button class="selected"><img src="./img/uploads/members/member-2-s.jpg" alt="Member 2" /> Flop Boar</button></li>
+			<li><button><img src="./img/uploads/members/member-3-s.jpg" alt="Member 3" /> Topo Nizio</button></li>
+		</ul>
+	  </div>
+  </div>
+  <br />
+
+  <!-- FIXME Template for the member's details -->
+  <div class="member-details">
+  	<button class="close"><img src="./img/buttons/close_large.png" alt="Close" /></button>
+  	<img src="./img/uploads/members/member-2-xl.jpg" alt="Member 2" />
+  	<dl>
+  		<dt>Name</dt>
+  		<dd class="name">Ellen Page</dd>
+  		<dt>Email</dt>
+  		<dd class="email">epage@gmail.com</dd>
+  	</dl>
+  	<button class="remove">Retirer de la tâche</button>
   </div>
   <br />
 

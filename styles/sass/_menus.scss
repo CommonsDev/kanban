@@ -45,6 +45,55 @@ $menu-title-background: #eaeaea;
 	
 	}
 	
+	button, button img {
+		vertical-align: middle;
+	}
+
+	button.back, button.close {
+		width: 40px;
+	}
+	button.back {
+		float: left;
+		border-right: 1px solid $menu-border;
+	}
+	button.close {
+		float: right;
+		border-left: 1px solid $menu-border;
+	}
+	button.select {
+		margin: 10px;
+		padding: 7px 10px;
+		font-size: 1.05em;
+		text-align: left;
+		border: 1px solid $menu-border;
+		@include border-radius(4px);
+		@include shadow-subtle;
+	}
+	button.list {
+		float: left;
+		width: 150px;
+	}
+	button.position {
+		float: right;
+		width: 90px;
+	}
+
+	p.save {
+		clear: both;
+		margin-top: -10px;
+		margin-bottom: 5px;
+		text-align: right;
+	
+		button {
+			margin-top: 5px;
+		}
+		button.edit-labels {
+			float: left;
+			margin-left: 15px;
+			color: $menu-text-color;
+			font-size: 1.05em;
+		}
+	}	
 	ul.labels {
 		padding: 10px;
 		font-size: 0.85em;
@@ -80,57 +129,9 @@ $menu-title-background: #eaeaea;
 .m-move-to {
 	width: 285px;
 }
-.m-labels {
+.m-labels,
+.m-members {
 	width: 240px;
-}
-
-button.back, button.close {
-	width: 40px;
-	img {
-		vertical-align: middle;
-	}
-}
-button.back {
-	float: left;
-	border-right: 1px solid $menu-border;
-}
-button.close {
-	float: right;
-	border-left: 1px solid $menu-border;
-}
-button.select {
-	margin: 10px;
-	padding: 7px 10px;
-	font-size: 1.05em;
-	text-align: left;
-	border: 1px solid $menu-border;
-	@include border-radius(4px);
-	@include shadow-subtle;
-}
-button.list {
-	float: left;
-	width: 150px;
-}
-button.position {
-	float: right;
-	width: 90px;
-}
-
-p.save {
-	clear: both;
-	margin-top: -10px;
-	margin-bottom: 5px;
-	text-align: right;
-	
-	button {
-		margin-top: 5px;
-	}
-	button.edit-labels {
-		float: left;
-		margin-left: 15px;
-		color: $menu-text-color;
-		font-size: 1.05em;
-	}
 }
 
 .m-move-to-list, .m-move-to-position {
@@ -141,4 +142,47 @@ p.save {
 }
 .m-move-to-position {
 	width: 90px;
+}
+
+.m-members, .m-members-list {
+	li {
+		margin-bottom: 4px;
+	}
+	li button {
+		width: 100%;
+		text-align: left;
+		&.selected {
+			background: url('/img/members-selected.png') 95% 50% no-repeat;
+		}
+	}
+	li button img {
+		margin-right: 5px;
+	}
+}
+.m-members {
+	form {
+		padding: 15px 10px;
+		input[type=search] {
+			width: 179px;
+			padding: 6px 12px;
+		}
+	}
+}
+.m-members-list {
+	padding: 9px 7px 5px;
+	li button {
+		padding: 0;
+		&.selected {
+			background-position: 100% 50%;
+		}
+	}
+}
+.members-submenu {
+	position: relative;
+	padding-left: 8px;
+	img.submenu {
+		position: absolute;
+		top: 25%;
+		left: 0;
+	}
 }

@@ -76,14 +76,6 @@ $fieldset-border-color: #e6e6e6;
 	button.submit, button.submit img  {
 		vertical-align: middle;
 	}
-	input.search {
-		width: 100%;
-		padding: 9px 12px;
-		font-style: italic;
-		border: 1px solid $search-input-border-color;
-		background-color: $search-input-background-color;
-		@include border-radius(20px);
-	}
 	li {
 		line-height: 18px;
 	}

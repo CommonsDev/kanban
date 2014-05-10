@@ -1,10 +1,11 @@
 $member-small: 30px;
 $member-medium: 44px;
 $member-large: 50px;
+$member-border: #d5d5d5;
+$member-light: #818181;
 
 ul.members {
 
-	
 	li {
 		display: inline-block;
 		vertical-align: top;
@@ -32,4 +33,55 @@ ul.members {
 #right-panel.comments ul.members img {
 		width: $member-large;
 		height: $member-large;
+}
+
+.member-details {
+	display: inline-block;
+	width: auto;
+	padding: 10px;
+	font-size: 1.1em;
+	background-color: #fff;
+	border: 1px solid $member-border;
+	@include border-radius(5px);
+	@include shadow-subtle;
+	
+	button {
+		&.close {
+			float: right;
+			padding: 0;
+		}
+		&.remove {
+			padding: 0;
+			color: $member-light;
+			font-weight: bold;
+			text-align: left;
+		}
+	}
+	button.remove, dl {
+		display: block;
+		margin-left: 75px;
+	}
+	dl {
+		margin-right: 60px;
+		margin-bottom: 10px;
+	}
+	dt {
+		display: none;
+	}
+	dd {
+		padding-left: 3px;
+		line-height: 1.2em;
+	}
+	dd.name {
+		font-weight: bold;
+	}
+	dd.email {
+		color: $member-light;
+		font-style: italic;
+	}
+
+	img {
+		float: left;
+	}
+
 }
