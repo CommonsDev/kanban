@@ -14,13 +14,36 @@ p.percent {
 		float: left;
 		height: 12px;
 		width: 179px;
+	}
+	progress[value] {
+
+		/* Reset the default appearance */
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+
 		border: 1px solid $percent-border-color;
 		background-color: $percent-background-color;
 		@include border-radius(6px);
 		@include progress-bar($percent-completion-background-color);
+
 	}
-	progress[value] {
+	
+	/*
+		Chrome issue: Styles need to be on their own,
+		otherwise Chrome has styling issues...
+	*/
+	progress[value]::-webkit-progress-bar {
 		@include border-radius(6px);
+		background-color: $percent-background-color;
+	}
+	progress[value]::-webkit-progress-value {
+		@include border-radius(6px);
+		background-color: $percent-completion-background-color;
+	}
+	progress[value]::-moz-progress-bar { 
+		@include border-radius(6px);
+		background-color: $percent-completion-background-color;
 	}
 
 }
