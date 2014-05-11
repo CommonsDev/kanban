@@ -4,7 +4,7 @@ $input-border-color: #d5d5d5;
 
 #topbar {
 	margin-left: 60px;
-	padding: 11px 11px 9px 107px;
+	padding: 11px 11px 9px 50px;
 	color: $color;
 	background: $background-color url('/img/background/topbar-img-noise-50x50.png') repeat;
 }
@@ -19,12 +19,9 @@ $input-border-color: #d5d5d5;
 	display: inline-block;
 }
 #topbar h1 {
-	margin: 0;
+	margin: 0 64px 0 0;
 	font-size: 1.2em;
 	font-weight: bold;
-}
-#topbar form {
-	margin-left: 64px;
 }
 #topbar input {
 	vertical-align: middle;
