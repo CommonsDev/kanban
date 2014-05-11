@@ -1,7 +1,7 @@
 angular.element(document).on('ready page:load', ->
-        angular.module('kanban', ['kanban.controllers', 'kanban.services'])
+        angular.module('kanban', ['kanban.controllers', 'kanban.services', 'kanban.directives'])
 
-        angular.module('unisson_kanban', ['kanban', 'ui.router', 'ngAnimate', 'restangular', 'angular-unisson-auth', 'xeditable', 'ui.sortable'])
+        angular.module('unisson_kanban', ['kanban', 'ui.router', 'ngAnimate', 'restangular', 'angular-unisson-auth', 'xeditable', 'ui.sortable', 'chieffancypants.loadingBar'])
 
         # CORS
         .config(['$httpProvider', ($httpProvider) ->

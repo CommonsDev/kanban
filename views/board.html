@@ -2,46 +2,35 @@
 
   <ul class="list" ng-repeat="list in board.lists" ng-controller="KanbanListCtrl" ui-sortable="columnSortableOptions" ng-model="list.cards">
   
-    <button class="list-edit"><img src="./img/buttons/list_edit.png" alt="Edit" /></button>
+    <button ng-click="showListActions=!showListActions" class="list-edit"><img src="./img/buttons/list_edit.png" alt="Edit" /></button>
+
+    <!-- FIXME Template for the list menu -->
+    <div class="menu" ng-show="showListActions">
+      <ul>
+  	<li><button ng-click="deleteList()">Supprimer la liste</button></li>
+  	<!-- <li class="submenu"><a href="">Déplacer vers</a></li> -->
+  	<!-- <li><a href="">Copier la liste</a></li> -->
+  	<!-- <li><a href="">Archiver la liste</a></li> -->
+      </ul>
+    </div>
+
     
     <h3 editable-text="list.title" onaftersave="updateList()">{{ list.title || "Sans nom" }}</h3>
-    
-    <li class="task" ng-repeat="card in list.cards | filter:searchForm.term | filter:filterWithLabels | filter:filterWithUsers">
-      <ul class="labels"> <!-- FIXME -->
-	<li ng-repeat="label in card.labels" class="label-{{ $index }}"></li>
-      </ul><!-- .labels -->
 
-      <p class="photos">
-	<img ng-repeat="photo in card.photos" src="./img/uploads/photos/xantia_01.jpg" alt="Photo of my Xantia" /> <!-- FIXME -->
-      </p> <!-- .photos -->
+    <ul ng-repeat="card in list.cards | filter:searchForm.term | filter:filterWithLabels | filter:filterWithUsers">
+      <li>
+	<kanban-card board="board" card="card"></kanban-card>
+      </li>
+    </ul>
 
-      <p><a ui-sref="kanban.card_detail({cardId: card.id})">{{ card.title }}<em>Modifiée le {{ card.modified_date|date:medium }}</em></a></p>
-
-      <div ng-show="card.completion >= 0" ng-switch="card.completion">
-	<p ng-switch-when="100" class="done">Terminé</p>
-	<p ng-switch-default class="percent"><progress value="{{ card.completion }}" max="100"></progress>{{ card.completion }}%</p>
-      </div>
-
-      <ul class="members">
-	<li ng-repeat="user in card.assigned_to">
-	  <img ng-show="!user.mugshot" ng-src="http://sigil.cupcake.io/{{ user.username }}.png" alt="{{ user.username }}" />
-	  <img ng-show="user.mugshot" ng-src="{{ user.mugshot }}" alt="{{ user.username }}" />
-	</li>
-      </ul><!-- .members -->
-
-      <ul class="meta">
-	<li ng-show="card.attachment_count" class="attachments">{{ card.attachment_count }}</li>
-	<li ng-show="card.comment_count" class="comments">{{ card.comment_count }}</li>
-      </ul><!-- .meta -->
-    </li><!-- .task -->
 
     <form class="add_task">
       <fieldset ng-show="showAddTask">
 	<input type="text" ng-model="newCardForm.title" id="task_name" placeholder="Nom de votre tâche..." required/>
 	<ul class="members">
 	  <li>
-	    <img ng-show="!user.mugshot" ng-src="http://sigil.cupcake.io/{{ authVars.user.username }}.png" alt="{{ user.username }}" />
-	    <img ng-show="user.mugshot" ng-src="{{ user.mugshot }}" alt="{{ authVars.user.username }}" />
+	    <img ng-if="!user.mugshot" ng-src="http://sigil.cupcake.io/{{ authVars.user.username }}.png" alt="{{ user.username }}" />
+	    <img ng-if="user.mugshot" ng-src="{{ user.mugshot }}" alt="{{ authVars.user.username }}" />
 	  </li>
 	</ul><!-- .members -->
       </fieldset>
@@ -65,98 +54,6 @@
     </fieldset>
   </form>
   
-  <!-- FIXME Template for the list menu -->
-  <div class="menu">
-  	<ul>
-  		<li><a href="">Supprimer la liste</a></li>
-  		<li class="submenu"><a href="">Déplacer vers</a></li>
-  		<li><a href="">Copier la liste</a></li>
-  		<li><a href="">Archiver la liste</a></li>
-  	</ul>
-  </div>
-  <br />
-  
-  <!-- FIXME Template for the task menu -->
-  <div class="menu">
-  	<ul>
-  		<li class="submenu"><a href="">Assigner un membre</a></li>
-  		<li class="submenu"><a href="">Labels</a></li>
-  		<li class="submenu"><a href="">Déplacer vers</a></li>
-  	</ul>
-  </div>
-  <br />
-  
-  <!-- FIXME Template for the "Déplacer vers..." submenu -->
-  <div class="menu m-with-title m-move-to">
-  	<header>
-	  	<button class="back"><img src="./img/menu_back.png" alt="Back" /></button>
-	  	<button class="close"><img src="./img/menu_close.png" alt="Close" /></button>
-	  	<h5>Déplacer vers</h5>
-	  </header>
-  	<button class="select list">Liste...</button>
-  	<button class="select position">Position...</button>
-  	<p class="save"><button><img src="./img/buttons/save.png" alt="Save" /></button></p>
-  </div>
-  <br />
-
-  <!-- FIXME Template for the "Déplacer vers..." list submenu -->
-  <div class="menu m-move-to-list">
-  	<ul>
-  		<li><a href="">En cours</a></li>
-  		<li><a href="">Terminé</a></li>
-  	</ul>
-  </div>
-  <br />
-  
-  <!-- FIXME Template for the "Déplacer vers..." position submenu -->
-  <div class="menu m-move-to-position">
-  	<ul>
-  		<li><a href="">1 <sup>ère</sup></a></li>
-  		<li><a href="">2 <sup>ème</sup></a></li>
-  		<li><a href="">3 <sup>ème</sup></a></li>
-  		<li><a href="">4 <sup>ème</sup></a></li>
-  	</ul>
-  </div>
-  <br />
-
-  <!-- FIXME Template for the Labels submenu -->
-  <div class="menu m-with-title m-labels">
-  	<header>
-	  	<button class="back"><img src="./img/menu_back.png" alt="Back" /></button>
-	  	<button class="close"><img src="./img/menu_close.png" alt="Close" /></button>
-	  	<h5>Labels</h5>
-	  </header>
-	  <ul class="labels">
-	  	<li><button class="labels label-1 selected">Label 1</button></li>
-	  	<li><button class="labels label-2">Label 2</button></li>
-	  	<li><button class="labels label-3 selected">Label 3</button></li>
-	  	<li><button class="labels label-4">Label 4</button></li>
-	  	<li><button class="labels label-5">Label 5</button></li>
-	  	<li><button class="labels label-6">Label 6</button></li>
-	  </ul>
-  	<p class="save"><button class="edit-labels">Editer les labels</button><button class="save"><img src="./img/buttons/save.png" alt="Save" /></button></p>
-  </div>
-  <br />
-  
-  <!-- FIXME Template for the Members submenu -->
-  <div class="menu m-with-title m-members">
-  	<header>
-	  	<button class="back"><img src="./img/menu_back.png" alt="Back" /></button>
-	  	<button class="close"><img src="./img/menu_close.png" alt="Close" /></button>
-	  	<h5>Membres</h5>
-	  </header>
-	<form method="post" action="">
-		<input type="search" name="search-member" placeholder="Entrez un nom..." /><button><img src="./img/buttons/search.png" alt="Search" /></button>
-	</form>
-	<ul>
-		<li><button><img src="./img/uploads/members/member-1-s.jpg" alt="Member 1" /> Dave Grohl</button></li>
-		<li><button class="selected"><img src="./img/uploads/members/member-2-s.jpg" alt="Member 2" /> Flop Boar</button></li>
-		<li><button><img src="./img/uploads/members/member-3-s.jpg" alt="Member 3" /> Topo Nizio</button></li>
-	</ul>
-  	<p class="save"><button class="save"><img src="./img/buttons/save.png" alt="Save" /></button></p>
-  </div>
-  <br />
-
   <!-- FIXME Template for the Members submenu -->
   <div class="members-submenu">
   	<img src="./img/members_submenu.png" class="submenu" alt="" />
@@ -170,18 +67,6 @@
   </div>
   <br />
 
-  <!-- FIXME Template for the member's details -->
-  <div class="member-details">
-  	<button class="close"><img src="./img/buttons/close_large.png" alt="Close" /></button>
-  	<img src="./img/uploads/members/member-2-xl.jpg" alt="Member 2" />
-  	<dl>
-  		<dt>Name</dt>
-  		<dd class="name">Ellen Page</dd>
-  		<dt>Email</dt>
-  		<dd class="email">epage@gmail.com</dd>
-  	</dl>
-  	<button class="remove">Retirer de la tâche</button>
-  </div>
   <br />
 
 </div><!-- #lists -->

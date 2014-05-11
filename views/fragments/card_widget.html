@@ -1,0 +1,129 @@
+<div class="task">
+  <ul class="labels"> <!-- FIXME -->
+    <li ng-repeat="label in card.labels" class="label-{{ $index }}"></li>
+  </ul><!-- .labels -->
+
+  <p class="photos">
+    <img ng-repeat="photo in card.photos" src="./img/uploads/photos/xantia_01.jpg" alt="Photo of my Xantia" /> <!-- FIXME -->
+  </p> <!-- .photos -->
+
+  <p class="details">
+    <a ui-sref="kanban.card_detail({cardId: card.id})">{{ card.title }}
+      <em>Modifiée le {{ card.modified_date|date:medium }}</em>
+    </a>
+
+    <button ng-click="toggleMenu()">&#x25BC;</button>
+
+    <!-- FIXME Template for the task menu -->
+    <div class="menu-placeholder" ng-if="showCardMenu" ng-switch="cardMenuState">
+
+      <!-- Main menu -->
+      <div class="menu m-with-title" ng-switch-when="actions">
+  	<header>
+	  <button ng-click="toggleMenu()" class="close"><img src="img/menu_close.png" alt="Close" /></button>
+	  <h5>Agir sur la carte</h5>
+	</header>
+
+  	<ul>
+  	  <li class="submenu"><button ng-click="toMenuState('members')">Assigner un membre</button></li>
+  	  <li class="submenu"><button ng-click="toMenuState('labels')">Labels</button></li>
+  	  <li class="submenu"><button ng-click="toMenuState('moveTo')">Déplacer vers</button></li>
+  	</ul>
+      </div>
+
+      <!-- Move To Panel -->
+      <div class="menu m-with-title m-move-to" ng-switch-when="moveTo">
+  	<header>
+	  <button ng-click="toMenuState('actions')" class="back"><img src="img/menu_back.png" alt="Back" /></button>
+	  <button ng-click="toggleMenu()" class="close"><img src="img/menu_close.png" alt="Close" /></button>
+	  <h5>Déplacer vers</h5>
+	</header>
+  	<select>
+	  <option value="{{ list.id }}" ng-repeat="list in board.lists">{{ list.title }}</option>
+	</select>
+  	<select>
+  	  <option value="top">En haut</option>
+  	  <option value="bottom">En bas</option>
+	</select>
+  	<p class="save"><button><img src="img/buttons/save.png" alt="Save" /></button></p>
+      </div>
+
+	
+      <!-- FIXME Template for the Labels submenu -->
+      <div class="menu m-with-title m-labels" ng-switch-when="labels">
+  	<header>
+	  <button ng-click="toMenuState('actions')" class="back"><img src="img/menu_back.png" alt="Back" /></button>
+	  <button ng-click="toggleMenu()" class="close"><img src="img/menu_close.png" alt="Close" /></button>
+	  <h5>Labels</h5>
+	</header>
+	<ul class="labels">
+	  <li ng-repeat="label in board.labels">
+	    <label for="filter-label-{{ $index }}">{{ label.label }}</label>
+	    <input type="checkbox" ng-click="" id="card-{{ card.id}}-label-{{ $index }}" class="label label-{{ $index }}">
+	  </li>
+	</ul>
+  	<p class="save"><button ng-click="" class="edit-labels">Editer les labels</button></p>
+      </div>
+    
+      <!-- FIXME Template for the Members submenu -->
+      <div class="menu m-with-title m-members" ng-switch-when="members">
+  	<header>
+	  <button ng-click="toMenuState('actions')" class="back"><img src="./img/menu_back.png" alt="Back" /></button>
+	  <button ng-click="toggleMenu()" class="close"><img src="./img/menu_close.png" alt="Close" /></button>
+	  <h5>Membres</h5>
+	  </header>
+
+	<input type="search" ng-model="member_filter" name="search-member" placeholder="Entrez un nom..." />
+
+	<ul>
+	  <li ng-repeat="user in board.members | filter:member_filter">
+	    <label for="filter-user-{{ $index }}">
+	      <img ng-show="user.mugshot" ng-src="{{ user.mugshot }}" alt="{{ user.username }}" />
+	      <img ng-show="!user.mugshot" ng-src="http://sigil.cupcake.io/{{ user.username }}.png?w=24" alt="{{ user.username }}" />
+	      {{ user.first_name || user.username }}
+	    </label>
+	    <input type="checkbox" id="card-{{ card.id }}-user-{{ $index }}">
+	  </li>
+	</ul>
+      </div>
+
+    </div> <!-- .menu-placeholder -->
+
+  </p> <!-- .details -->
+
+  <!-- 
+       <div ng-if="card.completion >= 0" ng-switch="card.completion">
+	 <p ng-switch-when="100" class="done">Terminé</p>
+	 <p ng-switch-default class="percent"><progress value="{{ card.completion }}" max="100"></progress>{{ card.completion }}%</p>
+       </div>
+       -->
+  
+  <ul class="members">
+    <li ng-click="showUserDetail=!showUserDetail" ng-repeat="user in card.assigned_to">
+      <img ng-if="!user.mugshot" ng-src="http://sigil.cupcake.io/{{ user.username }}.png" alt="{{ user.username }}" />
+      <img ng-if="user.mugshot" ng-src="{{ user.mugshot }}" alt="{{ user.username }}" />
+
+      <!-- Member detail popup -->
+      <div ng-if="showUserDetail" class="member-details">
+  	<button ng-click="showUserDetail=false" class="close"><img src="./img/buttons/close_large.png" alt="Close" /></button>
+	<img ng-if="!user.mugshot" ng-src="http://sigil.cupcake.io/{{ user.username }}.png?w=60" alt="{{ user.username }}" />
+	<img ng-if="user.mugshot" ng-src="{{ user.mugshot }}" alt="{{ user.username }}" />
+  	<dl>
+  	  <dt>Name</dt>
+  	  <dd ng-if="user.first_name || user.last_name" class="name">{{ user.first_name }} {{ user.last_name }}</dd>
+  	  <dd ng-if="!user.first_name && !user.last_name" class="name">{{ user.username }}</dd>
+  	  <dt>Email</dt>
+  	  <dd class="email">{{ user.email }}</dd>
+  	</dl>
+  	<button class="remove">Retirer de la carte</button>
+      </div>
+    </li>
+  </ul><!-- .members -->
+
+  <!-- Meta (comment count, ...) -->
+  <ul class="meta">
+    <li ng-if="card.attachment_count" class="attachments">{{ card.attachment_count }}</li>
+    <li ng-if="card.comment_count" class="comments">{{ card.comment_count }}</li>
+  </ul><!-- .meta -->
+
+</div><!-- .task -->

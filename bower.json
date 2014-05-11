@@ -32,6 +32,7 @@
     "restangular": "~1.4.0",
     "angular-unisson-auth": "~0.1.4",
     "angular-xeditable": "~0.1.8",
-    "angular-ui-sortable": "~0.12.5"
+    "angular-ui-sortable": "~0.12.5",
+    "angular-loading-bar": "~0.4.1"
   }
 }

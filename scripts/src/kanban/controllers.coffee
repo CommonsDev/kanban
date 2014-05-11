@@ -99,6 +99,7 @@ class KanbanListCtrl
 
                 @$scope.newCardSubmit = this.newCardSubmit
                 @$scope.updateList = this.updateList
+                @$scope.deleteList = this.deleteList
 
         newCardSubmit: () =>
                 @KanbanCards.post(@$scope.newCardForm).then((card) =>
@@ -108,6 +109,12 @@ class KanbanListCtrl
 
         updateList: () =>
                 @KanbanLists.one(@$scope.list.id).patch({title: @$scope.list.title})
+
+        deleteList: () =>
+                console.debug("deleting list...")
+                @KanbanLists.one(@$scope.list.id).remove().then(() =>
+                        @$scope.board.lists = _.without(@$scope.board.lists, @$scope.list)
+                )
 
 class KanbanCardCtrl
         constructor: (@$scope, @$state, @$stateParams, @KanbanCards, @KanbanTasks, @kanbanService) ->
