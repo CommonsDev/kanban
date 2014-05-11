@@ -9,8 +9,8 @@
       <legend>Par Labels</legend>
       <ul class="labels">
 	<li ng-repeat="label in board.labels">
-	  <label for="filter-label-{{ $index }}">{{ label.label }}</label>
 	  <input type="checkbox" ng-click="updateLabelFilter($event, label.resource_uri)" id="filter-label-{{ $index }}" class="label label-{{ $index }}">
+	  <label for="filter-label-{{ $index }}" class="label-{{ $index }}">{{ label.label }}</label>
 	</li>
       </ul>
     </fieldset>

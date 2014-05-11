@@ -21,7 +21,8 @@ $label-5-color: #5f4d48;
 }
 
 button.labels,
-ul.labels a.label {
+ul.labels a.label,
+ul.labels label {
 	display: block;
 	width: 100%;
 	margin: 0 0 5px 0;
@@ -35,7 +36,7 @@ ul.labels a.label {
 	background-position: 96% 50%;
 }
 ul.labels .selected {
-	background-image: url('/img/label-selected.png');
+	background-image: url('/img/label_selected.png');
 }
 
 .label-0 { background-color: $label-0-color }
