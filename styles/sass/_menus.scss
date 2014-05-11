@@ -19,10 +19,13 @@ $menu-title-background: #eaeaea;
 	
 		li {
 		
-			a {
+			a, button {
 			
 				display: block;
+				width: 100%;
+				font-size: 1em;
 				padding: 7px;
+				text-align: left;
 				color: $menu-edit-link;
 				text-decoration: none;
 				@include border-radius(4px);
@@ -33,7 +36,7 @@ $menu-title-background: #eaeaea;
 				background:  url('/img/menu_arrow.png') 95% 50% no-repeat;
 			}
 			
-			a:hover {
+			a:hover, button:hover {
 				color: $menu-edit-hover-text;
 				background-color: $menu-edit-hover-background;
 			}
@@ -50,7 +53,6 @@ $menu-title-background: #eaeaea;
 	}
 
 	button.back, button.close {
-		width: 40px;
 	}
 	button.back {
 		float: left;
@@ -58,6 +60,7 @@ $menu-title-background: #eaeaea;
 	}
 	button.close {
 		float: right;
+		text-align: center;
 		border-left: 1px solid $menu-border;
 	}
 	button.select {
@@ -128,7 +131,14 @@ $menu-title-background: #eaeaea;
 			height: 3em;
 			font-size: 1em;
 			line-height: 3em;
-			padding-bottom: 0.5em;
+		}
+	}
+	
+	ul {
+		margin: 10px 0;
+		li button {
+			margin: 2% 2% 0 4%;
+			width: 92%;
 		}
 	}
 }
@@ -174,6 +184,9 @@ $menu-title-background: #eaeaea;
 			padding: 6px 12px;
 		}
 	}
+}
+.task:hover .m-members ul label {
+	color: $menu-text-color;
 }
 .m-members-list {
 	padding: 9px 7px 5px;
