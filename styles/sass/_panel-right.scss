@@ -20,7 +20,7 @@ $files-hover-color: #efefef;
 	padding: 70px 28px 30px;
 	
 	h2 {
-		padding: 32px 0 20px 38px;
+		padding: 28px 0 20px 38px;
 		color: $h2-color;
 		font-size: 1.5em;
 		background-position: center left;
@@ -122,6 +122,9 @@ $files-hover-color: #efefef;
 				display: block;
 			}
 		}
+		progress {
+			margin-right: 20px;
+		}
 		p.updated {
 			color: $updated-color;
 			font-size: 1.05em;
@@ -149,12 +152,16 @@ $files-hover-color: #efefef;
 			border: none;
 			a {
 				padding-right: 25px;
-				line-height: 1.5em;
+				line-height: 1em;
 				background-position: 1% 50%;
 			}
 			&:hover a {
 				background-color: transparent;
 			}
+		}
+		button.label-add {
+			padding: 0;
+			font-weight: bold;
 		}
 		.task-delete {
 			padding-right: 20px;
@@ -172,13 +179,23 @@ $files-hover-color: #efefef;
 			padding-right: 70px;
 			padding: 5px 14px;
 			@include border-radius(3px);
+			
+			input[type=text] {
+				float: left;
+				width: 220px;
+			}
+			button.member-add {
+				float: left;
+				img {
+					border: 1px solid $input-border-color;
+				}
+			}
 		}
-		form:nth-child(even) {
+		form:nth-child(odd) {
 			background-color: $form-background-color;
 		}
 		fieldset {
 			display: inline-block;
-			width: 70%;
 			vertical-align: top;
 
 			p {
@@ -195,15 +212,6 @@ $files-hover-color: #efefef;
 		fieldset + fieldset {
 			width: 25%;
 		}
-		select {
-			background-color: #fff;
-			border: none;
-			color: #444;
-			
-			option {
-				line-height: 2em;
-			}
-		}
 		button.edit {
 			display: none;
 			position: absolute;
@@ -212,6 +220,9 @@ $files-hover-color: #efefef;
 		}
 		form:hover button.edit {
 			display: block;
+		}
+		p.percent {
+			clear: left;
 		}
 	}
 	

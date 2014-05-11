@@ -7,33 +7,14 @@
   <form>
     <fieldset>
       <input type="text" ng-model="newTaskForm.title" name="subtask-title" placeholder="Titre de la sous-tâche" />
-      <button><img src="/img/buttons/member_add.png" alt="Add member" /></button>
-      <br />
-      <p class="percent"><select name="subtask-percent">
-	  <option value="10">10%</option>
-	  <option value="20">20%</option>
-	  <option value="30">30%</option>
-	  <option value="40">40%</option>
-	</select><span><span class="p-10"></span></span></p>
-      <br />
-      <br />
-      <br />
-      <div class="select-percent">
-	<input type="text" name="test" value="50%" class="field" readonly="readonly" />
-	<ul class="list">
-	  <li>0%</li>
-	  <li>10%</li>
-	  <li>20%</li>
-	  <li>30%</li>
-	  <li>40%</li>
-	  <li>50%</li>
-	  <li>60%</li>
-	  <li>70%</li>
-	</ul>
+      <button class="member-add"><img src="/img/buttons/member_add.png" alt="Add member" /></button>
+      <p class="percent">
+      	<progress value="50" max="100"></progress>
+	<button>50%</button>
       </div>
     </fieldset>
     <fieldset>
-      <button type="reset" name="cancel"><img src="/img/buttons/task_cancel.png" alt="Cancel" /></button>
+      <button type="reset" name="cancel"><img src="/img/buttons/close_large.png" alt="Cancel" /></button>
       <button ng-click="submitNewTask()" name="add_task"><img src="/img/buttons/save.png" alt="Add task" /></button>
     </fieldset>
   </form>
@@ -43,53 +24,16 @@
     <fieldset>
       <p>{{ task.title }}</p>
       <p>Modifié le FIXME</p>
-      <p class="percent">70%<span><span class="p-70"></span></span></p>
+      <p class="percent">70%<progress value="70" max="100"></progress></p>
     </fieldset>
     <fieldset>
       <ul class="members">
 	<li><img src="/img/uploads/members/member-1-l.jpg" alt="Guillaume" /></li>
 	<li><button><img src="/img/buttons/member_add.png" alt="Add member" /></button></li>
       </ul>
-      <button type="reset" name="cancel"><img src="/img/buttons/task_cancel.png" alt="Cancel" /></button>
+      <button type="reset" name="cancel"><img src="/img/buttons/close_large.png" alt="Cancel" /></button>
       <button type="submit" name="add_task"><img src="/img/buttons/save.png" alt="Add task" /></button>
     </fieldset>
   </form>
   
 </div><!-- #right-panel -->
-
-<script type="text/javascript">
-  (function($){
-  $.fn.styleddropdown = function(){
-  return this.each(function(){
-  var obj = $(this)
-  obj.find('.field').click(function() { //onclick event, 'list' fadein
-  obj.find('.list').fadeIn(400);
-  
-  $(document).keyup(function(event) { //keypress event, fadeout on 'escape'
-  if(event.keyCode == 27) {
-  obj.find('.list').fadeOut(400);
-  }
-  });
-  
-  obj.find('.list').hover(function(){ },
-  function(){
-  $(this).fadeOut(400);
-  });
-  });
-  
-  obj.find('.list li').click(function() { //onclick event, change field value with selected 'list' item and fadeout 'list'
-  obj.find('.field')
-  .val($(this).html())
-  .css({
-  'background':'#fff',
-  'color':'#333'
-  });
-  obj.find('.list').fadeOut(400);
-  });
-  });
-  };
-  })(jQuery);
-  $(function(){
-  $('.select-percent').styleddropdown();
-  });
-</script>

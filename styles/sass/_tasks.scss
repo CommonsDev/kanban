@@ -91,10 +91,10 @@ $task-text-input-background-color: #e6e6e6;
 			padding-left: 18px;
 		
 			&.attachments {
-				background: url('/img/attachment.png') center left no-repeat;
+				background: url('/img/attachment.png') 0 57% no-repeat;
 			}
 			&.comments {
-				background: url('/img/comment.png') center left no-repeat;
+				background: url('/img/comment.png') 0 57% no-repeat;
 			}
 		}
 	}
