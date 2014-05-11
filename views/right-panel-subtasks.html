@@ -21,7 +21,7 @@
 	  <li ng-repeat="task in card.tasks">
 	    <button class="edit"><img src="./img/buttons/edit.png" alt="Edit" /></button>
 	    <fieldset>
-	      <h5 editable-text="task.title" ng-class="{done: 'task.done'}">{{ task.title }}</h5>
+	      <h5 editable-text="task.title" ng-class="{done: task.done}">{{ task.title }}</h5>
 	      <!--
 	      <ul class="members">
 		<li><img src="/img/uploads/members/member-1-l.jpg" alt="Guillaume" /></li>
