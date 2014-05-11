@@ -39,24 +39,43 @@ angular.element(document).on('ready page:load', ->
                         controller: 'KanbanBoardCtrl'
                 )
 
-                $stateProvider.state('home.my_boards',
+                .state('home.my_boards',
                         url: '/myboards',
                         templateUrl: "views/kanban_new_sidebar.html",
                         controller: 'KanbanBoardCtrl'
                 )
 
-                $stateProvider.state('kanban',
+                .state('kanban',
                         url: '/:kanbanId',
                         templateUrl: "views/kanban_detail.html",
                         controller: 'KanbanBoardCtrl'
                 )
 
-
-
-                $stateProvider.state('kanban.card_detail',
+                .state('kanban.card',
+                        abstract: true
                         url: '/:cardId',
                         templateUrl: "views/card_detail.html",
-                        controller: 'KanbanCardCtrl'
+                        controller: 'KanbanCardDetailCtrl'
+                )
+
+                .state('kanban.card.detail',
+                        url: '/detail',
+                        templateUrl: "views/right-panel-details.html",
+                )
+
+                .state('kanban.card.tasks',
+                        url: '/tasks',
+                        templateUrl: "views/right-panel-subtasks.html"
+                )
+
+                .state('kanban.card.attachments',
+                        url: '/attachments',
+                        templateUrl: "views/right-panel-attachments.html"
+                )
+
+                .state('kanban.card.comments',
+                        url: '/comments',
+                        templateUrl: "views/right-panel-comments.html"
                 )
         ])
 

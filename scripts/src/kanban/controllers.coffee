@@ -116,7 +116,7 @@ class KanbanListCtrl
                         @$scope.board.lists = _.without(@$scope.board.lists, @$scope.list)
                 )
 
-class KanbanCardCtrl
+class KanbanCardDetailCtrl
         constructor: (@$scope, @$state, @$stateParams, @KanbanCards, @KanbanTasks, @kanbanService) ->
                 @$scope.card = @KanbanCards.one(@$stateParams.cardId).get().$object
 
@@ -154,4 +154,4 @@ class KanbanCardCtrl
 module.controller("KanbanBoardCtrl", ['$scope', '$state', '$stateParams', 'KanbanBoards', 'KanbanLists', 'KanbanTasks', 'kanbanService', KanbanBoardCtrl])
 module.controller("KanbanListCtrl", ['$scope', 'KanbanLists', 'KanbanCards', KanbanListCtrl])
 module.controller("KanbanCardCommentCtrl", ['$scope', 'KanbanCardComments', KanbanCardCommentCtrl])
-module.controller("KanbanCardCtrl", ['$scope', '$state', '$stateParams', 'KanbanCards', 'KanbanTasks', 'kanbanService', KanbanCardCtrl])
+module.controller("KanbanCardDetailCtrl", ['$scope', '$state', '$stateParams', 'KanbanCards', 'KanbanTasks', 'kanbanService', KanbanCardDetailCtrl])

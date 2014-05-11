@@ -1,40 +1,36 @@
 <div class="subtasks">
-	<h2>Sous-tâches</h2>
+	<h2>Tâches</h2>
 
-	<button class="primary">Ajouter une sous-tâche</button>
-	<hr />
+	<p class="percent">{{ card.tasks_done_count }} / {{ card.tasks.length }}<progress value="{{ card.tasks_done_count }}" max="{{ card.tasks.length }}"></progress></p>
+
+	<button ng-click="showAddTask=!showAddTask" class="primary">Ajouter une Tâche</button>
 	
-	<form class="task-add">
-		<fieldset>
-			<input type="text" ng-model="newTaskForm.title" name="subtask-title" placeholder="Titre de la sous-tâche" />
-			<p class="percent">
-				<progress value="50" max="100"></progress>
-				<button>50%</button>
-			</p>
-		</fieldset>
-		<fieldset>
-			<button class="member-add"><img src="/img/buttons/member_add_small.png" alt="Add member" /></button><br />
-			<button type="reset" name="cancel"><img src="/img/buttons/close_large.png" alt="Cancel" /></button>
-			<button ng-click="submitNewTask()" name="add_task"><img src="/img/buttons/save.png" alt="Add task" /></button>
-		</fieldset>
+	<form ng-show="showAddTask" class="task-add">
+	  <fieldset>
+	    <input type="text" ng-model="newTaskForm.title" name="subtask-title" placeholder="Titre de la sous-tâche" />
+	  </fieldset>
+	  <fieldset>
+	    <button class="member-add"><img src="/img/buttons/member_add_small.png" alt="Add member" /></button><br />
+	    <button ng-click="showAddTask=false" type="reset" name="cancel"><img src="/img/buttons/close_large.png" alt="Cancel" /></button>
+	    <button ng-click="submitNewTask()" name="add_task"><img src="/img/buttons/save.png" alt="Add task" /></button>
+	  </fieldset>
 	</form>
 	<hr />
 
-	<form method="post" action="" ng-repeat="task in card.tasks">
-		<button class="edit"><img src="./img/buttons/edit.png" alt="Edit" /></button>
-		<fieldset>
-			<h5>{{ task.title }}</h5>
-			<p class="modified">Modifié le FIXME</p>
-			<p class="percent">70%<progress value="70" max="100"></progress></p>
-		</fieldset>
-		<fieldset>
-			<ul class="members">
-				<li><img src="/img/uploads/members/member-1-l.jpg" alt="Guillaume" /></li>
-				<li><button class="member-add"><img src="/img/buttons/member_add_small.png" alt="Add member" /></button></li>
-			</ul>
-			<button type="reset" name="cancel"><img src="/img/buttons/close_large.png" alt="Cancel" /></button>
-			<button type="submit" name="add_task"><img src="/img/buttons/save.png" alt="Add task" /></button>
-		</fieldset>
-	</form>
+	<ul>
+	  <li ng-repeat="task in card.tasks">
+	    <button class="edit"><img src="./img/buttons/edit.png" alt="Edit" /></button>
+	    <fieldset>
+	      <h5 editable-text="task.title">{{ task.title }}</h5>
+	      <p class="modified">Modifié le FIXME</p>
+	    </fieldset>
+	    <fieldset>
+	      <ul class="members">
+		<li><img src="/img/uploads/members/member-1-l.jpg" alt="Guillaume" /></li>
+		<li><button class="member-add"><img src="/img/buttons/member_add_small.png" alt="Add member" /></button></li>
+	      </ul>
+	    </fieldset>
+	  </li>
+	</ul>
 
 </div><!-- #right-panel -->

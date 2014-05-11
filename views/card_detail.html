@@ -1,18 +1,7 @@
 <!-- right sidebar -->
 <div id="right-panel">
   <ng-include src="'views/right-panel-menu.html'"></ng-include>
-  <ng-switch on="sidebar.tab">
-    <div ng-switch-when="details">
-      <ng-include src="'views/right-panel-details.html'"></ng-include>
-    </div>
-    <div ng-switch-when="subtasks">
-      <ng-include src="'views/right-panel-subtasks.html'"></ng-include>
-    </div>
-    <div ng-switch-when="attachments">
-      <ng-include src="'views/right-panel-attachments.html'"></ng-include>
-    </div>
-    <div ng-switch-when="comments">
-      <ng-include src="'views/right-panel-comments.html'"></ng-include>
-    </div>
-  </ng-switch>
+  <ui-view>
+    <ng-include src="views/right-panel-details.html"/>
+  </ui-view>
 </div>
