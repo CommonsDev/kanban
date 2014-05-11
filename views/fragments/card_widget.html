@@ -12,7 +12,7 @@
       <em>Modifiée le {{ card.modified_date|date:medium }}</em>
     </a>
 
-    <button ng-click="toggleMenu()">&#x25BC;</button>
+    <button ng-click="toggleMenu()" class="task-edit"><img src="./img/buttons/task_edit.png" alt="Edit task" /></button>
 
     <!-- FIXME Template for the task menu -->
     <div class="menu-placeholder" ng-if="showCardMenu" ng-switch="cardMenuState">
