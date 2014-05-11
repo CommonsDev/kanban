@@ -24,7 +24,7 @@
     <fieldset class="labels">
       <legend>Renommer vos labels</legend>
       <div ng-repeat="label in board.labels">
-	<label for="label-{{ $index }}" class="label-{{ $index + 1 }}">{{ label.label }}</label>
+	<label for="label-{{ $index }}" class="label-{{ $index }}">{{ label.label }}</label>
 	<input type="text" ng-model="label.label" name="label-{{ $index }}" id="label-{{ $index }}" value="{{ label.label }}" />
       </div>
     </fieldset>
