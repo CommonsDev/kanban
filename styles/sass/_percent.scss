@@ -48,7 +48,7 @@ p.percent {
 	}
 	
 	button {
-		padding: 5px 12px;
+		padding: 3px 9px 4px 10px;
 		font-size: 1.1em;
 		background-color: #fff;
 		border: 1px solid $percent-border-color;
@@ -69,23 +69,18 @@ p.percent {
 		margin-right: 20px;
 	}
 }
-#right-panel.subtasks p.percent {
+#right-panel .subtasks p.percent {
+	/* All need to be separated or Chrome has issues */
 	progress {
-		width: 70%;
-		margin-right: 10px;
-		background-color: $sidebar-percent-completion-background-color;
-		background-color: red;
+		background-color: $percent-background-color;
 	}
 	progress[value] {
-		background-color: $sidebar-percent-completion-background-color;
-		background-color: red;
+		background-color: $percent-background-color;
 	}
 	progress[value]::-webkit-progress-value {
 		background-color: $sidebar-percent-completion-background-color;
-		background-color: red;
 	}
 	progress[value]::-moz-progress-bar { 
 		background-color: $sidebar-percent-completion-background-color;
-		background-color: red;
 	}
 }

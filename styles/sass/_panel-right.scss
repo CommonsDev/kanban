@@ -173,34 +173,50 @@ $files-hover-color: #efefef;
 
 	div.subtasks {
 		h2 { background-image: url('/img/background/sidebar-subtasks.png') }
+		h5 {
+			margin-bottom: 4px;
+		}
 		form {
 			position: relative;
-			margin-right: 40px;
+			margin-right: 30px;
 			padding-right: 70px;
 			padding: 5px 14px;
 			@include border-radius(3px);
 			
 			input[type=text] {
-				float: left;
-				width: 220px;
 			}
 			button.member-add {
 				float: left;
-				img {
-					border: 1px solid $input-border-color;
+				width: 30px;
+				height: 30px;
+				padding: 5px 5px 1px 5px;
+				background-color: $button-background-color;
+				border: 1px solid $input-border-color;
+			}
+			
+			&.task-add {
+				button.member-add {
+					float: none;
+					margin-top: 2px;
+					margin-bottom: 5px;
+				}
+				p.percent progress {
+					margin-top: 10px;
 				}
 			}
 		}
 		form:nth-child(odd) {
 			background-color: $form-background-color;
 		}
+		hr {
+			margin-bottom: 5px;
+		}
 		fieldset {
 			display: inline-block;
+			width: 70%;
+			padding-bottom: 0;
 			vertical-align: top;
 
-			p {
-				font-style: italic;
-			}
 			p:first-child {
 				margin-bottom: 2px;
 				font-weight: bold;
@@ -211,18 +227,39 @@ $files-hover-color: #efefef;
 		}
 		fieldset + fieldset {
 			width: 25%;
+			margin-left: 3%;
+			button {
+				padding: 0;
+			}
+		}
+		p.modified {
+			font-size: 0.85em;
+			font-style: italic;
 		}
 		button.edit {
 			display: none;
 			position: absolute;
 			top: 0;
-			right: -37px;
+			right: -47px;
+			padding: 10px 10px 40px;
 		}
 		form:hover button.edit {
 			display: block;
 		}
 		p.percent {
-			clear: left;
+			margin-top: 5px;
+			padding: 0;
+			text-align: right;
+			progress {
+				width: 160px;
+				margin-top: 1px;
+			}
+			button {
+				float: right;
+			}
+		}
+		ul.members {
+			margin-bottom: 10px;
 		}
 	}
 	
