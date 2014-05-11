@@ -4,7 +4,7 @@
   
     <button ng-click="showListActions=!showListActions" class="list-edit"><img src="./img/buttons/list_edit.png" alt="Edit" /></button>
 
-    <!-- FIXME Template for the list menu -->
+    <!-- List Menu -->
     <div class="menu" ng-show="showListActions">
       <ul>
   	<li><button ng-click="deleteList()">Supprimer la liste</button></li>
@@ -13,7 +13,6 @@
   	<!-- <li><a href="">Archiver la liste</a></li> -->
       </ul>
     </div>
-
     
     <h3 editable-text="list.title" onaftersave="updateList()">{{ list.title || "Sans nom" }}</h3>
 

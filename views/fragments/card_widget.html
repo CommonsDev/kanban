@@ -59,7 +59,7 @@
 	<ul class="labels">
 	  <li ng-repeat="label in board.labels">
 	    <label for="filter-label-{{ $index }}">{{ label.label }}</label>
-	    <input type="checkbox" ng-click="" id="card-{{ card.id}}-label-{{ $index }}" class="label label-{{ $index }}">
+	    <input type="checkbox" ng-checked="isLabelAssigned(label)" ng-click="assignLabel($event, label)" id="card-{{ card.id}}-label-{{ $index }}" class="label label-{{ $index }}">
 	  </li>
 	</ul>
   	<p class="save"><button ng-click="" class="edit-labels">Editer les labels</button></p>
@@ -77,12 +77,11 @@
 
 	<ul>
 	  <li ng-repeat="user in board.members | filter:member_filter">
-	    <label for="filter-user-{{ $index }}">
-	      <img ng-show="user.mugshot" ng-src="{{ user.mugshot }}" alt="{{ user.username }}" />
-	      <img ng-show="!user.mugshot" ng-src="http://sigil.cupcake.io/{{ user.username }}.png?w=24" alt="{{ user.username }}" />
+	    <label for="card-{{ card.id }}-user-{{ $index }}">
+	      <img avatar-src="user" avatar-size="36" alt="{{ user.username }}" />
 	      {{ user.first_name || user.username }}
 	    </label>
-	    <input type="checkbox" id="card-{{ card.id }}-user-{{ $index }}">
+	    <input type="checkbox" ng-checked="isMemberAssigned(user)" ng-click="assignMember($event, user)" id="card-{{ card.id }}-user-{{ $index }}">
 	  </li>
 	</ul>
       </div>
@@ -99,15 +98,13 @@
        -->
   
   <ul class="members">
-    <li ng-click="showUserDetail=!showUserDetail" ng-repeat="user in card.assigned_to">
-      <img ng-if="!user.mugshot" ng-src="http://sigil.cupcake.io/{{ user.username }}.png" alt="{{ user.username }}" />
-      <img ng-if="user.mugshot" ng-src="{{ user.mugshot }}" alt="{{ user.username }}" />
+    <li ng-click="showUserDetail=!showUserDetail" ng-repeat="user in card.assignees">
+      <img avatar-src="user" avatar-size="36" alt="{{ user.username }}" />
 
       <!-- Member detail popup -->
       <div ng-if="showUserDetail" class="member-details">
   	<button ng-click="showUserDetail=false" class="close"><img src="./img/buttons/close_large.png" alt="Close" /></button>
-	<img ng-if="!user.mugshot" ng-src="http://sigil.cupcake.io/{{ user.username }}.png?w=60" alt="{{ user.username }}" />
-	<img ng-if="user.mugshot" ng-src="{{ user.mugshot }}" alt="{{ user.username }}" />
+	<img avatar-src="user" avatar-size="60" alt="{{ user.username }}" />
   	<dl>
   	  <dt>Name</dt>
   	  <dd ng-if="user.first_name || user.last_name" class="name">{{ user.first_name }} {{ user.last_name }}</dd>

@@ -22,9 +22,8 @@
   
   <h5>Membres assignés</h5>
   <ul class="members">
-    <li ng-repeat="user in card.assigned_to">
-      <img ng-show="!user.mugshot" ng-src="http://sigil.cupcake.io/{{ user.username }}.png" alt="{{ user.username }}" />
-      <img ng-show="user.mugshot" ng-src="{{ user.mugshot }}" alt="{{ user.username }}" />
+    <li ng-repeat="user in card.assignees">
+      <img avatar-src="user" avatar-size="36" alt="{{ user.username }}" />
     </li>
     <li><button><img src="/img/buttons/member_add.png" alt="Add member" /></button></li>
   </ul>
