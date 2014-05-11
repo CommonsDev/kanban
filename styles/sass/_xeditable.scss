@@ -1,0 +1,16 @@
+$list-name-background: #efefef;
+
+.editable form {
+	margin-left: 0;
+}
+.list form.editable-wrap {
+	width: 100%;
+	background-color: $list-name-background;
+	input {
+		width: 100px;
+		padding: 18px 19px 13px;
+		font-size: 1.25em;
+		font-weight: bold;
+		background-color: transparent;
+	}
+}
