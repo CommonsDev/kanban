@@ -12,7 +12,7 @@ $label-5-color: #5f4d48;
 .labels li {
 	@include border-radius(5px);
 }
-.task .labels li {
+.task > .labels li {
 	float: left;
 	width: 30px;
 	height: 6px;

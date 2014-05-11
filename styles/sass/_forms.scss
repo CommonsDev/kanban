@@ -14,6 +14,7 @@ input[type=text] {
 	color: $input-color;
 	background-color: $input-background-color;
 	border: none;
+	outline: none;
 	@include border-radius(5px);
 }
 input[type=search] {
@@ -21,6 +22,7 @@ input[type=search] {
 	padding: 9px 12px;
 	font-style: italic;
 	border: 1px solid $search-input-border-color;
+	outline: none;
 	background-color: $search-input-background-color;
 	@include border-radius(20px);
 }
