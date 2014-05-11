@@ -1,40 +1,39 @@
 <div id="left-panel" class="filters">
-  <h2><button ng-click="leftPanel.tab = ''"><img src="/img/close_25x25.png" alt="Close" /></button></a>Filtres</h2>
-  <form method="post" action="">
-    <fieldset>
-      <legend>Par Mots clés</legend>
-      <input type="search" ng-model="searchForm.term" placeholder="Entrez votre mot clé..." />
-    </fieldset>
-    <fieldset>
-      <legend>Par Labels</legend>
-      <ul class="labels">
-	<li ng-repeat="label in board.labels">
-	  <input type="checkbox" ng-click="updateLabelFilter($event, label.resource_uri)" id="filter-label-{{ $index }}" class="label label-{{ $index }}">
-	  <label for="filter-label-{{ $index }}" class="label-{{ $index }}">{{ label.label }}</label>
-	</li>
-      </ul>
-    </fieldset>
-    <fieldset>
-      <legend>Par Membre</legend>
-      <ul>
-	<li ng-repeat="user in board.members" class="selected">
-	  <label for="filter-user-{{ $index }}">
-	    <img ng-show="user.mugshot" ng-src="{{ user.mugshot }}" alt="{{ user.username }}" />
-	    <img ng-show="!user.mugshot" ng-src="http://sigil.cupcake.io/{{ user.username }}.png?w=24" alt="{{ user.username }}" />
-	    {{ user.first_name || user.username }}
-	  </label>
-	  <input type="checkbox" ng-click="updateUserFilter($event, user.resource_uri)" id="filter-user-{{ $index }}">
-	</li>
-
-      </ul>
-    </fieldset>
-    <fieldset>
-      <legend>Date de...</legend>
-      <ul class="date">
-	<li class="selected">La semaine dernière</li>
-	<li>Du mois dernier</li>
-      </ul>
-    </fieldset>
-     <button name="reset" class="submit primary">Réinitialiser <img src="/img/buttons/reset.png" alt="Réinitialiser" /></button>
-  </form>
+	<h2><button ng-click="leftPanel.tab = ''"><img src="/img/close_25x25.png" alt="Close" /></button></a>Filtres</h2>
+	<form method="post" action="">
+		<fieldset>
+			<legend>Par Mots clés</legend>
+			<input type="search" ng-model="searchForm.term" placeholder="Entrez votre mot clé..." />
+		</fieldset>
+		<fieldset>
+			<legend>Par Labels</legend>
+			<ul class="labels">
+				<li ng-repeat="label in board.labels">
+					<input type="checkbox" ng-click="updateLabelFilter($event, label.resource_uri)" id="filter-label-{{ $index }}" class="label label-{{ $index }}">
+					<label for="filter-label-{{ $index }}" class="label-{{ $index }}">{{ label.label }}</label>
+				</li>
+			</ul>
+		</fieldset>
+		<fieldset>
+			<legend>Par Membre</legend>
+			<ul class="members">
+				<li ng-repeat="user in board.members">
+					<input type="checkbox" ng-click="updateUserFilter($event, user.resource_uri)" id="filter-user-{{ $index }}">
+					<label for="filter-user-{{ $index }}">
+						<img ng-show="user.mugshot" ng-src="{{ user.mugshot }}" alt="{{ user.username }}" />
+						<img ng-show="!user.mugshot" ng-src="http://sigil.cupcake.io/{{ user.username }}.png?w=24" alt="{{ user.username }}" />
+						{{ user.first_name || user.username }}
+					</label>
+				</li>
+			</ul>
+		</fieldset>
+		<fieldset>
+			<legend>Date de...</legend>
+			<ul class="date">
+				<li class="selected">La semaine dernière</li>
+				<li>Du mois dernier</li>
+			</ul>
+		</fieldset>
+		<button name="reset" class="submit primary">Réinitialiser <img src="/img/buttons/reset.png" alt="Réinitialiser" /></button>
+	</form>
 </div>

@@ -100,10 +100,13 @@ $fieldset-border-color: #e6e6e6;
 	ul.keywords li:last-child {
 		margin-bottom: 0;
 	}
-	ul.labels {
+	ul.labels,
+	ul.members {
 		 input[type="checkbox"] {
 		 	display: none;
 		}
+	}
+	ul.labels {
 		input[type="checkbox"] + label {
 			cursor: pointer;
 			font-size: 1em;
@@ -113,6 +116,24 @@ $fieldset-border-color: #e6e6e6;
 		input[type="checkbox"]:checked + label {
 			background-image: url('/img/label_selected.png');
 			background-position:  96% 50%;
+			background-repeat:  no-repeat;
+		}
+	}
+	ul.members {
+		li {
+			width: 100%;
+		}
+		input[type="checkbox"] + label {
+			cursor: pointer;
+			display: block;
+			font-size: 1.15em;
+			img {
+				margin-right: 5px;
+			}
+		}
+		input[type="checkbox"]:checked + label {
+			background-image: url('/img/member_selected.png');
+			background-position:  center right;
 			background-repeat:  no-repeat;
 		}
 	}
