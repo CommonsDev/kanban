@@ -21,14 +21,19 @@
 	  <li ng-repeat="task in card.tasks">
 	    <button class="edit"><img src="./img/buttons/edit.png" alt="Edit" /></button>
 	    <fieldset>
-	      <h5 editable-text="task.title">{{ task.title }}</h5>
-	      <p class="modified">Modifié le FIXME</p>
-	    </fieldset>
-	    <fieldset>
+	      <h5 editable-text="task.title" ng-class="{done: 'task.done'}">{{ task.title }}</h5>
+	      <!--
 	      <ul class="members">
 		<li><img src="/img/uploads/members/member-1-l.jpg" alt="Guillaume" /></li>
 		<li><button class="member-add"><img src="/img/buttons/member_add_small.png" alt="Add member" /></button></li>
 	      </ul>
+	      -->
+	      <p class="modified">
+		<button ng-show="!task.done" ng-click="markTaskDone(task, true)">Rayer</button>
+		<button ng-show="task.done" ng-click="markTaskDone(task, false)">Réouvrir</button>
+	      </p>
+	    </fieldset>
+	    <fieldset>
 	    </fieldset>
 	  </li>
 	</ul>

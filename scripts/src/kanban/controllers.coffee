@@ -128,6 +128,7 @@ class KanbanCardDetailCtrl
 
                 @$scope.deleteCard = this.deleteCard
                 @$scope.submitNewTask = this.submitNewTask
+                @$scope.markTaskDone = this.markTaskDone
 
         deleteCard: () =>
                 @$scope.card.remove().then(=>
@@ -144,11 +145,22 @@ class KanbanCardDetailCtrl
                         @$state.go('kanban')
                 )
 
+        # Tasks
+        markTaskDone: (task, state) =>
+                @KanbanTasks.one(task.id).patch({done: state}).then(=>
+                        task.done = state
+                        if state is true
+                                @$scope.card.tasks_done_count += 1
+                        else
+                                @$scope.card.tasks_done_count -= 1
+                )
+
         submitNewTask: =>
                 @$scope.newTaskForm.card = @$scope.card.resource_uri
                 @KanbanTasks.post(@$scope.newTaskForm).then((task) =>
                         @$scope.card.tasks.push(task)
                 )
+
 
 
 module.controller("KanbanBoardCtrl", ['$scope', '$state', '$stateParams', 'KanbanBoards', 'KanbanLists', 'KanbanTasks', 'kanbanService', KanbanBoardCtrl])

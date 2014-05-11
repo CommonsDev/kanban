@@ -25,13 +25,15 @@
 
     <form class="add_task">
       <fieldset ng-show="showAddTask">
-	<input type="text" ng-model="newCardForm.title" id="task_name" placeholder="Nom de votre tâche..." required/>
+	<input type="text" ng-model="newCardForm.title" id="task_name" placeholder="Titre de la nouvelle carte..." required/>
+	<!--
 	<ul class="members">
 	  <li>
 	    <img ng-if="!user.mugshot" ng-src="http://sigil.cupcake.io/{{ authVars.user.username }}.png" alt="{{ user.username }}" />
 	    <img ng-if="user.mugshot" ng-src="{{ user.mugshot }}" alt="{{ authVars.user.username }}" />
 	  </li>
-	</ul><!-- .members -->
+	</ul>
+	-->
       </fieldset>
 
       <fieldset ng-show="showAddTask" class="buttons">
