@@ -176,6 +176,9 @@ $files-hover-color: #efefef;
 		h5 {
 			margin-bottom: 4px;
 		}
+		h5.done {
+			text-decoration: line-through;
+		}
 		form {
 			position: relative;
 			margin-right: 30px;
