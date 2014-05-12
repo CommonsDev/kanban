@@ -5,6 +5,12 @@ $label-2-color: #66cc99;
 $label-3-color: #ffcc66;
 $label-4-color: #cc66cc;
 $label-5-color: #5f4d48;
+$label-0-color-hover: #d9668c;
+$label-1-color-hover: #b3d9ff;
+$label-2-color-hover: #8cd9b3;
+$label-3-color-hover: #ffd98c;
+$label-4-color-hover: #d98cd9;
+$label-5-color-hover: #877a76;
 
 .task .labels {
 	margin-left: 20px;
@@ -46,6 +52,12 @@ ul.labels .selected {
 .label-4 { background-color: $label-4-color }
 .label-5 { background-color: $label-5-color }
 
+.label-0:hover { background-color: $label-0-color-hover }
+.label-1:hover { background-color: $label-1-color-hover }
+.label-2:hover { background-color: $label-2-color-hover }
+.label-3:hover { background-color: $label-3-color-hover }
+.label-4:hover { background-color: $label-4-color-hover }
+.label-5:hover { background-color: $label-5-color-hover }
 
 #left-panel.settings fieldset.labels .label-0 { color: $label-0-color }
 #left-panel.settings fieldset.labels .label-1 { color: $label-1-color }
