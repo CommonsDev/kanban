@@ -31,22 +31,24 @@
   	</ul>
       </div>
 
-      <!-- Move To Panel -->
-      <div class="menu m-with-title m-move-to" ng-switch-when="moveTo">
-  	<header>
-	  <button ng-click="toMenuState('actions')" class="back"><img src="img/menu_back.png" alt="Back" /></button>
-	  <button ng-click="toggleMenu()" class="close"><img src="img/menu_close.png" alt="Close" /></button>
-	  <h5>Déplacer vers</h5>
-	</header>
-  	<select>
-	  <option value="{{ list.id }}" ng-repeat="list in board.lists">{{ list.title }}</option>
-	</select>
-  	<select>
-  	  <option value="top">En haut</option>
-  	  <option value="bottom">En bas</option>
-	</select>
-  	<p class="save"><button><img src="img/buttons/save.png" alt="Save" /></button></p>
-      </div>
+	<!-- Move To Panel -->
+	<div class="menu m-with-title m-move-to" ng-switch-when="moveTo">
+		<header>
+			<button ng-click="toMenuState('actions')" class="back"><img src="img/menu_back.png" alt="Back" /></button>
+			<button ng-click="toggleMenu()" class="close"><img src="img/menu_close.png" alt="Close" /></button>
+			<h5>Déplacer vers</h5>
+		</header>
+		<div>
+			<select>
+				<option value="{{ list.id }}" ng-repeat="list in board.lists">{{ list.title }}</option>
+			</select>
+			<select>
+				<option value="top">En haut</option>
+				<option value="bottom">En bas</option>
+			</select>
+			<p class="save"><button><img src="img/buttons/save.png" alt="Save" /></button></p>
+		</div>
+	</div>
 
 	
 	<!-- FIXME Template for the Labels submenu -->
