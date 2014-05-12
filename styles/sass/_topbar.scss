@@ -8,6 +8,9 @@ $input-border-color: #d5d5d5;
 	color: $color;
 	background: $background-color url('/img/background/topbar-img-noise-50x50.png') repeat;
 }
+#topbar h1 {
+	color: $color;
+}
 #topbar img {
 	margin-right: 12px;
 	vertical-align: middle;
@@ -26,7 +29,7 @@ $input-border-color: #d5d5d5;
 #topbar input {
 	vertical-align: middle;
 }
-#topbar input[type=text] {
+#topbar input[type=search] {
 	width: 250px;
 	max-height: 36px;
 	margin-right: 4px;

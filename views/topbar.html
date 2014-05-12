@@ -3,7 +3,7 @@
   <img src="/img/uploads/boards/boards-bx.png" alt="Board Logo" />
   <h1 editable-text="board.title" onaftersave="updateBoard()">{{ board.title || "Sans nom" }}</h1>
   <form>
-    <input type="text" ng-model="searchForm.term" name="term" placeholder="Rechercher..." />
+    <input type="search" ng-model="searchForm.term" name="term" placeholder="Rechercher..." />
     <!-- <input type="image" src="/img/topbar/search_ico.png" name="runsearch" id="runsearch" /> -->
   </form>
 </div><!-- #topbar -->
