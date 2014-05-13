@@ -7,7 +7,7 @@ $menu-text-color: #818181;
 $menu-title-background: #eaeaea;
 
 .menu {
-	width: 200px;
+	width: 285px;
 	padding: 10px;
 	font-size: 1.1em;
 	background-color: $menu-edit-background;
@@ -150,8 +150,6 @@ $menu-title-background: #eaeaea;
 	}
 }
 
-.m-move-to { width: 285px; }
-.m-labels { width: 240px; }
 .m-move-to-list { width: 150px; }
 .m-move-to-position { width: 90px; }
 
@@ -260,9 +258,7 @@ $menu-title-background: #eaeaea;
 }
 
 .m-move-to {
-	div {
-		padding: 13px 10px 5px;
-	}
+	padding: 13px 10px 5px;
 	select {
 		width: 58%;
 		padding: 7px;
