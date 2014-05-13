@@ -1,6 +1,6 @@
 <div id="lists" >
 
-  <ul class="list" ng-repeat="list in board.lists" ng-controller="KanbanListCtrl" ui-sortable="columnSortableOptions" ng-model="list.cards">
+  <ul class="list" ng-repeat="list in board.lists" ng-controller="KanbanListCtrl">
   
     <button ng-click="showListActions=!showListActions" class="list-edit"><img src="./img/buttons/list_edit.png" alt="Edit" /></button>
 
@@ -16,8 +16,8 @@
     
     <h3 editable-text="list.title" onaftersave="updateList()">{{ list.title || "Sans nom" }}</h3>
 
-    <ul ng-repeat="card in list.cards | filter:searchForm.term | filter:filterWithLabels | filter:filterWithUsers">
-      <li>
+    <ul ui-sortable="columnSortableOptions" ng-model="list.cards" class="card-list">
+      <li ng-repeat="card in list.cards | filter:searchForm.term | filter:filterWithLabels | filter:filterWithUsers" class="card-wrapper">
 	<kanban-card board="board" card="card"></kanban-card>
       </li>
     </ul>

@@ -26,9 +26,9 @@ class KanbanBoardCtrl
                         users: []
 
                 @$scope.columnSortableOptions =
-                        placeholder: "task",
-                        connectWith: "ul.list",
-                        items: "> li"
+                        placeholder: "placeholder",
+                        connectWith: ".card-list",
+                        items: "li"
 
                 @$scope.boards = @KanbanBoards.getList().$object
 

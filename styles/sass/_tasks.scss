@@ -125,6 +125,11 @@ li.task:last-of-type {
 	border-bottom: 1px solid $task-last-border-color;
 }
 
+.placeholder {
+    @extends .task;
+    height: 100px;
+}
+
 .add_task {
 	display: block;
 	background-color: $task-background-color;
