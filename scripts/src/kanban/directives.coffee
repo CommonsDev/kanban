@@ -5,14 +5,15 @@ module.directive('avatarSrc', ($compile) ->
                 if scope.user.mugshot and scope.user.mugshot != ""
                         element.attr('src', scope.user.mugshot)
                 else
-                        tmpl = "http://sigil.cupcake.io/{{ user.username }}.png"
+                        tmpl = "http://sigil.cupcake.io/#{scope.user.username}.png"
                         if scope.size
-                                tmpl += "?w={{ size }}"
+                                tmpl += "?w=#{scope.size}"
 
-                        # element.attr('src', tmpl)
+                        element.attr('src', tmpl)
 
+                element.attr('width', scope.size)
+                element.attr('height', scope.size)
 
-                $compile(element)(scope)
 
         return {
                 scope:
