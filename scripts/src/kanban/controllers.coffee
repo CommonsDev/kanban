@@ -116,61 +116,120 @@ class KanbanListCtrl
                         @$scope.board.lists = _.without(@$scope.board.lists, @$scope.list)
                 )
 
-class KanbanCardDetailCtrl
-        constructor: (@$scope, @$state, @$stateParams, @KanbanCards, @KanbanTasks, @kanbanService) ->
-                @$scope.card = @KanbanCards.one(@$stateParams.cardId).get().$object
 
-                @$scope.sidebar =
-                        tab: 'details'
+module.controller('AbstractKanbanCardCtrl', ($scope, $state, KanbanCards, KanbanTasks, kanbanService) ->
+        $scope.showAddTask = false
 
-                @$scope.newTaskForm =
-                        title: ''
-
-                @$scope.deleteCard = this.deleteCard
-                @$scope.submitNewTask = this.submitNewTask
-                @$scope.deleteTask = this.deleteTask
-                @$scope.markTaskDone = this.markTaskDone
-
-        deleteCard: () =>
-                @$scope.card.remove().then(=>
-                        list = _.find(@kanbanService.board.lists, (list) =>
-                                return list.resource_uri == @$scope.card.list
+        $scope.deleteCard = ->
+                $scope.card.remove().then(=>
+                        list = _.find(kanbanService.board.lists, (list) =>
+                                return list.resource_uri == $scope.card.list
                         )
 
                         card = _.find(list.cards, (card) =>
-                                return card.resource_uri == @$scope.card.resource_uri
+                                return card.resource_uri == $scope.card.resource_uri
                         )
 
                         idx = list.cards.indexOf(card)
                         list.cards.splice(idx, 1)
-                        @$state.go('kanban')
+                        $state.go('kanban')
                 )
 
         # Tasks
-        markTaskDone: (task, state) =>
-                @KanbanTasks.one(task.id).patch({done: state}).then(=>
+        $scope.markTaskDone = (task, state) ->
+                KanbanTasks.one(task.id).patch({done: state}).then(=>
                         task.done = state
                         if state is true
-                                @$scope.card.tasks_done_count += 1
+                                $scope.card.tasks_done_count += 1
                         else
-                                @$scope.card.tasks_done_count -= 1
+                                $scope.card.tasks_done_count -= 1
                 )
 
-        submitNewTask: =>
-                @$scope.newTaskForm.card = @$scope.card.resource_uri
-                @KanbanTasks.post(@$scope.newTaskForm).then((task) =>
-                        @$scope.card.tasks.push(task)
+        $scope.submitNewTask = ->
+                $scope.newTaskForm.card = $scope.card.resource_uri
+                KanbanTasks.post($scope.newTaskForm).then((task) =>
+                        $scope.card.tasks.push(task)
+                        $scope.showAddTask = false
                 )
 
-        deleteTask: (task) =>
-                @KanbanTasks.one(task.id).remove().then(=>
-                        @$scope.card.tasks = _.without(@$scope.card.tasks, task)
+        $scope.deleteTask = (task) ->
+                KanbanTasks.one(task.id).remove().then(=>
+                        $scope.card.tasks = _.without($scope.card.tasks, task)
                         if task.done
-                                @$scope.card.tasks_done_count -= 1
+                                $scope.card.tasks_done_count -= 1
                 )
+
+        # Labels
+        $scope.isLabelAssigned = (label) ->
+                return _.find($scope.card.labels, (item) ->
+                        return item.resource_uri == label.resource_uri
+                ) != undefined
+
+        $scope.assignLabel = ($event, label) ->
+                checkbox = $event.target
+
+                new_set = _.pluck($scope.card.labels, 'resource_uri')
+
+                if checkbox.checked
+                        if _.contains(new_set, label.resource_uri)
+                                return true
+
+                        new_set.push(label.resource_uri)
+                        KanbanCards.one($scope.card.id).patch({labels: new_set}).then((card) ->
+                                $scope.card.labels.push(label)
+                        )
+                else
+                        new_set = _.without(new_set, label.resource_uri)
+                        KanbanCards.one($scope.card.id).patch({labels: new_set}).then(() ->
+                                $scope.card.labels = _.filter($scope.card.labels, (item) ->
+                                        return item.resource_uri != label.resource_uri
+                                )
+                        )
+
+        # Members
+        $scope.isMemberAssigned = (user) ->
+                return _.find($scope.card.assignees, (item) ->
+                        return item.resource_uri == user.resource_uri
+                ) != undefined
+
+
+        $scope.assignMember = ($event, user) ->
+                checkbox = $event.target
+
+                new_set = _.pluck($scope.card.assignees, 'resource_uri')
+
+                if checkbox.checked
+                        if _.contains(new_set, user.resource_uri)
+                                return true
+
+                        new_set.push(user.resource_uri)
+                        KanbanCards.one($scope.card.id).patch({assignees: new_set}).then((card) ->
+                                $scope.card.assignees.push(user)
+                        )
+                else
+                        new_set = _.without(new_set, user.resource_uri)
+                        KanbanCards.one($scope.card.id).patch({assignees: new_set}).then( ->
+                                $scope.card.assignees = _.filter($scope.card.assignees, (item) ->
+                                        return item.resource_uri != user.resource_uri
+                                )
+                        )
+
+)
+
+module.controller('KanbanCardDetailCtrl', ($scope, $controller, $stateParams, KanbanCards) ->
+
+        angular.extend(this, $controller('AbstractKanbanCardCtrl', {$scope: $scope}))
+
+        $scope.card = KanbanCards.one($stateParams.cardId).get().$object
+
+        $scope.sidebar =
+                tab: 'details'
+
+        $scope.newTaskForm =
+                title: ''
+)
 
 
 module.controller("KanbanBoardCtrl", ['$scope', '$state', '$stateParams', 'KanbanBoards', 'KanbanLists', 'KanbanTasks', 'kanbanService', KanbanBoardCtrl])
 module.controller("KanbanListCtrl", ['$scope', 'KanbanLists', 'KanbanCards', KanbanListCtrl])
 module.controller("KanbanCardCommentCtrl", ['$scope', 'KanbanCardComments', KanbanCardCommentCtrl])
-module.controller("KanbanCardDetailCtrl", ['$scope', '$state', '$stateParams', 'KanbanCards', 'KanbanTasks', 'kanbanService', KanbanCardDetailCtrl])

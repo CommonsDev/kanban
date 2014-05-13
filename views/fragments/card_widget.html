@@ -51,42 +51,24 @@
 	</div>
 
 	
-	<!-- FIXME Template for the Labels submenu -->
-	<div class="menu m-with-title m-labels" ng-switch-when="labels">
+	<!-- Labels submenu -->
+	<div class="menu m-with-title m-labels" ng-switch-when="labels" ng-cloak>
 		<header>
 			<button ng-click="toMenuState('actions')" class="back"><img src="img/menu_back.png" alt="Back" /></button>
 			<button ng-click="toggleMenu()" class="close"><img src="img/menu_close.png" alt="Close" /></button>
 			<h5>Labels</h5>
 		</header>
-		<ul class="labels">
-			<li ng-repeat="label in board.labels">
-				<input type="checkbox" ng-checked="isLabelAssigned(label)" ng-click="assignLabel($event, label)" id="card-{{ card.id}}-label-{{ $index }}" class="label label-{{ $index }}">
-				<label for="card-{{ card.id}}-label-{{ $index }}" class="label-{{ $index }}">{{ label.label }}</label>
-			</li>
-		</ul>
-		<p class="save"><button ng-click="" class="edit-labels">Editer les labels</button></p>
+		<ng-include src="'views/fragments/labels_menu.html'"></ng-include>
 	</div>
     
-	<!-- FIXME Template for the Members submenu -->
-	<div class="menu m-with-title m-members" ng-switch-when="members">
-		<header>
-			<button ng-click="toMenuState('actions')" class="back"><img src="./img/menu_back.png" alt="Back" /></button>
-			<button ng-click="toggleMenu()" class="close"><img src="./img/menu_close.png" alt="Close" /></button>
-			<h5>Membres</h5>
-		</header>
-
-		<div>
-			<input type="search" ng-model="member_filter" name="search-member" placeholder="Entrez un nom..." />
-			<ul>
-				<li ng-repeat="user in board.members | filter:member_filter">
-					<input type="checkbox" ng-checked="isMemberAssigned(user)" ng-click="assignMember($event, user)" id="card-{{ card.id }}-user-{{ $index }}">
-					<label for="card-{{ card.id }}-user-{{ $index }}">
-						<img avatar-src="user" avatar-size="36" alt="{{ user.username }}" />
-						{{ user.first_name || user.username }}
-					</label>
-				</li>
-			</ul>
-		</div>
+	<!-- Members submenu -->
+	<div class="menu m-with-title m-members" ng-switch-when="members" ng-cloak>
+	  <header>
+	    <button ng-click="toMenuState('actions')" class="back"><img src="./img/menu_back.png" alt="Back" /></button>
+	    <button ng-click="toggleMenu()" class="close"><img src="./img/menu_close.png" alt="Close" /></button>
+	    <h5>Membres</h5>
+	  </header>
+	  <ng-include src="'views/fragments/member_menu.html'"></ng-include>
 	</div>
 
     </div> <!-- .menu-placeholder -->

@@ -1,0 +1,12 @@
+<div>
+  <input type="search" ng-model="member_filter" name="search-member" placeholder="Entrez un nom..." />
+  <ul>
+    <li ng-repeat="user in board.members | filter:member_filter">
+      <input type="checkbox" ng-checked="isMemberAssigned(user)" ng-click="assignMember($event, user)" id="card-{{ card.id }}-user-{{ $index }}">
+      <label for="card-{{ card.id }}-user-{{ $index }}">
+	<img avatar-src="user" avatar-size="36" alt="{{ user.username }}" />
+	{{ user.first_name || user.username }}
+      </label>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,9 @@
+<div>
+  <ul class="labels">
+    <li ng-repeat="label in board.labels">
+      <input type="checkbox" ng-checked="isLabelAssigned(label)" ng-click="assignLabel($event, label)" id="card-{{ card.id}}-label-{{ $index }}" class="label label-{{ $index }}">
+      <label for="card-{{ card.id}}-label-{{ $index }}" class="label-{{ $index }}">{{ label.label }}</label>
+    </li>
+  </ul>
+  <p class="save"><button ng-click="" class="edit-labels">Editer les labels</button></p>
+<div>

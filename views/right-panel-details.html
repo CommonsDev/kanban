@@ -25,25 +25,39 @@
     <li ng-repeat="user in card.assignees">
       <img avatar-src="user" avatar-size="36" alt="{{ user.username }}" />
     </li>
-    <li><button><img src="/img/buttons/member_add.png" alt="Add member" /></button></li>
-  </ul>
-
-  <ul class="members">
-    <li ng-repeat="user in board.members">
-      <img ng-show="!user.mugshot" ng-src="http://sigil.cupcake.io/{{ user.username }}.png" alt="{{ user.username }}" />
-      <img ng-show="user.mugshot" ng-src="{{ user.mugshot }}" alt="{{ user.username }}" />
+    <li>
+      <button ng-click="showMemberMenu=!showMemberMenu"><img src="/img/buttons/member_add.png" alt="Add member" /></button>
+      
+      <!-- Members submenu -->
+      <div class="menu m-with-title m-members" ng-show="showMemberMenu">
+	<header>
+	  <button ng-click="showMemberMenu = false" class="close"><img src="./img/menu_close.png" alt="Close" /></button>
+	  <h5>Membres</h5>
+	</header>
+	<ng-include src="'views/fragments/member_menu.html'"></ng-include>
+      </div>
     </li>
-  </ul>
-
   </ul>
   
   <hr />
   
   <h5>Labels associés</h5>
+
   <ul class="labels">
-    <li ng-repeat="label in card.tags"><a href="#" class="label label-4">{{ label.name }}</a></li> <!-- FIXME -->
+    <li ng-repeat="label in card.labels">
+      <a href="" ng-class="label label-{{ $index+1 }}">{{ label.label }}</a>
+    </li>
   </ul>
-  <button class="label-add">Ajouter un label</button>
+  <button ng-click="showLabelMenu=!showLabelMenu" class="label-add">Ajouter un label</button>
+
+  <!-- Labels menu -->
+  <div class="menu m-with-title" ng-show="showLabelMenu">
+    <header>
+      <button ng-click="showLabelMenu = false" class="close"><img src="./img/menu_close.png" alt="Close" /></button>
+      <h5>Labels</h5>
+    </header>
+    <ng-include src="'views/fragments/labels_menu.html'"></ng-include>
+  </div>
   
   <hr />
   
