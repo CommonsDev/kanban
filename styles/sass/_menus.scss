@@ -151,7 +151,7 @@ $menu-title-background: #eaeaea;
 }
 
 .m-move-to { width: 285px; }
-.m-labels, .m-members { width: 240px; }
+.m-labels { width: 240px; }
 .m-move-to-list { width: 150px; }
 .m-move-to-position { width: 90px; }
 
@@ -200,15 +200,13 @@ $menu-title-background: #eaeaea;
 	}
 }
 .m-members {
+	padding: 13px 10px;
 	form {
 		padding: 15px 10px;
 		input[type=search] {
 			width: 179px;
 			padding: 6px 12px;
 		}
-	}
-	div {
-		padding: 13px 10px;
 	}
 	ul {
 		margin-bottom: 0;
