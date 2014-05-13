@@ -7,10 +7,10 @@
 	
 	<form ng-show="showAddTask" class="task-add">
 	  <fieldset>
-	    <input type="text" ng-model="newTaskForm.title" name="subtask-title" placeholder="Titre de la sous-tâche" />
+	    <input type="text" ng-model="newTaskForm.title" name="subtask-title" placeholder="Titre de la tâche" />
 	  </fieldset>
 	  <fieldset>
-	    <button class="member-add"><img src="/img/buttons/member_add_small.png" alt="Add member" /></button><br />
+	    <!--<button class="member-add"><img src="/img/buttons/member_add_small.png" alt="Add member" /></button><br />-->
 	    <button ng-click="showAddTask=false" type="reset" name="cancel"><img src="/img/buttons/close_large.png" alt="Cancel" /></button>
 	    <button ng-click="submitNewTask()" name="add_task"><img src="/img/buttons/save.png" alt="Add task" /></button>
 	  </fieldset>

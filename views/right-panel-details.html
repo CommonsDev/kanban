@@ -45,7 +45,7 @@
 
   <ul class="labels">
     <li ng-repeat="label in card.labels">
-      <a ng-class="'label label-{{$index}}'">{{ label.label }}</a>
+      <a ng-class="'label label-{{$index+1}}'">{{ label.label }}</a>
     </li>
   </ul>
   <button ng-click="showLabelMenu=!showLabelMenu" class="label-add">Ajouter un label</button>

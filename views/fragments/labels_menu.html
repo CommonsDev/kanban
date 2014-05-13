@@ -1,4 +1,4 @@
-<div>
+<div class="m-labels">
   <ul class="labels">
     <li ng-repeat="label in board.labels">
       <input type="checkbox" ng-checked="isLabelAssigned(label)" ng-click="assignLabel($event, label)" id="card-{{ card.id}}-label-{{ $index }}" class="label label-{{ $index }}">
