@@ -182,6 +182,11 @@ $files-hover-color: #efefef;
 		h5.done {
 			text-decoration: line-through;
 		}
+		form.task-add {
+			fieldset + fieldset {
+				text-align: right;
+			}
+		}
 		li {
 			position: relative;
 			padding-right: 70px;
