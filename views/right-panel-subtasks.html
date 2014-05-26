@@ -3,7 +3,7 @@
 
 	<p class="percent">{{ card.tasks_done_count }} / {{ card.tasks.length }}<progress value="{{ card.tasks_done_count }}" max="{{ card.tasks.length }}"></progress></p>
 
-	<button ng-click="showAddTask=!showAddTask" class="primary">Ajouter une Tâche</button>
+	<button ng-click="showAddTask=!showAddTask" ng-hide="showAddTask" class="primary">Ajouter une Tâche</button>
 	
 	<form ng-show="showAddTask" class="task-add">
 	  <fieldset>
