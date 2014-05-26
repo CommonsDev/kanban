@@ -16,7 +16,7 @@ class KanbanCardCommentCtrl
                 )
 
 class KanbanBoardCtrl
-        constructor: (@$scope, @$state, @$stateParams, @KanbanBoards, @KanbanLists, @KanbanTasks, @kanbanService) ->
+        constructor: (@$scope, @$state, @$stateParams, @KanbanBoards, @KanbanCards, @KanbanLists, @KanbanTasks, @kanbanService) ->
                 @$scope.leftPanel =
                         tab: ""
 
@@ -25,10 +25,18 @@ class KanbanBoardCtrl
                         labels: []
                         users: []
 
+                @$scope.dragfrom = null
+
+
                 @$scope.columnSortableOptions =
                         placeholder: "placeholder",
                         connectWith: ".card-list",
                         items: "li"
+                        update: (e, ui) => # This should be moved
+                                if ui.sender
+                                        card = ui.item.sortable.moved
+                                        card.list = ui.item.sortable.droptarget.scope().list.resource_uri
+                                        @KanbanCards.one(card.id).patch({list: card.list})
 
                 @$scope.boards = @KanbanBoards.getList().$object
 
@@ -220,7 +228,14 @@ module.controller('KanbanCardDetailCtrl', ($scope, $controller, $stateParams, Ka
 
         angular.extend(this, $controller('AbstractKanbanCardCtrl', {$scope: $scope}))
 
-        $scope.card = KanbanCards.one($stateParams.cardId).get().$object
+
+
+        $scope.card = KanbanCards.one($stateParams.cardId).get().then((card) ->
+                $scope.card = card
+                console.debug($scope.board)
+                $scope.card_list = _.findWhere($scope.board.lists, {resource_uri: card.list})
+                console.debug($scope.list_name)
+        )
 
         $scope.sidebar =
                 tab: 'details'
@@ -230,6 +245,6 @@ module.controller('KanbanCardDetailCtrl', ($scope, $controller, $stateParams, Ka
 )
 
 
-module.controller("KanbanBoardCtrl", ['$scope', '$state', '$stateParams', 'KanbanBoards', 'KanbanLists', 'KanbanTasks', 'kanbanService', KanbanBoardCtrl])
+module.controller("KanbanBoardCtrl", ['$scope', '$state', '$stateParams', 'KanbanBoards', 'KanbanCards', 'KanbanLists', 'KanbanTasks', 'kanbanService', KanbanBoardCtrl])
 module.controller("KanbanListCtrl", ['$scope', 'KanbanLists', 'KanbanCards', KanbanListCtrl])
 module.controller("KanbanCardCommentCtrl", ['$scope', 'KanbanCardComments', KanbanCardCommentCtrl])

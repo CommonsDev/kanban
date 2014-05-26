@@ -10,6 +10,10 @@ $list-add-background: #fff;
 	white-space: nowrap;
 }
 
+#lists ul.card-list {
+    min-height: 5px;
+}
+
 ul.list {
 	position: relative;
 	display: inline-block;
