@@ -175,19 +175,19 @@ $files-hover-color: #efefef;
 		h2 { background-image: url('/img/background/sidebar-subtasks.png') }
 		h5 {
 			margin-bottom: 4px;
+			&.editable-click {
+				color: inherit;
+			}
 		}
 		h5.done {
 			text-decoration: line-through;
 		}
-		form {
+		li {
 			position: relative;
-			margin-right: 30px;
 			padding-right: 70px;
 			padding: 5px 14px;
 			@include border-radius(3px);
 			
-			input[type=text] {
-			}
 			button.member-add {
 				float: left;
 				width: 30px;
@@ -207,16 +207,17 @@ $files-hover-color: #efefef;
 					margin-top: 10px;
 				}
 			}
+			&:hover p.modified button {
+				opacity: 1;
+			}
 		}
-		form:nth-child(odd) {
+		li:nth-child(odd) {
 			background-color: $form-background-color;
 		}
 		hr {
 			margin-bottom: 5px;
 		}
 		fieldset {
-			display: inline-block;
-			width: 70%;
 			padding-bottom: 0;
 			vertical-align: top;
 
@@ -228,16 +229,15 @@ $files-hover-color: #efefef;
 				font-size: 0.85em;
 			}
 		}
-		fieldset + fieldset {
-			width: 25%;
-			margin-left: 3%;
-			button {
-				padding: 0;
-			}
-		}
 		p.modified {
+			margin: 1em 0 0.5em;
 			font-size: 0.85em;
 			font-style: italic;
+			text-align: right;
+			button {
+				padding: 0;
+				opacity: 0;
+			}
 		}
 		button.edit {
 			display: none;
@@ -268,6 +268,10 @@ $files-hover-color: #efefef;
 	
 	div.comments {
 	
+		h2 {
+			margin-bottom: 0.75em;
+			background: transparent url('/img/background/sidebar-comments.png') 1% 60% no-repeat;
+		 }
 		ul.comments {
 	
 			li {
@@ -298,9 +302,26 @@ $files-hover-color: #efefef;
 			
 		}
 		
-		input[type=text] {
-			border: 1px solid $input-border-color;
-			background-color: #fff;
+		form {
+			margin-top: 3px;
+			input, button {
+				display: inline-block;
+				height: 45px;
+				@include border-radius(2px);
+			}
+			input {
+				width: 85%;
+				margin-top: 1px;
+				border: 1px solid $input-border-color;
+				background-color: #fff;
+			}
+			button {
+				float: right;
+				margin-top: 1px;
+				width: 14%;
+				padding: 0;
+				font-weight: bold;
+			}
 		}
 	
 	}
