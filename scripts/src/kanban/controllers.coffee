@@ -158,6 +158,7 @@ module.controller('AbstractKanbanCardCtrl', ($scope, $state, KanbanCards, Kanban
                 KanbanTasks.post($scope.newTaskForm).then((task) =>
                         $scope.card.tasks.push(task)
                         $scope.showAddTask = false
+                        $scope.newTaskForm.title = ''
                 )
 
         $scope.deleteTask = (task) ->
