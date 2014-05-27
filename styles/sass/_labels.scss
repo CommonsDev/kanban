@@ -42,7 +42,7 @@ ul.labels label {
 	background-position: 96% 50%;
 }
 ul.labels .selected {
-	background-image: url('/img/label_selected.png');
+	background-image: image-url('label_selected.png');
 }
 
 .label-0 { background-color: $label-0-color }

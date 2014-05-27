@@ -16,7 +16,7 @@ body {
 	font-family:Raleway,sans-serif;
 	font-size:12px;
 	background:#f6f7f8;
-	background: #f6f7f8 url('/img/background/img-noise-50x50.png') repeat;
+	background: #f6f7f8 image-url('background/img-noise-50x50.png') repeat;
 }
 
 * {
@@ -33,7 +33,7 @@ hr {
 	height: 2px;
 	margin: 15px 0;
 	line-height: 2px;
-	background: transparent url('/img/border.png') top left repeat-x;
+	background: transparent image-url('border.png') top left repeat-x;
 }
 
 /* ============= MAIN CONTENT ====== */

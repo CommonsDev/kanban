@@ -30,7 +30,7 @@ $selected-border-color: #5672ad;
 		}
 		&.selected button {
 			border-color: $selected-border-color;
-			background: transparent url('/img/toolbar/taskmenu-selected.png') bottom center no-repeat;
+			background: transparent image-url('toolbar/taskmenu-selected.png') bottom center no-repeat;
 		}
 		&.close button {
 			border-color: transparent;

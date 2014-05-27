@@ -80,7 +80,7 @@ $fieldset-border-color: #e6e6e6;
 		line-height: 18px;
 	}
 	li.selected {
-		background: url('/img/selected-18x18.png') center right no-repeat;
+		background: image-url('selected-18x18.png') center right no-repeat;
 	}
 	li img {
 		margin: 0 10px 4px 0;
@@ -95,7 +95,7 @@ $fieldset-border-color: #e6e6e6;
 		margin: 0 0 7px;
 		padding-left: 25px;
 		font-style: italic;
-		background: url('/img/close_18x18.png') center left no-repeat;
+		background: image-url('close_18x18.png') center left no-repeat;
 	}
 	ul.keywords li:last-child {
 		margin-bottom: 0;
@@ -114,7 +114,7 @@ $fieldset-border-color: #e6e6e6;
 			font-family: Raleway, sans-serif;
 		}
 		input[type="checkbox"]:checked + label {
-			background-image: url('/img/label_selected.png');
+			background-image: image-url('label_selected.png');
 			background-position:  96% 50%;
 			background-repeat:  no-repeat;
 		}
@@ -132,7 +132,7 @@ $fieldset-border-color: #e6e6e6;
 			}
 		}
 		input[type="checkbox"]:checked + label {
-			background-image: url('/img/member_selected.png');
+			background-image: image-url('member_selected.png');
 			background-position:  center right;
 			background-repeat:  no-repeat;
 		}

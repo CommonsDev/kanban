@@ -67,7 +67,7 @@ $task-text-input-background-color: #e6e6e6;
 	p.done {
 		padding-left: 19px;
 		color: $task-done-color;
-		background: url('/img/background/green_v.png') center left no-repeat;
+		background: image-url('background/green_v.png') center left no-repeat;
 	}
 	p.photos {
 		overflow: hidden;
@@ -108,10 +108,10 @@ $task-text-input-background-color: #e6e6e6;
 			padding-left: 18px;
 		
 			&.attachments {
-				background: url('/img/attachment.png') 0 57% no-repeat;
+				background: image-url('attachment.png') 0 57% no-repeat;
 			}
 			&.comments {
-				background: url('/img/comment.png') 0 57% no-repeat;
+				background: image-url('comment.png') 0 57% no-repeat;
 			}
 		}
 	}

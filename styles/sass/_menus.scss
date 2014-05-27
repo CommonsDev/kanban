@@ -34,7 +34,7 @@ $menu-title-background: #eaeaea;
 			
 			&.submenu a,
 			&.submenu button {
-				background:  url('/img/menu_arrow.png') 95% 50% no-repeat;
+				background:  image-url('menu_arrow.png') 95% 50% no-repeat;
 			}
 			
 			a:hover, button:hover {
@@ -43,7 +43,7 @@ $menu-title-background: #eaeaea;
 			}
 			&.submenu a:hover,
 			&.submenu button:hover {
-				background-image: url('/img/menu_arrow_hover.png');
+				background-image: image-url('menu_arrow_hover.png');
 			}
 		
 		}
@@ -176,7 +176,7 @@ $menu-title-background: #eaeaea;
 			font-family: Raleway, sans-serif;
 		}
 		input[type="checkbox"]:checked + label {
-			background-image: url('/img/label_selected.png');
+			background-image: image-url('label_selected.png');
 			background-position: 96% 50%;
 			background-repeat: no-repeat;
 		}
@@ -190,7 +190,7 @@ $menu-title-background: #eaeaea;
 		width: 100%;
 		text-align: left;
 		&.selected {
-			background: url('/img/member_selected.png') 95% 50% no-repeat;
+			background: image-url('member_selected.png') 95% 50% no-repeat;
 		}
 	}
 	li button img {
@@ -228,7 +228,7 @@ $menu-title-background: #eaeaea;
 			}
 		}
 		input[type="checkbox"]:checked + label {
-			background: transparent url('/img/member_selected.png') 96% 50% no-repeat;
+			background: transparent image-url('member_selected.png') 96% 50% no-repeat;
 		}
 		input[type="checkbox"] + label:hover {
 			background-color: #f9f9f9;

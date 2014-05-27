@@ -6,7 +6,7 @@ $input-border-color: #d5d5d5;
 	margin-left: 60px;
 	padding: 11px 11px 9px 50px;
 	color: $color;
-	background: $background-color url('/img/background/topbar-img-noise-50x50.png') repeat;
+	background: $background-color image-url('background/topbar-img-noise-50x50.png') repeat;
 }
 #topbar h1 {
 	color: $color;
