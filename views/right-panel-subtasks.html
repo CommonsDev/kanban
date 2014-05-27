@@ -10,7 +10,7 @@
 	    <input type="text" ng-model="newTaskForm.title" name="subtask-title" placeholder="Titre de la tâche" />
 	  </fieldset>
 	  <fieldset>
-	    <!--<button class="member-add"><img src="./img/buttons/member_add_small.png" alt="Add member" /></button><br />-->
+	    <!--<button class="member-add"><img src="img/buttons/member_add_small.png" alt="Add member" /></button><br />-->
 	    <button ng-click="showAddTask=false" type="reset" name="cancel" class="secondary">Annuler</button>
 	    <button ng-click="submitNewTask()" name="add_task" class="primary">Ajouter</button>
 	  </fieldset>
@@ -19,19 +19,19 @@
 
 	<ul>
 	  <li ng-repeat="task in card.tasks">
-	    <button class="edit"><img src="./img/buttons/edit.png" alt="Edit" /></button>
+	    <button class="edit"><img src="img/buttons/edit.png" alt="Edit" /></button>
 	    <fieldset>
 	      <h5 editable-text="task.title" ng-class="{done: task.done}">{{ task.title }}</h5>
 	      <!--
 	      <ul class="members">
-		<li><img src="./img/uploads/members/member-1-l.jpg" alt="Guillaume" /></li>
-		<li><button class="member-add"><img src="./img/buttons/member_add_small.png" alt="Add member" /></button></li>
+		<li><img src="img/uploads/members/member-1-l.jpg" alt="Guillaume" /></li>
+		<li><button class="member-add"><img src="img/buttons/member_add_small.png" alt="Add member" /></button></li>
 	      </ul>
 	      -->
 	      <p class="modified">
-		<button ng-click="deleteTask(task)"><img alt="Supprimer" src="./img/buttons/close_large.png"></img></button>
-		<button ng-show="!task.done" ng-click="markTaskDone(task, true)"><img alt="Rayer" src="./img/buttons/save.png"></img></button>
-		<button ng-show="task.done" ng-click="markTaskDone(task, false)"><img alt="Réouvrir" src="./img/buttons/reopen.png"></img></button>
+		<button ng-click="deleteTask(task)"><img alt="Supprimer" src="img/buttons/close_large.png"></img></button>
+		<button ng-show="!task.done" ng-click="markTaskDone(task, true)"><img alt="Rayer" src="img/buttons/save.png"></img></button>
+		<button ng-show="task.done" ng-click="markTaskDone(task, false)"><img alt="Réouvrir" src="img/buttons/reopen.png"></img></button>
 	      </p>
 	    </fieldset>
 	  </li>
