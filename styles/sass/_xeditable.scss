@@ -17,3 +17,16 @@ $list-name-background: #efefef;
 		background-color: transparent;
 	}
 }
+span.editable-buttons {
+	vertical-align: middle;
+	button {
+		width: 30px;
+		padding: 0;
+	}
+	button:first-child {
+		margin-left: 10px;
+	}
+}
+#lists .list form.editable-wrap input {
+	width: 60%;
+}
