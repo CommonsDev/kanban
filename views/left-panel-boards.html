@@ -1,5 +1,5 @@
 <div id="left-panel" class="boards">
-  <h2><button ng-click="leftPanel.tab = ''"><img src="/img/close_25x25.png" alt="Close" /></button>Mes tableaux</h2>
+  <h2><button ng-click="leftPanel.tab = ''"><img src="img/close_25x25.png" alt="Close" /></button>Mes tableaux</h2>
   <form>
     <fieldset class="naked">
       <button ng-click="createBoard()" class="primary" name="board-add">Nouveau Tableau</button>
@@ -7,7 +7,7 @@
     <fieldset>
       <legend>Vos tableaux récents</legend>
       <ul class="boards">
-	<li ng-repeat="board in boards | limitTo:3"><a ui-sref="kanban({kanbanId: board.id})"><img src="/img/board-logo.png" alt="{{ board.title }}" />{{ board.title || "Sans nom" }}</a></li> <!-- FIXME: orderBy date -->
+	<li ng-repeat="board in boards | limitTo:3"><a ui-sref="kanban({kanbanId: board.id})"><img src="img/board-logo.png" alt="{{ board.title }}" />{{ board.title || "Sans nom" }}</a></li> <!-- FIXME: orderBy date -->
       </ul>
     </fieldset>
     <fieldset>
@@ -15,7 +15,7 @@
       <ul class="boards">
 	<li ng-repeat="board in boards">
 	  <a ui-sref="kanban({kanbanId: board.id})">
-	    <img src="/img/board-logo.png" alt="{{ board.title }}" />{{ board.title || "Sans nom" }}
+	    <img src="img/board-logo.png" alt="{{ board.title }}" />{{ board.title || "Sans nom" }}
 	  </a>
 	</li>
       </ul>
